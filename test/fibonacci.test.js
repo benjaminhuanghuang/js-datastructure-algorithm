@@ -1,7 +1,7 @@
 var assert = require('assert');
 var { fibonacci, fibonacci_dp} = require('../fibonacci');
 
-describe('fibonacci: ', () => {
+xdescribe('fibonacci: ', () => {
   it('return 1 at position 1', () => {
     const position = 1;
     const res = fibonacci(position);
@@ -29,7 +29,7 @@ describe('fibonacci: ', () => {
   });
 });
 
-describe('fibonacci_dp: ', () => {
+xdescribe('fibonacci_dp: ', () => {
   it('return 1 at position 1', () => {
     const position = 1;
     const res = fibonacci_dp(position);
