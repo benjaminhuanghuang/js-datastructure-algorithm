@@ -21,10 +21,10 @@ describe('fibonacci: ', () => {
   });
 
   it('execution time when position 50', () => {
-    const position = 50;
+    const position = 40;
     const now = Date.now();
     const res = fibonacci(position);
-    assert.equal(res, 12586269025);
+    assert.equal(res, 102334155);
     console.log(Date.now() - now);
   });
 });
@@ -48,11 +48,11 @@ describe('fibonacci_dp: ', () => {
     assert.equal(res, 34);
   });
 
-  it('execution time when position 50', () => {
-    const position = 50;
+  it('execution time when position 40', () => {
+    const position = 40;
     const now = Date.now();
     const res = fibonacci_dp(position);
-    assert.equal(res, 12586269025);
+    assert.equal(res, 102334155);
     console.log(Date.now() - now);
   });
 });
