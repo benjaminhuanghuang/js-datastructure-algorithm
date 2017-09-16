@@ -9,7 +9,7 @@ describe("674. Longest Continuous Increasing Subsequence: ", () => {
   });
 
   it("return 1 from [2,2,2,2,2]", () => {
-    const nums = [2,2,2,2,2];
+    const nums = [2, 2, 2, 2, 2];
     const res = findLengthOfLCIS(nums);
     assert.equal(res, 1);
   });
@@ -31,4 +31,3 @@ describe("674. Longest Continuous Increasing Subsequence: ", () => {
     assert.equal(res, 0);
   });
 });
-

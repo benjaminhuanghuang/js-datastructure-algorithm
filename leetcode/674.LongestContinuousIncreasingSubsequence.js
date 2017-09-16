@@ -6,7 +6,6 @@ Ref # 53. Maximum Subarray
 */
 /*
   DP def : 
-    f[i]
     fun[i] = LCIS till nums[i], nums[i] must be used
 
   if nums[i] < nums[i-1]
