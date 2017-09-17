@@ -1,5 +1,5 @@
 const { assert } = require("chai");
-const minimumTotal = require("../leetcode/120.Triangle");
+const { minimumTotal, minimumTotal2, minimumTotal3 } = require("../leetcode/120.Triangle");
 
 describe.only("120. Triangle: ", () => {
   it(`return 11 from [[2],
@@ -7,7 +7,7 @@ describe.only("120. Triangle: ", () => {
                       [6,5,7],
                       [4,1,8,3]]`, () => {
     const nums = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]];
-    const res = minimumTotal(nums);
+    const res = minimumTotal3(nums);
     assert.equal(res, 11);
   });
 

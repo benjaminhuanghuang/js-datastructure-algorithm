@@ -28,9 +28,9 @@ of rows in the triangle.
   f[i][j] = min(f[i-1, j], fin[i-1, j-1]) + triangle[i-1][j-1]
 
   Time complexity: O(n^2)
-  Space complexity: O(1) 
+  Space complexity: O(n) 
 */
-
+//Use dp[][], Space complexity: O(n^2) 
 function minimumTotal(triangle) {
   if (
     triangle == null ||
@@ -41,25 +41,82 @@ function minimumTotal(triangle) {
     return 0;
 
   let size = triangle.length;
-  let f = [];
+  let dp = [];
   for (let r = 0; r < size; r++) {
-    f.push(new Array(r + 1).fill(Number.MAX_SAFE_INTEGER));
+    dp.push(new Array(r + 1).fill(Number.MAX_SAFE_INTEGER));
   }
 
   for (let r = 0; r < size; r++) {
     for (let c = 0; c <= r; c++) {
-      f[r][c] = triangle[r][c];
+      dp[r][c] = triangle[r][c];
       if (r == 0 && c == 0) continue; // the top element
       if (c == 0) // first column, only one path
-        f[r][c] += f[r - 1][c];
+        dp[r][c] += dp[r - 1][c];
       else if (c == r )// last column, only one path
-        f[r][c] += f[r - 1][c - 1];
+        dp[r][c] += dp[r - 1][c - 1];
       else 
-        f[r][c] += Math.min(f[r - 1][c], f[r - 1][c - 1]);
+        dp[r][c] += Math.min(dp[r - 1][c], dp[r - 1][c - 1]);
     }
   }
-  console.log(f);
-  return Math.min(...f[size - 1]);
+  return Math.min(...dp[size - 1]);
 }
 
-module.exports = minimumTotal;
+// Use two array instead of a matrix, extra space complexity: O(n) 
+function minimumTotal2(triangle) {
+  if (
+    triangle == null ||
+    triangle.length == 0 ||
+    triangle[0] == null ||
+    triangle[0].length == 0
+  )
+    return 0;
+
+  let size = triangle.length;
+  let dp = [];
+  for (let r = 0; r < 2; r++) {
+    dp.push(new Array(r + 1).fill(Number.MAX_SAFE_INTEGER));
+  }
+
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c <= r; c++) {
+      dp[1][c] = triangle[r][c];
+      if (r == 0 && c == 0) continue; // the top element
+      if (c == 0) // first column, only one path
+        dp[1][c] += dp[0][c];
+      else if (c == r )// last column, only one path
+        dp[1][c] += dp[0][c - 1];
+      else 
+        dp[1][c] += Math.min(dp[0][c], dp[0][c - 1]);
+    }
+    dp = [dp[1], dp[0]];
+  }
+  return Math.min(...dp[0]);
+}
+
+// Use original matrix, Space complexity: O(1) 
+function minimumTotal3(triangle) {
+  if (
+    triangle == null ||
+    triangle.length == 0 ||
+    triangle[0] == null ||
+    triangle[0].length == 0
+  )
+    return 0;
+
+  let size = triangle.length;
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c <= r; c++) {
+      if (r == 0 && c == 0) continue; // the top element
+      if (c == 0) // first column, only one path
+        triangle[r][c] += triangle[r-1][c];
+      else if (c == r )// last column, only one path
+        triangle[r][c] += triangle[r-1][c - 1];
+      else 
+        triangle[r][c] += Math.min(triangle[r-1][c], triangle[r-1][c - 1]);
+    }
+  }
+  console.log(triangle);
+  return Math.min(...triangle[size-1]);
+}
+
+module.exports ={ minimumTotal, minimumTotal2, minimumTotal3};
