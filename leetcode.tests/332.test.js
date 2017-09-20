@@ -6,8 +6,6 @@ describe.only("332. Reconstruct Itinerary: ", () => {
                       [3,4],
                       [6,5,7],
                       [4,1,8,3]]`, () => {
-    const nums = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]];
-    const res = minimumTotal3(nums);
-    assert.equal(res, 11);
+   
   });
 });
