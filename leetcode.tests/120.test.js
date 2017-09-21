@@ -1,7 +1,7 @@
 const { assert } = require("chai");
 const { minimumTotal, minimumTotal2, minimumTotal3 } = require("../leetcode/120.Triangle");
 
-describe.only("120. Triangle: ", () => {
+describe("120. Triangle: ", () => {
   it(`return 11 from [[2],
                       [3,4],
                       [6,5,7],

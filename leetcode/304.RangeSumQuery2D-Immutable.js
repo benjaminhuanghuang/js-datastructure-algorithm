@@ -20,6 +20,7 @@ var NumMatrix = function (matrix) {
   const rows = matrix.length;
   const cols = matrix[0].length;
 
+  // Use padding
   this.sumRecord = new Array(rows + 1).fill(0);  // without fill(0), get NaN
   for (var row = 0; row <= rows; row++) {
     this.sumRecord[row] = new Array(cols + 1).fill(0);
