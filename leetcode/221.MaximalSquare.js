@@ -13,6 +13,10 @@ Return 4.
 
 # 85. Maximal Rectangle
 */
+
+/*
+  O(n^3)
+*/
 var maximalSquare = function (matrix) {
   // sumRecord[i,j] = sum(matrix[0][0]) to matrix[i][j] 
   if (matrix == null || matrix.length == 0)
@@ -21,16 +25,15 @@ var maximalSquare = function (matrix) {
   const rows = matrix.length;
   const cols = matrix[0].length;
 
-  // Use padding
+  // Using padding
   this.sumRecord = new Array(rows + 1).fill(0);  // without fill(0), get NaN
   for (var row = 0; row <= rows; row++) {
     this.sumRecord[row] = new Array(cols + 1).fill(0);
   }
 
-
   for (let r = 1; r <= rows; r++) {
     for (let c = 1; c <= cols; c++) {
-      this.sumRecord[r][c] = int(matrix[r - 1][c - 1])
+      this.sumRecord[r][c] = parseInt(matrix[r - 1][c - 1])
         + this.sumRecord[r][c - 1] + this.sumRecord[r - 1][c]
         - this.sumRecord[r - 1][c - 1];
     }
@@ -38,12 +41,23 @@ var maximalSquare = function (matrix) {
   let ans = 0;
   for (let r = 1; r <= rows; r++) {
     for (let c = 1; c <= cols; c++) {
-      for (let k = Math.min(rows - row + 1, cols-col+1); k >0; k--)
-      {
-        let sum = 
+      for (let k = Math.min(rows - r + 1, cols - c + 1); k > 0; k--) {
+        // size from 1 to min (rows - r + 1, cols - c + 1)
+        let sum = sumRecord[r + k - 1][c + k - 1]
+          - sumRecord[r + k - 1][c - 1] - sumRecord[r - 1][c + k - 1]
+          + sumRecord[r - 1][c - 1];
+        
+        if (sum == k * k) {
+          ans = Math.max(ans, sum);
+          break;
+        }
       }
     }
   }
+
+  return ans;
 };
 
 module.exports = maximalSquare;
+
+const res = maximalSquare(["11", "11"]);

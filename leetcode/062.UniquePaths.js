@@ -9,6 +9,7 @@ How many possible unique paths are there?
 */
 
 /*
+  Solution 1
   path(m,n)
     if m < 0 || n < 0 return 0
     if m==1 and n==1 return 1
