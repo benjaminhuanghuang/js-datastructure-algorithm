@@ -20,19 +20,19 @@ How many possible unique paths are there?
 var uniquePaths = function (m, n) {
   if (m < 0 || n < 0)
     return 0;
-  let f = new Array(n + 1);
+  let dp = new Array(n + 1);
   for (let i = 0; i <= n; i++) {
-    f[i] = new Array(m + 1).fill(0);
+    dp[i] = new Array(m + 1).fill(0);
   }
-  f[1][1] = 1;
-  for (var y = 1; y <= n; y++) {
-    for (var x = 1; x <= m; x++) {
-      if (x == 1 && y == 1)
+  dp[1][1] = 1;
+  for (var r = 1; r <= n; r++) {
+    for (var c = 1; c <= m; c++) {
+      if (c == 1 && r == 1)
         continue;
-      f[y][x] = f[y - 1][x] + f[y][x - 1];
+      dp[r][c] = dp[r - 1][c] + dp[r][c - 1];
     }
   }
-  return f[n][m];
+  return dp[n][m];
 };
 
 console.log(uniquePaths(1, 2));
