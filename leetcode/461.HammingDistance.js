@@ -4,7 +4,7 @@ var hammingDistance = function(x, y) {
     let bitX = (x >> i) & 1;
     let bitY = (y >> i) & 1;
     console.log(bitX, bitY);
-    if ((bitY ^ bitY) > 0) 
+    if ((bitX ^ bitY) > 0) 
       ans++;
   }
   return ans;
