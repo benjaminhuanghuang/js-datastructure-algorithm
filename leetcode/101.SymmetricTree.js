@@ -4,7 +4,7 @@ function TreeNode(val)
   this.left = this.right = null;
 }
 var isSymmetric = function(root) {
-  if (root == null) return false;
+  if (root == null) return true;
   return isSymmetirTree(root.left, root.right);
 };
 
