@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <style>
+    #container {
+      font-family: monospace;
+      font-weight: bold;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    /**
+        * Returns the minimum number of coins from given set,
+        * which sum equals to given change.
+        * calculate([1, 2, 3], 5); // count 2
+        * calculate([25, 10, 5], 30); // count 2
+        * calculate([8, 1, 2, 6, 5], 11); // count 2
+      */
+    $(document).ready(function () {
+
+      $("#btnResults").click(function () {
+        calculate();
+      });
+    });
+
+
+    function calculate() {
+
+      let coinsStr = $("#coins").val();
+      let coins = coinsStr.split(',').map(e => parseInt(e));
+      let sum = parseInt($("#sum").val());
+
+      let ans = calculateInternal(coins, sum);
+
+      $("#container").text(ans);
+
+
+    }
+   
+    function calculateInternal(coins, sum) {
+      if (coins == null || coins.length == 0 || sum <= 0) return 0;
+
+      let dp = new Array(sum + 1).fill(0);
+
+      for (let i = 1; i <= sum; i++)
+        dp[i] = Number.MAX_SAFE_INTEGER - 1;
+
+      // The count of coins make amount = 1 + dp[amount-coins[i]]
+      for (let i = 0; i < coins.length; i++) {
+        for (let amount = coins[i]; amount <= sum; amount++) {
+          dp[amount] = Math.min(dp[amount], dp[amount - coins[i]] + 1);
+        }
+      }
+      return dp[sum] == Number.MAX_SAFE_INTEGER - 1 ? -1 : dp[sum];
+    }
+  </script>
+</head>
+
+<body>
+  <div>
+    <input type="text" id="coins" placeholder='coins' value="1,2,3" />
+    <input type="text" id="sum" placeholder='sum' value="5" />
+  </div>
+  <input type="button" class="button" id="btnResults" value="Get Results">
+
+  <div id="container"></div>
+
+  <script>
+        $("#container").text("Hello World");
+  </script>
+
+</body>
+
+</html>
