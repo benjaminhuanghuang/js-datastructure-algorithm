@@ -14,5 +14,27 @@ ascending order.
 */
 
 var findUnsortedSubarray = function(nums) {
-  
+  if (nums == null || nums.length == 0)
+    return 0 ;
+
+  let sorted = [...nums];
+  sorted.sort((a, b) => a - b);
+  let len = 0;
+  for (let i =0; i< nums.length ; i++)
+  {
+    if(nums[i] == sorted[i])
+      len ++;
+    else
+      break;
+  }
+  for (let i = nums.length -1 ; i>=0 ; i--)
+  {
+    if(nums[i] == sorted[i])
+      len++;
+    else
+      break;
+  }
+  return Math.max(0, nums.length - len);
 };
+
+findUnsortedSubarray([1]);
