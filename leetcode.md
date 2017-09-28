@@ -1,6 +1,9 @@
 ## Linked List
   - 148. Sort List
 
+## BST 
+  - 108. Convert Sorted Array to Binary Search Tree
+
 ## DP
   - 053. (#674)
   - 120. Triangle
