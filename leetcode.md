@@ -1,3 +1,6 @@
+## Binary Search
+  - 069. Sqrt(x)
+
 ## Linked List
   - 148. Sort List
 
@@ -17,3 +20,6 @@
 ## Combination, permutation
   - 022. Generate Parentheses (Recursion or Iteration);
   - 046. Permutations
+
+## Bit 
+  - 190. Reverse Bits  ( javascript special)
