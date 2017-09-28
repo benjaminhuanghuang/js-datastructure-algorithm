@@ -1,5 +1,5 @@
 ## Binary Search
-  - 069. Sqrt(x)
+  - 069. Sqrt(x)   corner cases
 
 ## Linked List
   - 148. Sort List
