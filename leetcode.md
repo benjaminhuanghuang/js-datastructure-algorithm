@@ -1,7 +1,11 @@
+## Linked List
+  - 148. Sort List
+
 ## DP
-  - 053 (#674)
+  - 053. (#674)
   - 120. Triangle
-  - 674 (#053)
+  - 309. Best Time to Buy and Sell Stock with Cooldown
+  - 674. (#053)
   - 
 
 ## Graph
