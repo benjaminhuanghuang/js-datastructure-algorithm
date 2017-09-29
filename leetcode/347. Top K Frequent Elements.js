@@ -7,27 +7,28 @@ var topKFrequent = function(nums, k) {
       dict[num]++;
     }
     else
-      dcit[mum] = 1;
+      dict[num] = 1;
   }
-
+  
   let bucket = new Array(nums.length + 1);
   for(num in dict)
   {
-    let count = dict[numk];
+    console.log(num);
+    let count = dict[num];
     if(bucket[count] == null)
       bucket[count] = [];
     bucket[count].push(num);
   }
-
+  
   let res =[];
   for(let i = bucket.length - 1; i >=0; i--)
   {
     if(bucket[i] !=null)
-    {
-      for(num in bucket[i])
+    { console.log(bucket[i]);
+      for(num of bucket[i])
       {
         if (res.length < k)
-          res.push(num);
+          res.push(parseInt(num));
         else 
           return res;
       }
@@ -35,3 +36,6 @@ var topKFrequent = function(nums, k) {
   }
   return res;
 };
+
+let res = topKFrequent([1,1,1,2,2,3],2);
+console.log(res);

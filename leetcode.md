@@ -3,6 +3,7 @@
 
 ## Binary Search
   - 069. Sqrt(x)   corner cases
+  - 033. Search in Rotated Sorted Array (Important!)
 
 ## Linked List
   - 148. Sort List
