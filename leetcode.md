@@ -1,3 +1,6 @@
+## Array 
+  - 026. Remove Duplicates from Sorted Array
+
 ## Binary Search
   - 069. Sqrt(x)   corner cases
 
