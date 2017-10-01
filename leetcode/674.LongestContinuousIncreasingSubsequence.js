@@ -25,13 +25,13 @@ function findLengthOfLCIS(nums) {
     return 0;
   
   let ans = 1;
-  let curr = 1;
+  let subLength = 1;
   for (var i = 1; i < nums.length; i++) {
     if (nums[i] > nums[i - 1]) {
-      curr++;
-      ans = Math.max(ans, curr);
+      subLength++;
+      ans = Math.max(ans, subLength);
     } else {
-      curr = 1;
+      subLength = 1;
     }
   }
   return ans;
