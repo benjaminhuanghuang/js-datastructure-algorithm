@@ -7,6 +7,11 @@ keyRows.size
 // Copy array
 let newArray = [...oldArray];
 
+// Sum Array
+var sum = [0, 1, 2, 3].reduce(function (a, b) {
+  return a + b;
+}, 0);
+
 // Max in array
 let maxValue = Math.max(...oldArray);
 
