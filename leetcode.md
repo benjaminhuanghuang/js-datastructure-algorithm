@@ -7,10 +7,15 @@
 ## Binary Search
   - 069. Sqrt(x)   corner cases
   - 033. Search in Rotated Sorted Array (Important!)
+  - 035. Search Insert Position (while(low +1 < high))
+  - 278. First Bad Version
 
 ## Linked List
   - 148. Sort List
 
+## BT
+  - 110. Balanced Binary Tree
+  
 ## BST 
   - 108. Convert Sorted Array to Binary Search Tree
 
