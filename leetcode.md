@@ -1,6 +1,9 @@
 ## Array 
   - 026. Remove Duplicates from Sorted Array
 
+## Bit
+  - 476. Number Complement
+
 ## Binary Search
   - 069. Sqrt(x)   corner cases
   - 033. Search in Rotated Sorted Array (Important!)

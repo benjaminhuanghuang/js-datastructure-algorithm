@@ -1,3 +1,9 @@
+// Set
+let keyRows = [];
+keyRows.push(new Set(['q','w','e','r','t','y','u','i','o','p']));
+keyRows.size
+
+
 // Copy array
 let newArray = [...oldArray];
 
@@ -32,3 +38,8 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; 
 }
+
+// Regex
+  let re = /^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$/;
+  let re2 = new RegExp('^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$');
+  var myArray = str.match(re);
