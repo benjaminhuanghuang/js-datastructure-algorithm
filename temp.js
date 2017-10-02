@@ -1,12 +1,4 @@
-let array = [25,10,5];
+let a = [1,2,3];
+a.push(a.shift());
 
-array.sort((a,b)=> b-a);
-
-console.log(array);
-
-var foo = "Hello";
-(function() {
-  var bar = " World";
-  alert(foo + bar);
-})();
-alert(foo + bar);
+console.log(a);

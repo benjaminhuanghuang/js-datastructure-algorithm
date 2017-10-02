@@ -1,9 +1,11 @@
 ## Array 
   - 026. Remove Duplicates from Sorted Array
+  - 219. Contains Duplicate II
 
 ## Bit
+  - 231. Power of Two
   - 476. Number Complement
-
+  
 ## Binary Search
   - 069. Sqrt(x)   corner cases
   - 033. Search in Rotated Sorted Array (Important!)
@@ -15,6 +17,7 @@
 
 ## BT
   - 110. Balanced Binary Tree
+  - 235. Lowest Common Ancestor of a Binary Search Tree
   
 ## BST 
   - 108. Convert Sorted Array to Binary Search Tree
