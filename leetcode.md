@@ -7,9 +7,9 @@
   - 476. Number Complement
   
 ## Binary Search
-  - 069. Sqrt(x)   corner cases
   - 033. Search in Rotated Sorted Array (Important!)
   - 035. Search Insert Position (while(low +1 < high))
+  - 069. Sqrt(x)   corner cases
   - 278. First Bad Version
 
 ## Linked List
@@ -18,7 +18,7 @@
 ## BT
   - 110. Balanced Binary Tree
   - 235. Lowest Common Ancestor of a Binary Search Tree
-  
+
 ## BST 
   - 108. Convert Sorted Array to Binary Search Tree
 

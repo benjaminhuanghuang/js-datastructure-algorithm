@@ -8,13 +8,16 @@ var binaryTreePaths = function(root) {
 
 function traverse(root, res, path)
 {
-  if(root == null)
+   path.push(root.val);
+  if(root.left == null && root.right == null)
   {
     res.push(path.join("->"));
   }
   else
   {
-    traverse(root.left, res, path.push(root.val));
-    traverse(root.right, res, path.push(root.val));
+    if (root.left)
+        traverse(root.left, res, [...path]);
+    if (root.right)
+        traverse(root.right, res, [...path]);
   }
 }
