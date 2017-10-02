@@ -3,6 +3,8 @@ let keyRows = [];
 keyRows.push(new Set(['q','w','e','r','t','y','u','i','o','p']));
 keyRows.size
 
+// Char <-> int
+let char = String.fromCharCode(n % 26 + "A".charCodeAt(0));
 
 // Copy array
 let newArray = [...oldArray];
