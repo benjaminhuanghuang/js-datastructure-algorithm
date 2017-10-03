@@ -1,7 +1,8 @@
 ## Array 
   - 026. Remove Duplicates from Sorted Array
   - 219. Contains Duplicate II
-
+  - 349. Intersection of Two Arrays
+  
 ## Bit
   - 231. Power of Two
   - 476. Number Complement
