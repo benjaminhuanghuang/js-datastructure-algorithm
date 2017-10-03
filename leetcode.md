@@ -5,6 +5,7 @@
 
 ## Bit
   - 231. Power of Two
+  - 389. Find the Difference
   - 476. Number Complement
   
 ## Binary Search

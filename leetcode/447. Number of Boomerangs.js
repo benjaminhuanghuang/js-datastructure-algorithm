@@ -1,0 +1,3 @@
+var numberOfBoomerangs = function(points) {
+  
+};
