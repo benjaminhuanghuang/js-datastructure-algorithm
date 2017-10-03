@@ -2,7 +2,7 @@
   - 026. Remove Duplicates from Sorted Array
   - 219. Contains Duplicate II
   - 349. Intersection of Two Arrays
-  
+
 ## Bit
   - 231. Power of Two
   - 476. Number Complement
@@ -12,6 +12,7 @@
   - 035. Search Insert Position (while(low +1 < high))
   - 069. Sqrt(x)   corner cases
   - 278. First Bad Version
+  - 367. Valid Perfect Square while (left <= right)
 
 ## Linked List
   - 148. Sort List
