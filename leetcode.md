@@ -14,7 +14,7 @@
   - 069. Sqrt(x)   corner cases
   - 278. First Bad Version
   - 367. Valid Perfect Square while (left <= right)
-
+  
 ## Linked List
   - 148. Sort List
 
