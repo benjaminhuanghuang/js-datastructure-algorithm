@@ -18,9 +18,7 @@ function getInterSection()
         if( j == arrays.length )
             res.push(element);
     }
-    
     return res;
-    
 }
 
 let res = getInterSection([1, 2, 3], [2, 101,0, 1, 10], [2,0,9, 1]);
