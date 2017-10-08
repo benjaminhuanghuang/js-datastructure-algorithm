@@ -19,13 +19,12 @@ var largestPalindrome = function(n) {
 
   for (let i = high; i > low; i--) {
     let palindrome = createPalindrome(i);
-
     for (let j = high; j > low; j--) {
       if (palindrome / j > high) {
         break;
       }
       if (palindrome % j == 0) {
-        return int(palindrome % 1337);
+        return (palindrome % 1337);
       }
     }
   }
@@ -33,6 +32,11 @@ var largestPalindrome = function(n) {
 };
 
 function createPalindrome(num) {
-  let str = num + ("" + num).reverse();
+  console.log(num);
+  let str = ""+num + ("" + num).split("").reverse().join("");
+  console.log(str);
+  console.log(parseInt(str));
   return parseInt(str);
 }
+let res  =largestPalindrome(8);
+// console.log(res);
