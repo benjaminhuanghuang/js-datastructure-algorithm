@@ -25,42 +25,42 @@ Heap sorting process:
 class HeapSort {
   constructor() {
     this.array = [];
-  } 
-  
+  }
+
   //Initialize the heap
   createHeap(array) {
     this.array = array; // Build a heap, (array.length - 1) / 2 scan half of the nodes with child nodes
     // (array.length - 1) / 2 is the index of the last non-leaf node
-    // 0 is the first node with has children       
+    // 0 is the first node with has children
     for (var i = (array.length - 1) / 2; i >= 0; i--) {
-        debugger
+      debugger;
       this.heapify(i, array.length - 1);
     }
-  } 
-  
+  }
+
   //Adjustment heap
   heapify(currentIndex, maxIndex) {
     let largest = currentIndex;
-    
-    const left = 2* currentIndex + 1;
-    const right = 2* currentIndex + 2;
-    
-    if(left <= maxIndex && this.array[left] > this.array[largest]){
-        largest = left;
+
+    const left = 2 * currentIndex + 1;
+    const right = 2 * currentIndex + 2;
+
+    if (left <= maxIndex && this.array[left] > this.array[largest]) {
+      largest = left;
     }
 
-    if(right <= maxIndex && this.array[right] > this.array[largest]){
-        largest = right;
+    if (right <= maxIndex && this.array[right] > this.array[largest]) {
+      largest = right;
     }
 
-    if(largest != currentIndex){
-        this.swap(largest, currentIndex);
-        this.heapify(largest, maxIndex);
+    if (largest != currentIndex) {
+      this.swap(largest, currentIndex);
+      this.heapify(largest, maxIndex);
     }
   }
 
   heapSort() {
-    for (var i = this.array.length - 1; i >0; i--) {
+    for (var i = this.array.length - 1; i > 0; i--) {
       this.swap(i, 0);
       this.heapify(0, i - 1);
     }
@@ -71,8 +71,7 @@ class HeapSort {
     this.array[i] = this.array[j];
     this.array[j] = temp;
   }
-} 
-
+}
 
 //////////////////////testing////////////////////
 var heapSort = new HeapSort();
@@ -84,4 +83,3 @@ console.log("After building a heap :", scores);
 
 heapSort.heapSort();
 console.log("After heap sorting : <br>", scores);
-

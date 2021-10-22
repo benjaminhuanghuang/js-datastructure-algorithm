@@ -37,20 +37,20 @@ class DoubleLinkList {
     // from start to end
     while (p != null) {
       var data = p.getData();
-      document.write(data + " -> ");
+      console.log(data + " -> ");
       end = p;
       p = p.next;
     }
-    document.write("End <br><br>");
+    console.log("End <br><br>");
 
     // from edn to start
     p = end;
     while (p != null) {
       var data = p.getData();
-      document.write(data + " -> ");
+      console.log(data + " -> ");
       p = p.prev;
     }
-    document.write("Start<br><br>");
+    console.log("Start<br><br>");
   }
 
   add(newNode) {

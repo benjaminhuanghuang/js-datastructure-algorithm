@@ -45,7 +45,7 @@ class BinaryTree {
       return;
     }
     this.inOrder(root.left); // Traversing the left subtree
-    document.write(root.getData() + ", ");
+    console.log(root.getData() + ", ");
     this.inOrder(root.right); // Traversing the right subtree
   }
 
@@ -54,7 +54,7 @@ class BinaryTree {
     if (root == null) {
       return;
     }
-    document.write(root.getData() + ", ");
+    console.log(root.getData() + ", ");
     this.preOrder(root.left); // Recursive Traversing the left subtree
     this.preOrder(root.right); // Recursive Traversing the right subtree
   } //Post-order traversal binary search tree
@@ -65,7 +65,7 @@ class BinaryTree {
     }
     this.postOrder(root.left); // Recursive Traversing the left subtree
     this.postOrder(root.right); // Recursive Traversing the right subtree
-    document.write(root.getData() + ", ");
+    console.log(root.getData() + ", ");
   }
 
   // Insert new data to node
@@ -147,5 +147,5 @@ binaryTree.insert(binaryTree.getRoot(), 50);
 binaryTree.insert(binaryTree.getRoot(), 80);
 binaryTree.insert(binaryTree.getRoot(), 70);
 binaryTree.insert(binaryTree.getRoot(), 90);
-document.write("<br> In-order traversal binary search tree <br>");
+console.log("<br> In-order traversal binary search tree <br>");
 binaryTree.inOrder(binaryTree.getRoot());

@@ -48,5 +48,5 @@ var scores = [90, 60, 50, 80, 70, 100];
 var quickSort = new QuickSort();
 quickSort.sort(scores);
 for (var i = 0; i < scores.length; i++) {
-  document.write(scores[i] + ",");
+  console.log(scores[i] + ",");
 }

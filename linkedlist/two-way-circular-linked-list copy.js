@@ -34,20 +34,20 @@ class DoubleCircleLink {
     var p = this.head;
     do {
       var data = p.getData();
-      document.write(data + " -> ");
+      console.log(data + " -> ");
       p = p.next;
     } while (p != this.head);
     var data = p.getData();
-    document.write(data + "<br><br>");
+    console.log(data + "<br><br>");
     p = this.tail;
     do {
       data = p.getData();
-      document.write(data + " -> ");
+      console.log(data + " -> ");
       p = p.prev;
     } while (p != this.tail);
 
     data = p.getData();
-    document.write(data + "<br><br>");
+    console.log(data + "<br><br>");
   }
 
   insert(insertPosition, newNode) {

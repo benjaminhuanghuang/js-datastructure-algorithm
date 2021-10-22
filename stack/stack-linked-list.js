@@ -46,12 +46,12 @@ class Stack {
   }
 } //////////////////////testing////////////////////
 function print(stack) {
-  document.write("Top ");
+  console.log("Top ");
   var node = null;
   while ((node = stack.pop()) != null) {
-    document.write(node.getData() + " -> ");
+    console.log(node.getData() + " -> ");
   }
-  document.write("End <br>");
+  console.log("End <br>");
 }
 var stack = new Stack();
 stack.push("A");

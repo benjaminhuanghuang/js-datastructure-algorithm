@@ -31,10 +31,10 @@ class LinkedList {
     while (p != null) {
       // From the beginning to the end
       var data = p.getData();
-      document.write(data + " -> ");
+      console.log(data + " -> ");
       p = p.next;
     }
-    document.write("End<br><br>");
+    console.log("End<br><br>");
   }
 
   add(newNode) {

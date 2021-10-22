@@ -29,5 +29,5 @@ class InsertSort {
 var scores = [90, 70, 50, 80, 60, 85];
 InsertSort.sort(scores);
 for (var i = 0; i < scores.length; i++) {
-  document.write(scores[i] + ",");
+  console.log(scores[i] + ",");
 }

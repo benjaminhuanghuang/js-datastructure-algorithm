@@ -64,5 +64,5 @@ var scores = [50, 65, 99, 87, 74, 63, 76, 100, 92];
 var mergeSort = new MergeSort();
 mergeSort.sort(scores);
 for (var i = 0; i < scores.length; i++) {
-  document.write(scores[i] + ",");
+  console.log(scores[i] + ",");
 }
