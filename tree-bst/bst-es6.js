@@ -6,6 +6,16 @@ Binary Search Tree:
 
 In-order traversal : left subtree -> root node -> right subtree get a sorted values
 
+Minimum value: The small value is on the left child node, as long as the recursion traverses the left child until be empty, the current node is the minimum node.
+ 
+Maximum value: The large value is on the right child node, as long as the recursive traversal is the right child until be empty, the current node is the largest node
+
+
+Operations:
+    insert
+    traveral
+    delete
+    min/max
 */
 
 class Node {
@@ -18,13 +28,17 @@ class Node {
   getData() {
     return this.data;
   }
+
+  setData (val) {
+      this.data = val;
+  }
 }
 
 class BinaryTree {
   getRoot() {
     return this.root;
-  } 
-  
+  }
+
   // In-order traversal binary search tree
   inOrder(root) {
     if (root == null) {
@@ -33,6 +47,25 @@ class BinaryTree {
     this.inOrder(root.left); // Traversing the left subtree
     document.write(root.getData() + ", ");
     this.inOrder(root.right); // Traversing the right subtree
+  }
+
+  //Preorder traversal binary search tree
+  preOrder(root) {
+    if (root == null) {
+      return;
+    }
+    document.write(root.getData() + ", ");
+    this.preOrder(root.left); // Recursive Traversing the left subtree
+    this.preOrder(root.right); // Recursive Traversing the right subtree
+  } //Post-order traversal binary search tree
+
+  postOrder(root) {
+    if (root == null) {
+      return;
+    }
+    this.postOrder(root.left); // Recursive Traversing the left subtree
+    this.postOrder(root.right); // Recursive Traversing the right subtree
+    document.write(root.getData() + ", ");
   }
 
   // Insert new data to node
@@ -57,8 +90,51 @@ class BinaryTree {
       }
     }
   }
-}
 
+  //Minimum value
+  searchMinValue(node) {
+    if (node == null || node.getData() == 0) return null;
+    if (node.left == null) {
+      return node;
+    } //Recursively find the minimum from the left subtree
+    return this.searchMinValue(node.left);
+  }
+
+  //Maximum value
+  searchMaxValue(node) {
+    if (node == null || node.getData() == 0) return null;
+    if (node.right == null) {
+      return node;
+    } //Recursively find the minimum from the right subtree
+    return this.searchMaxValue(node.right);
+  }
+
+  /*
+    Binary search tree delete node 3 cases
+    1. If there is no child node, delete it directly
+    2. If there is only one child node, the child node replaces the current node, and then deletes the current node.
+    3. If there are two child nodes, replace the current node with the smallest node from the right subtree, 
+       because the smallest node on the right is also larger than the value on the left.
+    */
+  remove(node, newData) {
+    if (node == null) return node;
+    var compareValue = newData - node.getData();
+    if (compareValue > 0) {
+      node.right = this.remove(node.right, newData);
+    } else if (compareValue < 0) {
+      node.left = this.remove(node.left, newData);
+    } else {   // newData === node.getData() 
+      if (node.left != null && node.right != null) { // node has two children, delete it
+        //Find the minimum node of the right subtree to replace the current node
+        node.setData(this.searchMinValue(node.right).getData());
+        node.right = this.remove(node.right, node.getData());
+      } else {  // node has one child, the child node replaces the current node, and then deletes the current node.
+        node = node.left != null ? node.left : node.right;
+      }
+    }
+    return node;
+  }
+}
 
 //////////////////////testing////////////////////
 var binaryTree = new BinaryTree(); //Constructing a binary search tree
