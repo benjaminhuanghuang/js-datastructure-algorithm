@@ -1,7 +1,8 @@
 /* 
-  Binary Search Tree 
-    Each left subtree is less thant or equal to the parent node  
-    Each right subtree is greater than or equal to the parent node
+Binary Search Tree:
+1. If the left subtree of any node is not empty, the value of all nodes on the left subtree is less than the value of its root node;
+2. If the right subtree of any node is not empty, the value of all nodes on the right subtree is greater than the value of its root node;
+3. The left subtree and the right subtree of any node are also binary search trees
 */
 
 class Node {
@@ -9,6 +10,10 @@ class Node {
     this.data = data;
     this.left = left;
     this.right = right;
+  }
+
+  getData() {
+      return this.data;
   }
 }
 
