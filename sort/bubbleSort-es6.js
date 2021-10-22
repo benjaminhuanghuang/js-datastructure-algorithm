@@ -1,7 +1,13 @@
 /*
 Bubble Sorting Algorithm:
 
-the first two elements are compared, if the previous element is larger than the latter element, the position is swapped. Repeat this process, until sorting is completed.
+the first two elements are compared, if the previous element is larger than the latter element, 
+the position is swapped. 
+
+Repeat this process, until sorting is completed.
+
+
+Time Complexity: N^2
 */
 
 class BubbleSort {

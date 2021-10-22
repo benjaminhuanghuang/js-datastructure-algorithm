@@ -1,3 +1,11 @@
+/*
+    Repeat the process
+        1. slice 
+        2. merge the result of the sort result
+
+    Time co
+
+*/
 function mergeSort(nums) {
   if (arr.length < 2) return arr;
 
