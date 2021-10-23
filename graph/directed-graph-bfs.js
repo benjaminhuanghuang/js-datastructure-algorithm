@@ -1,12 +1,8 @@
 /*
 
-Undirected Graph:
-The data structure is represented by 
-    an adjacency matrix (that is, a two-dimensional array) and an adjacency list. 
-Each node is called a vertex, and two adjacent nodes are called edges.
- 
-Undirected Graph No direction : A -> B = B -> A
-
+Breadth-First Search:
+Find all neighboring edge nodes B, C, D from A and then find all neighboring nodes A, C, D from B 
+and so on until all nodes are found A -> B -> C -> D -> E .
 */
 
 class Vertex {
@@ -28,32 +24,21 @@ class Vertex {
   }
 }
 
-class Stack {
+class Queue {
   constructor() {
-    this.stacks = new Array();
-    this.top = -1;
+    this.queues = new Array();
   }
-  push(element) {
-    this.top++;
-    this.stacks[this.top] = element;
+  add(element) {
+    this.queues[this.queues.length] = element;
   }
-  pop() {
-    if (this.top == -1) {
+  remove() {
+    if (this.queues.length <= 0) {
       return -1;
     }
-    var data = this.stacks[this.top];
-    this.top--;
-    return data;
-  }
-  peek() {
-    if (this.top == -1) {
-      return -1;
-    }
-    var data = this.stacks[this.top];
-    return data;
+    return this.queues.shift();
   }
   isEmpty() {
-    if (this.top <= -1) {
+    if (this.queues.length <= 0) {
       return true;
     }
     return false;
@@ -67,7 +52,7 @@ class Graph {
     this.vertexs = new Array(maxVertexSize);
 
     this.size = 0; // Current vertex size
-    
+
     // adjacency matrix
     this.adjacencyMatrix = new Array(maxVertexSize);
     for (var i = 0; i < maxVertexSize; i++) {
@@ -83,8 +68,8 @@ class Graph {
     var vertex = new Vertex(data, false);
     this.vertexs[this.size] = vertex;
     this.size++;
-  } 
-  
+  }
+
   // Add adjacent edges
   addEdge(from, to) {
     // A -> B = B -> A
@@ -92,24 +77,29 @@ class Graph {
     this.adjacencyMatrix[to][from] = 1;
   }
 
-  depthFirstSearch() {
+  breadthFirstSearch() {
     // Start searching from the first vertex
     var firstVertex = this.vertexs[0];
     firstVertex.setVisited(true);
-    this.stack.push(0);
-    
-    while (!this.stack.isEmpty()) {
-      var row = this.stack.peek(); // Get adjacent vertex positions that have not been visited
-      var col = this.findAdjacencyUnVisitedVertex(row);
-      if (col == -1) {
-        this.stack.pop();
-      } else {
+    document.write(firstVertex.getData());
+    this.queue.add(0);
+    var col = 0;
+    while (!this.queue.isEmpty()) {
+      var head = this.queue.remove(); 
+      
+      // Get adjacent vertex positions that have not been visited
+      col = this.findAdjacencyUnVisitedVertex(head); 
+      //Loop through all vertices connected to the current vertex
+      while (col != -1) {
         this.vertexs[col].setVisited(true);
-        this.stack.push(col);
+        document.write(" -> " + this.vertexs[col].getData());
+        this.queue.add(col);
+        col = this.findAdjacencyUnVisitedVertex(head);
       }
     }
     this.clear();
-  } 
+  }
+  
   
   // Get adjacent vertex positions that have not been visited
   findAdjacencyUnVisitedVertex(row) {
@@ -119,19 +109,18 @@ class Graph {
       }
     }
     return -1;
-  } 
-  
+  }
   // Clear reset
   clear() {
     for (var i = 0; i < this.size; i++) {
       this.vertexs[i].setVisited(false);
     }
   }
-  
+
   getAdjacencyMatrix() {
     return this.adjacencyMatrix;
   }
-  
+
   getVertexs() {
     return this.vertexs;
   }

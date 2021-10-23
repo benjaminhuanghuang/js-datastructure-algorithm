@@ -72,6 +72,7 @@ class Hashtable {
     var hash = this.hashCode(key);
     var newNode = new Node(key, value, hash, null);
     var node = table[hash];
+    // check key in the node list at table[hash]
     while (node != null) {
       if (node.getKey().equals(key)) {
         node.setValue(value);
@@ -79,6 +80,7 @@ class Hashtable {
       }
       node = node.next;
     }
+    // put new node into the table
     newNode.next = this.table[hash];
     this.table[hash] = newNode;
     this.size++;
@@ -89,6 +91,7 @@ class Hashtable {
     }
     var hash = this.hashCode(key);
     var node = this.table[hash];
+    // find value in the node list at table[hash]
     while (node != null) {
       //Get value according to key
       if (node.getKey() == key) {
