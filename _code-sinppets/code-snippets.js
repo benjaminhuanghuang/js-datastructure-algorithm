@@ -3,19 +3,8 @@ let keyRows = [];
 keyRows.push(new Set(['q','w','e','r','t','y','u','i','o','p']));
 keyRows.size
 
-// Char <-> int
-let char = String.fromCharCode(n % 26 + "A".charCodeAt(0));
 
-// Copy array
-let newArray = [...oldArray];
 
-// Sum Array
-var sum = [0, 1, 2, 3].reduce(function (a, b) {
-  return a + b;
-}, 0);
-
-// Max in array
-let maxValue = Math.max(...oldArray);
 
 //
 // people[0] is height, people[1] is number
