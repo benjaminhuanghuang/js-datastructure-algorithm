@@ -16,8 +16,8 @@ var isSubtree = function (root, subRoot) {
     return r1.val === r2.val && isSameTree(r1.left, r2.left) && isSameTree(r1.right, r2.right);
   };
 
-  if (subRoot === null) return true;
-  if (root === null) return false;  //
+  
   if (isSameTree(root, subRoot)) return true;
+  if (root === null) return false; 
   return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
 };
