@@ -20,6 +20,9 @@ Input was sorted.
 
 解有可能不存在
 
+![](./binary-search-category.png)
+
+![](./binary-search.png)
 
 ## Template [l, r)
 ![](./binary-search-template.png)
@@ -39,6 +42,11 @@ g(m) 判断解在左边或右边
 ## Terminal condition
 ![](./bs-loop.png)
 
+
+## Open / Close
+![](./open-close.png)
+
+![](./open-close2.png)
 
 ## lower / upper bound
 ![](./lower-upper-bound.png )
