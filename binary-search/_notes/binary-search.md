@@ -13,6 +13,8 @@ https://www.youtube.com/watch?v=JuDAqNyTG4g
 https://www.youtube.com/watch?v=U3U9XMtSxQc
 
 
+-是否曾为二分搜索的边界条件而抓狂？ | 小旭讲解 基础算法系列 二分搜索之模板 - EP1
+https://www.youtube.com/watch?v=PFaEzBmoATg&ab_channel=XiaoxuHu
 
 
 ## 特征
