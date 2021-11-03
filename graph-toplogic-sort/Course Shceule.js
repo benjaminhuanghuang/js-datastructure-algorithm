@@ -11,31 +11,32 @@
  */
 var canFinish = function (numCourses, prerequisites) {
   const graph = Array.from(Array(numCourses), () => []);
-  // rank is in-degree
-  const ranks = Array(numCourses).frill(0);
+  const indegree = Array(numCourses).fill(0);
+  
   // u depend on v, u need v first, graph is v to u
   for (const [u, v] of prerequisites) {
+    //graph[pair[1]].push(pair[0]);
     graph[v].push(u);
-    ranks[u]++;
+    indegree[u]++;
   }
 
   const queue = [];
   // push node with no dependceny( rank ==0 )
-  ranks.forEach((rank, i) => {
-    if (rank === 0) {
+  indegree.forEach((degree, i) => {
+    if (degree === 0) {
       queue.push(i);
     }
   });
 
   // BFS
   while (queue.length) {
-    const f = queue.shift();
-    --numCourses;
+    const node = queue.shift();
+    numCourses--;
     // reduce neighbour rank
-    graph[f].forEach((neigh) => {
-      --ranks[neigh];
+    graph[node].forEach((neigh) => {
+      indegree[neigh]--;
       // push node with no dependceny( rank ==0 )
-      if (ranks[neigh] === 0) {
+      if (indegree[neigh] === 0) {
         queue.push(neigh);
       }
     });
