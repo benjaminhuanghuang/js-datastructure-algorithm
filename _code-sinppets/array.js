@@ -30,3 +30,7 @@ let newArray = [...nums];
 // Max in array
 let maxValue = Math.max(...nums);
 console.log(maxValue)
+
+
+// 2D array
+const graph = Array.from(Array(numCourses), () => []);
