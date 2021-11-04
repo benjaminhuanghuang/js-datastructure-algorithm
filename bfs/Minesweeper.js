@@ -1,7 +1,19 @@
 /*
   529. Minesweeper
+
+  https://leetcode.com/problems/minesweeper/
 */
 
+/*
+  DFS
+*/
+
+
+
+/*
+  BFS
+
+*/
 /**
  * @param {character[][]} board
  * @param {number[]} click

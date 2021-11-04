@@ -1,5 +1,6 @@
 /*
   529. Minesweeper
+  https://leetcode.com/problems/minesweeper/
 */
 
 /*
@@ -8,6 +9,12 @@
   case 1: M -> X and return
   case 2: E -> count > 0
             -> count == 0:  B -> recursive()
+
+
+  https://zxi.mytechroad.com/blog/searching/leetcode-529-minesweeper/   
+  
+  Time complexity: O(m*n)
+  Space complexity: O(m* n)
 */
 
 /**
