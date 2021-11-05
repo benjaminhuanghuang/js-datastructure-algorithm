@@ -1,9 +1,8 @@
 function BinarySearch2 (arr, target) {
     let from = 0
     let to = arr.length - 1
-    let mid = Math.floor((from + to)/2)
     while (from <= to) {
-        mid = Math.floor((from + to)/2)
+        let mid = Math.floor((from + to)/2)
         if (arr[mid] > target) {
             to = mid - 1
         } else if (arr[mid] < target) {
