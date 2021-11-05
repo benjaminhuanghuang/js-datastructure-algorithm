@@ -12,6 +12,7 @@ https://leetcode.com/problems/rotting-oranges/
   const rows = grid.length;
   const cols = grid[0].length;
 
+  // Step 1: calculate fresh and create a queue for the rotting oranges
   const q = [];
   let fresh = 0;
   for (let row = 0; row < rows; ++row) {
@@ -27,6 +28,8 @@ https://leetcode.com/problems/rotting-oranges/
     [0, -1],
     [1, 0],
   ];
+
+  // Step 2: BFS
   while (q.length > 0 && fresh > 0) {
     let size = q.length;
     while (size--) {

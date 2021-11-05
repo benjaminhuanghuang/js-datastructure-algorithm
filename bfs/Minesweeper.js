@@ -30,6 +30,7 @@ var updateBoard = function (board, click) {
     return board;
   }
 
+  // BFS, put the click in the queue
   let queue = [click];
   while (queue.length > 0) {
     const q2 = [];
@@ -46,13 +47,13 @@ var updateBoard = function (board, click) {
           }
         }
       }
-      // find mine
+      // find mine and mark it
       if (count > 0) {
         board[y][x] = count.toString();
         continue;
       }
       board[y][x] = "B";
-
+      // append "E" to the queue  
       for (let tx = x - 1; tx <= x + 1; ++tx) {
         for (let ty = y - 1; ty <= y + 1; ++ty) {
           if (tx >= 0 && tx < cols && ty >= 0 && ty < rows && board[ty][tx] == "E") {
