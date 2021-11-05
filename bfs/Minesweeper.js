@@ -35,7 +35,6 @@ var updateBoard = function (board, click) {
     const q2 = [];
 
     for (click of queue) {
-      console.log(queue);
       const x = click[1];
       const y = click[0];
       if (board[y][x] != "E") continue;

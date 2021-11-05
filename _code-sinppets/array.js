@@ -1,4 +1,19 @@
 /*
+  queue 
+*/
+
+const first = arr.shift();
+arr.push(1);
+
+/*
+  Stack 
+*/
+
+arr.push();
+const e = arr.push(1);
+
+
+/*
     Merge array
 */
 const mergeArrays = (arrays) => [].concat(...arrays);
