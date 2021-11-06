@@ -1,17 +1,47 @@
+//----------------------------------------------------------
+// 1D 
+//----------------------------------------------------------
+const visit = new Array(numCourses).fill(0);
+
+// Create new array from an existing one
+let numbers2 = Array.from(numbers);
+
+let evens = Array.from(numbers, (x) => x % 2 == 0);
+
+// from set
+Array.from(new Set(loop(array)))
+
+
+//----------------------------------------------------------
+// 2D array
+//----------------------------------------------------------
+
+// Array.from() method creates a new array instance from the specified array and optionally map each
+// array element to a new value.
+const graph = Array.from(Array(5), () => []);
+
+var arr = Array.from({ length: 3 }, () => Array.from({ length: 4 }, () => val));
+
+var arr = Array.from(Array(R), () => Array(C).fill(val));    // BEST one
+
+// Sort
+let ordered = [...arr].sort((a, b) => a-b);
+
 /*
   queue 
 */
 
-const first = arr.shift();
-arr.push(1);
+const val = arr.shift();
+const newLength = arr.push(1);
+
+const newLength = arr.unshift(val);
 
 /*
   Stack 
 */
 
-arr.push();
-const e = arr.push(1);
-
+const newLength = arr.push(1);
+const val = arr.pop();
 
 /*
     Merge array
@@ -47,5 +77,4 @@ let maxValue = Math.max(...nums);
 console.log(maxValue)
 
 
-// 2D array
-const graph = Array.from(Array(numCourses), () => []);
+
