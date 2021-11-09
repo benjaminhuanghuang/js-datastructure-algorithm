@@ -9,7 +9,7 @@
 function mergeSort(nums) {
   if (arr.length < 2) return arr;
 
-  var middle = parseInt(arr.length / 2);
+  var middle = Math.floor(arr.length / 2);
   // begin to end (end not included).
   var left = arr.slice(0, middle);
   var right = arr.slice(middle, arr.length);

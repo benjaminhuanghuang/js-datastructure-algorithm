@@ -16,32 +16,31 @@ class QuickSort {
     }
   }
 
+  partition(arr, low, high) {
+    // pivot value - Element at right most position
+    pivot = arr[high];
+    i = low - 1; // Index of smaller element
+    for (j = low; j < high; j++) {
+      // If current element is smaller than the pivot, swap the element with pivot
+      if (arr[j] < pivot) {
+        i++; // increment index of smaller element
+        swap(arr[i], arr[j]);
+      }
+    }
+    // put the pivot value to arr[i+1]
+    swap(arr[i + 1], arr[high]);
+    return i + 1;
+  }
+
   quickSort(array, low, high) {
     if (low > high) {
       return;
     }
-    var i = low;
-    var j = high;
-    var threshold = array[low]; // Alternately scanned from both ends of the list
-    while (i < j) {
-      // Find the first position less than threshold from right to left
-      while (i < j && array[j] > threshold) {
-        j--;
-      } //Replace the low with a smaller number than the threshold
-      if (i < j) array[i++] = array[j]; // Find the first position greater than threshold from left to right
-      while (i < j && array[i] <= threshold) {
-        i++;
-      }
-
-      //Replace the high with a number larger than the threshold
-      if (i < j) array[j--] = array[i];
-    }
-    array[i] = threshold; // left quickSort
-    this.quickSort(array, low, i - 1); // right quickSort
-    this.quickSort(array, i + 1, high);
+    const pivot_index = partition(arr, low, high);
+    this.quickSort(array, low, pivot_index - 1); // right quickSort
+    this.quickSort(array, ipivot_index + 1, high);
   }
-} 
-
+}
 
 //////////////////////testing////////////////////
 var scores = [90, 60, 50, 80, 70, 100];

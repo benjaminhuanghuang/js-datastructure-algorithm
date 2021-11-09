@@ -20,6 +20,12 @@ https://www.youtube.com/watch?v=PFaEzBmoATg&ab_channel=XiaoxuHu
 ## 特征
 Input was sorted.
 
+Time complexity  < O(N)
+
+找到数组中的一个分割位置，使得左半部分满足某个条件，右半部分不满足(100%)
+
+找到一个最大/最小的值使得某个条件被满足(90%)
+
 解有可能不存在
 
 ![](./binary-search-category.png)

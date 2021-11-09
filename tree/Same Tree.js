@@ -1,3 +1,6 @@
+/*
+  100
+*/
 const isSameTree = (r1, r2) => {
   if (r1 === null && r2 === null) return true;
   if (r1 === null || r2 === null) return false;
