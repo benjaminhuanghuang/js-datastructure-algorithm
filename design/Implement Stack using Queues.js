@@ -3,6 +3,10 @@
 https://leetcode.com/problems/implement-stack-using-queues/
 */
 
+/*
+  Solution:  statck = queue_data + queue_helper
+
+*/
 
 var MyStack = function() {
     this.queue_data = [];

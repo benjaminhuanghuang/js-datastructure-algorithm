@@ -4,6 +4,11 @@
 https://leetcode.com/problems/implement-queue-using-stacks/
 */
 
+
+/*
+  Solution:  Queue = stack_in + stack_out
+
+*/
 var MyQueue = function () {
   this.stack_out = [];
   this.stack_in = [];
