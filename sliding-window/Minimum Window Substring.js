@@ -21,11 +21,6 @@ https://www.youtube.com/watch?v=dzdtzymjM7A
  * @param {string} t
  * @return {string}
  */
-/**
- * @param {string} s
- * @param {string} t
- * @return {string}
- */
 var minWindow = function (s, t) {
   const dict = new Array(128).fill(0);
   for (let i = 0; i < t.length; i++) {
@@ -45,6 +40,7 @@ var minWindow = function (s, t) {
     dict[s.charCodeAt(i)]--; // 在s中且不在t中的的字符的count会变为负值
 
     while (restChartCount == 0) {
+      // 此时 dict[t心中的字符] 全部为0
       //When restChartCount == 0, substring S[start : i] contains string T
       if (minLength > i - start + 1) {
         // find res shorter than last res or find res firstly
@@ -62,3 +58,15 @@ var minWindow = function (s, t) {
   }
   return res;
 };
+
+/*
+Solution:
+
+https://www.youtube.com/watch?v=9qFR2WQGqkU&ab_channel=%E6%9D%A5Offer-LaiOffer
+
+*/
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {string}
+ */
