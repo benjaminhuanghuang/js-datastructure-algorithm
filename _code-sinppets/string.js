@@ -1,4 +1,12 @@
-const c = str.charCodeAt(0)
+// Process string
+for(let c of t){
+  dict.set(c, 0);
+}
+
+
+// Process char
+const char = str.charAt(0)
+const asc = str.charCodeAt(0)
 
 
 // Char <-> int
