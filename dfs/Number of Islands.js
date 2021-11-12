@@ -1,15 +1,18 @@
 /*
 
-    200. Number of Islands
-
+  200. Number of Islands
+  
+  https://leetcode.com/problems/number-of-islands/
 */
 
 /*
-    1. Step on 1, start search connected points
-    2. marke the 1s to 0s
-    
-    Time complexity: O(mn)
-    Space complexity: O(mn)
+  https://zxi.mytechroad.com/blog/searching/leetcode-200-number-of-islands/
+
+  1. Step on 1, start search connected points
+  2. marke the 1s to 0s
+  
+  Time complexity: O(mn)
+  Space complexity: O(mn)
 */
 
 var numIslands = function (grid) {
