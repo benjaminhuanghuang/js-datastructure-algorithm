@@ -24,14 +24,14 @@ https://leetcode.com/problems/copy-list-with-random-pointer/
 
   var map = new Map();
   
-  // put <original, copied> to the map
+  // Copy, put <original, copied> to the map
   let curr = head;
   while (curr) {
     map.set(curr, new Node(curr.val, null, null));
     curr = curr.next;
   }
 
-  // Copy
+  // link
   curr = head;
   while (curr) {
     map.get(curr).next = map.get(curr.next) || null;
