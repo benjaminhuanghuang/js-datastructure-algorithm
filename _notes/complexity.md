@@ -2,7 +2,8 @@
 
 ## Recursion
   Time O(2^N)   因为二叉树的高度为N
-
+    2^0 + 2^1 + 2^2 + ...... + 2^n = 2^(n+1) - 1 = O(2^n) 
+    
   Space (N)     因为call stack 和 二叉树的高度为一样N
 
 
