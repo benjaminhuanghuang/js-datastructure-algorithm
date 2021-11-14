@@ -18,7 +18,8 @@ heapifyDown():
 */
 
 class PriorityQueue {
-  constructor(comparator = (a, b) => a > b) {
+  // Min heap by default 
+  constructor(comparator = (item1, item2) => item1 < item2) {
     this.heap = [];
     this.comparator = comparator;
   }
@@ -31,11 +32,9 @@ class PriorityQueue {
   peek() {
     return this.heap[0];
   }
-  push(...vals) {
-    vals.forEach((val) => {
-      this.heap.push(val);
-      this.heapifyUp(this.heap.length - 1); //
-    });
+  push(val) {
+    this.heap.push(val);
+    this.heapifyUp(this.heap.length - 1); //
     return this.heap.length;
   }
   pop() {
@@ -52,26 +51,26 @@ class PriorityQueue {
 
   heapifyUp(index) {
     if (index === 0) return;
-    const parentIndex = Math.floor((index - 1) / 2);
-    if (this.comparator(this.heap[index], this.heap[parentIndex])) return;
-    this.swap(index, parent);
-    this.heapifyUp(parent);
+    const parentIndex = Math.floor(index / 2);
+    if (this.comparator(this.heap[parentIndex], this.heap[index])) {
+      return;
+    }
+    this.swap(index, parentIndex);
+    this.heapifyUp(parentIndex);
   }
 
   heapifyDown(index) {
     let targetIndex = index;
-    let targetVal = this.heap[targetIndex];
-    const leftChildIndex = targetIndex * 2 + 1;
-    const rightChildIndex = targetIndex * 2 + 2;
-    if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] < targetVal) {
+    const leftChildIndex = targetIndex * 2;
+    const rightChildIndex = targetIndex * 2 + 1;
+
+    if (rightChildIndex < this.heap.length && this.comparator(this.heap[rightChildIndex], this.heap[index])) {
       targetIndex = rightChildIndex;
-      targetVal = this.heap[rightChildIndex];
-    }
-    if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] < targetVal) {
-      targetIndex = leftChildIndex;
-      targetVal = this.heap[leftChildIndex];
     }
 
+    if (leftChildIndex < this.heap.length && this.comparator(this.heap[leftChildIndex], this.heap[targetIndex])) {
+      targetIndex = leftChildIndex;
+    }
     if (targetIndex === index) return;
 
     this.swap(targetIndex, index);
@@ -82,7 +81,10 @@ class PriorityQueue {
 
 // Default comparison semantics
 const queue = new PriorityQueue();
-queue.push(10, 20, 30, 40, 50);
+queue.push(1);
+queue.push(3);
+queue.push(5);
+queue.push(2);
 console.log("Top:", queue.peek()); //=> 50
 console.log("Size:", queue.size()); //=> 5
 console.log("Contents:");
