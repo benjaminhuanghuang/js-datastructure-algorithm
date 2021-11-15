@@ -11,6 +11,7 @@ https://leetcode.com/problems/min-cost-climbing-stairs/
  */
 var minCostClimbingStairs = function (cost) {
   const mem = new Map();
+  
   const climb = (n) => {
     if (mem.has(n)) return mem.get(n);
     if (n <= 1) {
