@@ -72,6 +72,7 @@ var numDecodings = function (s) {
 var numDecodings = function (s) {
   if (s.length === 0) return 0;
   const m = new Array(s.length + 1).fill(-1);
+  
   const helper = (s, level) => {
     if (m[level] != -1) {
       return m[level];
