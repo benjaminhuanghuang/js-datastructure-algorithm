@@ -30,13 +30,13 @@ var findMaxLength = function (nums) {
   let ans = 0;
   for (let i = 0; i < nums.length; ++i) {
     // prefix sum
-    sum += nums[i]===1 ? 1 : -1;
+    sum += nums[i] === 1 ? 1 : -1;
     if (sum == 0) {
       ans = i + 1;
     } else if (pos.has(sum)) {
       ans = Math.max(ans, i - pos.get(sum));
     } else {
-      pos.set(sum,i);
+      pos.set(sum, i);
     }
   }
   return ans;

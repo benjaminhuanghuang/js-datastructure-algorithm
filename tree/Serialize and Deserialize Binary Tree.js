@@ -20,7 +20,8 @@
  */
 var serialize = function (root) {
   let res = [];
-
+   
+  // the helper function
   const preorder = (root) => {
     if (root === null) {
       res.push("#");
@@ -50,13 +51,18 @@ var deserialize = function (data) {
     if (index > data.length || data[index] === "#") {
       return null;
     }
+    // value = data[index]
     let root = new TreeNode(parseInt(data[index]));
+
     index++;
     root.left = helper(data);
+    
     index++;
     root.right = helper(data);
+    
     return root;
   };
+  
   return helper(arr);
 };
 /**
