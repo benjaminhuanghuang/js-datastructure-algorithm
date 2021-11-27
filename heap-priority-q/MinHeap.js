@@ -53,8 +53,8 @@ class MinHeap {
     if (index === 0) return;
     const parentIndex = Math.floor((index - 1) / 2);
     if (this.heap[index]> this.heap[parentIndex]) return;
-    this.swap(index, parent);
-    this.heapifyUp(parent);
+    this.swap(index, parentIndex);
+    this.heapifyUp(parentIndex);
   }
 
   heapifyDown(index) {
