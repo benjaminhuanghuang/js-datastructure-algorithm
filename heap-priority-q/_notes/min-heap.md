@@ -11,3 +11,8 @@ Heap : tree based data structure, complete tree
 parent -> children:   n -> 2n+1 , 2n+2
 child -> parent:  n-> (n-1) / 2
 
+
+## 用途
+- sort
+- K top
+用min heap保存最大值，最小值会被pop

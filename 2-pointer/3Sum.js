@@ -25,8 +25,9 @@ var threeSum = function (nums) {
   const n = nums.length;
   for (let i = 0; i < n - 2; ++i) {
     if (nums[i] > 0)
-      // nums[i] is the base number
+    {  // nums[i] is the base number
       break;
+    }
     // skip the duplicated base number
     if (i > 0 && nums[i] == nums[i - 1]) continue;
     // double points

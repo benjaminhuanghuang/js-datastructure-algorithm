@@ -40,7 +40,7 @@ class MinHeap {
   pop() {
     this.swap(this.heap.length - 1, 0);
     const val = this.heap[this.heap.length - 1];
-    this.heap.pop();
+    this.heap.pop();  // remove the last one
     this.heapifyDown(0);
     return val;
   }

@@ -9,6 +9,12 @@ https://zxi.mytechroad.com/blog/searching/leetcode-78-subsets/ [一定要看]
 
 Time complexity: O(2^n)
 Space complexity: O(n)
+
+第一层loop: length 0 to nums.length
+
+helper funciton(length, start pos): 终止条件
+
+对于javascipt， python 要注意copy，
 */
 /**
  * @param {number[]} nums

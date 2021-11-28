@@ -30,6 +30,7 @@ var lengthOfLongestSubstring = function(s) {
     {
       // lastOccurrd[ch] 不存在, or < start -> 无需操作
       // lastOccurrd[ch] >= start -> Update start
+      // 为什么要用max？对于case "abba" 第二个b导致start = 2, 第二个a就不能使用第一个a的location + 1， 而要使用第二个b生成的start
       start = Math.max(start, lastOccurred[s[i]] + 1);  // set start to max(start, lastOccurred[s[i]] + 1)
     }
     maxLength = Math.max(maxLength, i - start + 1); // if char is not presented, start is 0

@@ -20,6 +20,15 @@ Space complexity: O(h)
 For a given root, recursively call LCA(root.left, p, q) and LCA(root.right, p, q)
 
 if both returns a valid node which means p, q are in different subtrees, then root will be their LCA.
+
+https://www.youtube.com/watch?v=py3R23aAPCA&ab_channel=BackToBackSWE
+
+   root
+  /   \
+left right
+
+如果在left中发现p， 在right中发现q，则root is LCA
+
 */
 
 /**
@@ -30,7 +39,8 @@ if both returns a valid node which means p, q are in different subtrees, then ro
  */
 var lowestCommonAncestor = function (root, p, q) {
   //发现目标节点则通过返回值,标记该子树发现了某个目标结点
-  if (root == null || root == p || root == q) return root;
+  if (root == null) return null;
+  if (root == p || root == q) return root;
   //查看左子树中是否有目标结点，没有为null
   const left = lowestCommonAncestor(root.left, p, q);
   //查看右子树是否有目标节点，没有为null
