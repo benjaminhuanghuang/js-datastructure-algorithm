@@ -13,17 +13,14 @@
 
 */
 
-
 /*
+https://www.youtube.com/watch?v=JLK92dbTt8k&ab_channel=HuaHua
   Solution 1:
     Serialization
 
     Time O(N^2)
     Sapce O(N^2)
 */
-
-
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -36,6 +33,16 @@
  * @param {TreeNode} root
  * @return {TreeNode[]}
  */
- var findDuplicateSubtrees = function(root) {
-    
+var findDuplicateSubtrees = function (root) {
+  const ans = [];
+  const counts = {}; // string-> int, 子树出现的次数
+  //
+  const serialize = (root) => {
+    if (!root) return "#";
+    const subTree = root.val.toString() + "," + serialize(root.left) + "," + serialize(root.right);
+    if (++counts[subTree] == 2) ans.push(root);
+    return key;
+  };
+  serialize(root);
+  return ans;
 };
