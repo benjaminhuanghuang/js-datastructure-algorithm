@@ -75,6 +75,7 @@ LRUCache.prototype.remove = function (node) {
   this.map.delete(node.key);
 };
 
+// append to end
 LRUCache.prototype.insert = function (key, val) {
   // Append the new node at the end
   var node = new ListNode(key, val);
