@@ -1,6 +1,8 @@
 /*
 239. Sliding Window Maximum
 https://leetcode.com/problems/sliding-window-maximum/
+
+输出移动窗口的最大值
 */
 
 /*
@@ -11,6 +13,9 @@ Monotonic Queue
 Time complexity: O(n)
 Space complexity: O(k)
 
+
+Brute froce 
+  Time: O((n-k+1)*k)      Space: O(1)
 */
 
 /**
@@ -35,7 +40,7 @@ Space complexity: O(k)
 };
 
 /*
-  从大到小
+  从大到小, 每次push都会pop掉比当前元素小的元素
 */
 class MonotonicQueue {
   constructor() {
