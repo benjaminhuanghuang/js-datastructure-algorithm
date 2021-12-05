@@ -17,6 +17,7 @@ var climbStairs = function (n) {
 };
 
 /*
+  Climbing Stairs - Dynamic Programming - Leetcode 70 - Python
 
   Memoization
 */
