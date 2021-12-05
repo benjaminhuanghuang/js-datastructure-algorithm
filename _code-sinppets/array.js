@@ -1,5 +1,5 @@
 //----------------------------------------------------------
-// 1D 
+// 1D
 //----------------------------------------------------------
 const visit = new Array(numCourses).fill(0);
 
@@ -9,8 +9,7 @@ let numbers2 = Array.from(numbers);
 let evens = Array.from(numbers, (x) => x % 2 == 0);
 
 // from set
-Array.from(new Set(loop(array)))
-
+Array.from(new Set(loop(array)));
 
 //----------------------------------------------------------
 // 2D array
@@ -22,10 +21,10 @@ const graph = Array.from(Array(5), () => []);
 
 var arr = Array.from({ length: 3 }, () => Array.from({ length: 4 }, () => val));
 
-var arr = Array.from(Array(R), () => Array(C).fill(val));    // BEST one
+var arr = Array.from(Array(R), () => Array(C).fill(val)); // BEST one
 
 // Sort
-let ordered = [...arr].sort((a, b) => a-b);
+let ordered = [...arr].sort((a, b) => a - b);
 
 /*
   queue 
@@ -48,33 +47,33 @@ const val = arr.pop();
 */
 const mergeArrays = (arrays) => [].concat(...arrays);
 
-
 // use reduce
 const mergeArrays2 = (arrays) => {
-    return arrays.reduce((acc, n)=> acc.concat(n));
-}
+  return arrays.reduce((acc, n) => acc.concat(n));
+};
 
-const input = [[1, 2, 3], [4, 5], [6]]
+const input = [[1, 2, 3], [4, 5], [6]];
 console.log(mergeArrays(input));
 console.log(mergeArrays2(input));
 
 /*
 Sum
 */
-const nums = [1,2,3,4];
-const sum = nums.reduce((acc, i)=> acc + i);
+const nums = [1, 2, 3, 4];
+const sum = nums.reduce((acc, i) => acc + i);
 
-console.log(sum)
-const sum2 = nums.reduce((acc, i)=> acc + i,0);
-console.log(sum2)
-
+console.log(sum);
+const sum2 = nums.reduce((acc, i) => acc + i, 0);
+console.log(sum2);
 
 // Copy array
 let newArray = [...nums];
 
 // Max in array
 let maxValue = Math.max(...nums);
-console.log(maxValue)
+console.log(maxValue);
 
-
-
+// Equal
+function arrayEquals(a, b) {
+  return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((val, index) => val === b[index]);
+}

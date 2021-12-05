@@ -11,6 +11,7 @@ const asc = str.charCodeAt(0)
 
 // Char <-> int
 let char = String.fromCharCode(n % 26 + "A".charCodeAt(0));
+const index = p.charCodeAt(i) %26;
 
 
 // replace str[i] with '9'
