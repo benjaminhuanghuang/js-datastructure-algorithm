@@ -1,7 +1,13 @@
 /*
+208. Implement Trie (Prefix Tree)
+
+Medium
+
+https://leetcode.com/problems/implement-trie-prefix-tree/
 
 */
-class Node {
+
+class TrieNode {
   constructor() {
     this.isWord = false;
     this.children = {};
@@ -9,7 +15,7 @@ class Node {
 }
 
 var Trie = function() {
-  this.root = new Node();
+  this.root = new TrieNode();
 };
 
 /** 
@@ -21,7 +27,7 @@ Trie.prototype.insert = function(word) {
   for( let i =0 ;i < word.length ; i++){
     const c = word.charAt(i);
     if(!curr.children[c]){
-      curr.children[c] = new Node();
+      curr.children[c] = new TrieNode();
     }
     curr = curr.children[c];
   }

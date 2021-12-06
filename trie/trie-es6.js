@@ -1,4 +1,4 @@
-class Node {
+class TrieNode {
   constructor() {
     this.isWord = false;
     this.children = new Array(26).fill(null);
@@ -7,7 +7,7 @@ class Node {
 
 class Trie {
   constructor() {
-    this.root = new Node();
+    this.root = new TrieNode();
   }
 
   insert(word) {}
@@ -31,7 +31,7 @@ class Trie {
 }
 
 
-myTrie = new Trie()
+myTrie = new TrieNode()
 myTrie.add('ball'); 
 myTrie.add('bat'); 
 myTrie.add('doll'); 
