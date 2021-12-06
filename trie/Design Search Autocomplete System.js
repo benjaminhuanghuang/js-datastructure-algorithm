@@ -26,7 +26,61 @@ Output
 
 */
 
+class TrieNode {
+  constructor() {
+    this.isWord = false;
+    this.children = {}; // char-> children
+  }
+}
 
+class Trie {
+  constructor() {
+    this.root = new TrieNode();
+  }
+
+  insert(word) {
+    let curr = this.root;
+    for (let i = 0; i < word.length; i++) {
+      const c = word.charAt(i);
+      if (!curr.children[c]) {
+        curr.children[c] = new TrieNode();
+      }
+      curr = curr.children[c];
+    }
+    curr.isWord = true;
+  }
+
+  getNode(word) {
+    let curr = this.root;
+    for (let i = 0; i < word.length; i++) {
+      const c = word.charAt(i);
+      curr = curr.children[c];
+      if (!curr) {
+        break;
+      }
+    }
+    return curr;
+  }
+
+  keysWithPrefix(prefix, limit) {
+    const queue = [];
+    this.collect(this.getNode(prefix), prefix, queue, limit);
+    return queue;
+  }
+
+  collect(node, prefix, queue, limit) {
+    if (node == null || queue.length === limit) return;
+
+    if (node.isWord === true) {
+      queue.push(prefix);
+    }
+
+    for (let i = 0; i < 26; i++) {
+      const char = String.fromCharCode(i + 97);
+      this.collect(node.children[char], prefix + char, queue, limit);
+    }
+  }
+}
 
 
 /**
@@ -57,6 +111,8 @@ AutocompleteSystem.prototype.input = function (c) {
     this.queue = [];
     return [];
   }
+
+  
   if (this.inputData.length == 0) {
     for (let [sentence, times] of this.historySearch) {
       if (this.isMatch(sentence, c)) {

@@ -55,7 +55,7 @@ class Trie {
 
   keysWithPrefix(prefix, limit) {
     const queue = [];
-    this.collect(this.getNode(prefix), prefix, queue, limit);
+    this.collect(this.get(prefix), prefix, queue, limit);
     return queue;
   }
 
