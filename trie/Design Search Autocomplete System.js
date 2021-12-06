@@ -53,6 +53,12 @@ class Trie {
     this.root = new TrieNode();
   }
 
+  insertWords(words) {
+    for (const word of words) {
+      this.insertWord(word);
+    }
+  }
+
   insertWord(word) {
     let curr = this.root;
     for (let i = 0; i < word.length; i++) {
@@ -73,21 +79,51 @@ class Trie {
       const c = prefix.charAt(i);
       if (curr.children[c]) {
         curr = curr.children[c];
-      }
-      else{
+      } else {
         return [];
       }
     }
-    fileAllChildWords(curr, results);
-    return result;
+    this.findAllChildWords(curr, results, limit);
+    return results;
   }
 
   findAllChildWords(node, results) {
-    if(node.isWord){
-      results.push(n.prefix);
-    } 
-    for(const c of Object.keys(node.children)){
-      findAllChildWords(node.children[c], results);
+    if (node == null) {
+      return;
+    }
+    if (node.isWord) {
+      results.push(node.prefix);
+    }
+    for (const c of Object.keys(node.children)) {
+      this.findAllChildWords(node.children[c], results);
+    }
+  }
+
+  getSuggestionsForPrefix(prefix, limit) {
+    const results = [];
+    let curr = this.root;
+    for (let i = 0; i < prefix.length; i++) {
+      const c = prefix.charAt(i);
+      if (curr.children[c]) {
+        curr = curr.children[c];
+      } else {
+        return [];
+      }
+    }
+    this.findSuggestion(curr, results, limit);
+    return results;
+  }
+
+  findSuggestion(node, results, limit) {
+    if (node == null || results.length === limit) return;
+
+    if (node.isWord === true) {
+      results.push(node.prefix);
+    }
+
+    for (let i = 0; i < 26; i++) {
+      const char = String.fromCharCode(i + 97);
+      this.findSuggestion(node.children[char], results, limit);
     }
   }
 }
@@ -137,6 +173,7 @@ AutocompleteSystem.prototype.input = function (c) {
     this.inputData.push(c);
     this.queue = this.queue.filter((item) => this.isMatch(item[0], this.inputData.join("")));
   }
+  
   // collect
   let result = [];
   for (let i = 0; i < this.queue.length; i++) {

@@ -6,6 +6,8 @@ Level: Medium
 https://leetcode.com/problems/search-suggestions-system
 
 Return list of lists of the suggested products after each character of searchWord is typed. 
+Suggested products should have common prefix with the searchWord. I
+
 */
 
 /*
