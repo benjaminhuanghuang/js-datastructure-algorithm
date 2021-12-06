@@ -11,6 +11,7 @@ class TrieNode {
   constructor() {
     this.isWord = false;
     this.children = {};
+    this.words = [];
   }
 }
 
