@@ -17,12 +17,17 @@ Output
 */
 
 /*
-  1. Butil the trie
+要求设计一个搜索系统，开始会存储 若干字符串 以及它们对应的 搜索次数 ，
 
-  2. search
+然后用户会连续输入字符，每输入一个字符，应当返回到该字符为止的字符串为前缀的、出现次数前3多的字符串，
+如果这样的字符串数量大于3，则取字典序较小的。
 
-  https://www.youtube.com/watch?v=NZ3lP33mXlY&t=228s&ab_channel=BytebyByte
-  https://happygirlzt.com/code/642.html
+当用户输入'#'的时候，代表他输入完成了，此时要将他输入的整个字符串存入这个搜索系统，并且记录搜索次数加1。
+
+思路是Trie + 最小堆 + 哈希表。可以将所有字符串存入Trie中，\
+并且在每个Trie节点都预处理一下到当前节点为止的子串为前缀的所有字符串中，排名前3的是谁，
+这里可以用最小堆 + 哈希表来做，哈希表存每个字符串出现的次数，最小堆维护出现次数最高字典序最小的三个字符串。
+同时，每次输入完一个字符，就用用户输入找答案；当输入了'#'的时候，就将StringBuilder对应的字符串s ss存入Trie并且次数加1 11。注意，这里每个Trie节点的最小堆也需要随着哈希表的计数做调整，所以最小堆要先删s ss再按照找前3 33的逻辑加回来。具体请看代码，代码如下
 
 */
 
@@ -112,7 +117,7 @@ AutocompleteSystem.prototype.input = function (c) {
     return [];
   }
 
-  
+
   if (this.inputData.length == 0) {
     for (let [sentence, times] of this.historySearch) {
       if (this.isMatch(sentence, c)) {
