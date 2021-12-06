@@ -4,6 +4,8 @@
 Level: Medium
 
 https://leetcode.com/problems/search-suggestions-system
+
+Return list of lists of the suggested products after each character of searchWord is typed. 
 */
 
 /*
@@ -12,7 +14,7 @@ https://leetcode.com/problems/search-suggestions-system
 class TrieNode {
   constructor() {
     this.isWord = false;
-    this.children = new Array(26).fill(null);
+    this.children = {}; // char-> children
   }
 }
 
@@ -22,23 +24,15 @@ class Trie {
   }
 
   insert(word) {
-    this.insertHelper(this.root, word, 0);
-  }
-
-  insertHelper(node, word, charIndex) {
-    if (node == null) {
-      node = new TrieNode();
+    let curr = this.root;
+    for (let i = 0; i < word.length; i++) {
+      const c = word.charAt(i);
+      if (!curr.children[c]) {
+        curr.children[c] = new TrieNode();
+      }
+      curr = curr.children[c];
     }
-    if (charIndex == word.length) {
-      node.isWord = true;
-      return node;
-    }
-
-    const index = word.charCodeAt(charIndex) - 97;
-
-    node.children[index] = this.insertHelper(node.children[index], word, charIndex + 1);
-
-    return node;
+    curr.isWord = true;
   }
 
   insertWords(words) {
@@ -48,21 +42,20 @@ class Trie {
   }
 
   get(word) {
-    return this.getHelper(this.root, word, 0);
-  }
-
-  getHelper(node, word, charIndex) {
-    if (node == null || charIndex === word.length) {
-      return node;
+    let curr = this.root;
+    for (let i = 0; i < word.length; i++) {
+      const c = word.charAt(i);
+      curr = curr.children[c];
+      if (!curr) {
+        break;
+      }
     }
-
-    const index = word.charCodeAt(charIndex) - 97;
-    return this.getHelper(node.children[index], word, charIndex + 1);
+    return curr;
   }
 
   keysWithPrefix(prefix, limit) {
     const queue = [];
-    this.collect(this.get(prefix), prefix, queue, limit);
+    this.collect(this.getNode(prefix), prefix, queue, limit);
     return queue;
   }
 
@@ -75,7 +68,7 @@ class Trie {
 
     for (let i = 0; i < 26; i++) {
       const char = String.fromCharCode(i + 97);
-      this.collect(node.children[i], prefix + char, queue, limit);
+      this.collect(node.children[char], prefix + char, queue, limit);
     }
   }
 }
@@ -86,11 +79,13 @@ class Trie {
  * @return {string[][]}
  */
 var suggestedProducts = function (products, searchWord) {
+  // Init trie
   const trie = new Trie();
   trie.insertWords(products);
-  const res = [];
-  let substr = "";
 
+  const res = [];
+  // search the prefix
+  let substr = "";
   for (const char of searchWord) {
     substr += char;
     const words = trie.keysWithPrefix(substr, 3);
