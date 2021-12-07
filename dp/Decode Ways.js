@@ -5,6 +5,38 @@ https://leetcode.com/problems/decode-ways/
 
 一个加密的数字字符串，一共有多少种不同的解密方式。
 */
+/*
+  https://www.youtube.com/watch?v=6aEyTjOwlJU&ab_channel=NeetCode
+
+  Recursion tree
+  3, 9   -> X
+  10, 19 -> 1 or 1X
+  20, 26 -> 2 or 2X
+  06 -> invalid
+*/
+
+var numDecodings = function (s) {
+  if (s.length === 0) return 0;
+  const dp = {};
+  const dfs = (i) => {
+    if (i >= s.length) return 1;   // find a path
+    if (dp[i]) return dp[i];
+
+    // 0 is invalid
+    if (s.charAt(level) == "0") return 0;
+
+    // any non-0 number, can ues 1 digit
+    const ans = dfs(i + 1);
+
+    if (i + 1 < s.length && (s.charAt(i) == "1" || (s.charAt(i) == "2" && s.charCodeAt(i + 1) <= "6".charCodeAt(0)))) {
+      // 用两位数字，条件是 1X  or 20 ~26
+      ans += dfs(i + 2);
+    }
+    dp[i] = ans;
+    return ans;
+  };
+  return dfs(s, 0);
+};
 
 /*
   Recursion
@@ -30,6 +62,7 @@ var numDecodings = function (s) {
 
     let ways = 0;
     if (s.charAt(level) != "0") {
+      // 只用1个数字
       ways += helper(s, level + 1);
     }
 
@@ -37,6 +70,7 @@ var numDecodings = function (s) {
       level + 1 < s.length &&
       (s.charAt(level) == "1" || (s.charAt(level) == "2" && s.charCodeAt(level + 1) <= "6".charCodeAt(0)))
     ) {
+      // 用两位数字，条件是 1X  or 20 ~26
       ways += helper(s, level + 2);
     }
     return ways;
@@ -72,7 +106,7 @@ var numDecodings = function (s) {
 var numDecodings = function (s) {
   if (s.length === 0) return 0;
   const m = new Array(s.length + 1).fill(-1);
-  
+
   const helper = (s, level) => {
     if (m[level] != -1) {
       return m[level];
@@ -119,6 +153,7 @@ var numDecodings = function (s) {
  */
 var numDecodings = function (s) {
   if (s.length === 0) return 0;
+
   const dp = new Array(s.length + 1).fill(0);
   dp[0] = 1;
   for (let i = 1; i <= s.length; ++i) {
@@ -182,7 +217,7 @@ var numDecodings = function (s) {
 */
 var numDecodings = function (s) {
   if (s.length === 0) return 0;
-  const m_ways = new Map();   // index: way
+  const m_ways = new Map(); // index: way
 
   const ways = (s, start) => {
     if (m_ways.has(start)) {
