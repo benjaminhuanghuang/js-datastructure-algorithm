@@ -1,8 +1,8 @@
-function TreeNode(val)
-{
-  this.val = val;
-  this.left =this.right = null;
-}
+/*
+
+404. Sum of Left Leaves
+
+*/
 var sumOfLeftLeaves = function(root) {
   let sum =0;
   let helper = function(root)
