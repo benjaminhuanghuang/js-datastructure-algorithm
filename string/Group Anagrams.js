@@ -13,15 +13,21 @@ var groupAnagrams = function (strs) {
   const map = new Map();
 
   for (let str of strs) {
+    // sort
     const charArr = str.split("");
-    charArr.sort();
+    charArr.sort(); 
     const key = charArr.join("");
-    if (!map.has(key)) map.set(key, []);
+    // put into map
+    if (!map.has(key)) 
+    {
+      map.set(key, []);
+    }
     const arr = map.get(key);
     arr.push(str);
     map.set(key, arr);
   }
 
+  // count
   for (const [key, value] of map) {
     res.push(value); // push the string[] to res
   }
