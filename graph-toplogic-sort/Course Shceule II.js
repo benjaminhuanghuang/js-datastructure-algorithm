@@ -4,14 +4,12 @@
 https://leetcode.com/problems/course-schedule-ii/
 */
 
-
 /*
 
     https://www.youtube.com/watch?v=Qqgck2ijUjU&ab_channel=HuaHua
 
     Time O(V+E) ~ O(V^2)
 */
-
 
 /**
  * @param {number} numCourses
@@ -40,7 +38,7 @@ var findOrder = function (numCourses, prerequisites) {
       if (dfs_check_cycle(neighbour)) return true;
     }
 
-    visit[cur] = 2;   // deepest stack, no neighbour
+    visit[cur] = 2; // deepest stack, no neighbour
     order.push(cur);
     return false;
   };
@@ -50,4 +48,45 @@ var findOrder = function (numCourses, prerequisites) {
   }
 
   return order.reverse();
+};
+
+/*
+https://www.youtube.com/watch?v=Akt3glAwyfY&list=PLot-Xpze53ldBT_7QA8NVot219jFNr_GI&index=3&ab_channel=NeetCode
+
+*/
+
+var findOrder = function (numCourses, prerequisites) {
+  const graph = new Map();
+
+  for (const [cource, prerequisite] of prerequisites) {
+    if (!graph.has(cource)) {
+      graph.set(cource, []);
+    }
+    graph.get(cource).push(prerequisite);
+  }
+  // states: 0 = unvisited, 1 == visiting, 2 = visited
+  const visit = new Array(numCourses).fill(0);
+  const order = [];
+
+  const dfs = (cource) => {
+    if (visit[cource] == 1) return true;
+    if (visit[cource] == 2) return false;
+
+    visit[cource] = 1; // 标记当前node 为 visiting
+
+    if (graph.has(cource)) {
+      for (const prerequisite of graph.get(cource)) {
+        if (dfs(prerequisite)) return true; // find cycle
+      }
+    }
+
+    visit[cource] = 2; // deepest stack, no neighbour
+    order.push(cource);
+    return false;
+  };
+
+  for (let i = 0; i < numCourses; ++i) {
+    if (dfs(i)) return [];
+  }
+  return order;
 };
