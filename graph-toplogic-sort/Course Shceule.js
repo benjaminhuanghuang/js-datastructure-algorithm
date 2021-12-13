@@ -6,6 +6,12 @@ https://leetcode.com/problems/course-schedule/
 */
 
 /*
+https://www.youtube.com/watch?v=EgI5nU9etnU&list=PLot-Xpze53ldBT_7QA8NVot219jFNr_GI&index=2&ab_channel=NeetCode
+  DFS
+*/
+
+
+/*
   DFS check cycle
 */
 var canFinish = function (numCourses, prerequisites) {
