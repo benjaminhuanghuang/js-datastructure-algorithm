@@ -7,6 +7,8 @@ https://www.youtube.com/watch?v=mnSMdTPBG1U&list=PLLuMmzMTgVK5Hy1qcWYZcd7wVQQ1v0
 
 Heap : tree based data structure, complete tree
 
+to Heap, time complexity for adding is O(logN), remove is O(logN)
+
 - Index relationship:
 parent -> children:   n -> 2n+1 , 2n+2
 child -> parent:  n-> (n-1) / 2

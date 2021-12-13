@@ -4,7 +4,7 @@
 Hard
 
 https://leetcode.com/problems/alien-dictionary/
-
+https://www.lintcode.com/problem/892/
 
 */
 
@@ -40,4 +40,50 @@ https://www.youtube.com/watch?v=6kTZYvNNyps&ab_channel=NeetCode
  * @return {string}
  */
 
-var alienOrder = function (words) {};
+var alienOrder = function (words) {
+  const graph = new Map();
+
+  for (let i = 0; i < words.length - 1; i++) {
+    const w1 = words[i];
+    const w2 = words[i + 1];
+    const minLen = Math.min(w1.length, w2.length);
+    // for invalid case 'apps' 'app'
+    if (w1.length > w2.length && w1.substring(0, minLen) == w2) {
+      return "";
+    }
+
+    for (let j = 0; j < minLen; j++) {
+      // the first different char
+      if (w1.charAt(j) != w2.charAt(j)) {
+        if (!graph.has(w1.charAt(j))) {
+          graph.set(w1.charAt(j), []);
+        }
+        graph.get(w1.charAt(j), w2.charAt(j));
+        break;
+      }
+    }
+  }
+
+  const visited = {}; // false: visited, true: visting
+
+  const res = [];
+
+  const dfs = (c) => {
+    if (visited.hasOwnProperty(c)) {
+      return visited[c];
+    }
+
+    visited[c] = true; // visting
+    for (const nei of graph.get(c)) {
+      if (dfs(nei)) return true;
+    }
+    visited[c] = false; // visited
+    res.unshift(c);
+  };
+
+  for (const c of graph.keys()) {
+    if (dfs(c)) return ""; // find cycle
+  }
+
+  return res.join('')
+};
