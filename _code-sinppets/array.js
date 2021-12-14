@@ -11,6 +11,12 @@ let evens = Array.from(numbers, (x) => x % 2 == 0);
 // from set
 Array.from(new Set(loop(array)));
 
+// Generate a sequence of numbers
+// Since the array is initialized with `undefined` on each position,
+// the value of `v` below will be `undefined`
+Array.from({length: 5}, (v, i) => i);
+// [0, 1, 2, 3, 4]
+
 //----------------------------------------------------------
 // 2D array
 //----------------------------------------------------------
