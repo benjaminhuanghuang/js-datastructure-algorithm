@@ -3,7 +3,6 @@
 https://leetcode.com/problems/fibonacci-number/
 */
 
-
 /*
   Time Complexity : 
     T(n<=1) = O(1)
@@ -24,12 +23,10 @@ https://leetcode.com/problems/fibonacci-number/
  * @param {number} n
  * @return {number}
  */
- var fib = function(n) {
-  if (n  <=1 ) return n;
+var fib = function (n) {
+  if (n <= 1) return n;
   else return fibonacci(n - 1) + fibonacci(n - 2);
-  
 };
-
 
 /*
   记忆化递归
@@ -38,11 +35,10 @@ https://leetcode.com/problems/fibonacci-number/
 */
 const fib = new Map();
 
-var fib = function(n) {
-  if (n  <=1 ) return n;
+var fib = function (n) {
+  if (n <= 1) return n;
   else return fibonacci(n - 1) + fibonacci(n - 2);
 };
-
 
 /*
   DP 
@@ -55,3 +51,18 @@ function fibonacci_dp(n) {
   return f[n];
 }
 
+/*
+ DP
+*/
+function fibonacci(n) {
+  if (n <= 1) return n;
+  let a = 0;
+  let b = 1;
+  let result = 0;
+  for (let i = 2; i <= n; i++) {
+    result = a + b;
+    a = b;
+    b = result;
+  }
+  return result;
+}
