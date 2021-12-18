@@ -1,6 +1,8 @@
 /*
 1046. Last Stone Weight
 
+On each turn, we choose the heaviest two stones and smash them together. 
+
 https://leetcode.com/problems/last-stone-weight/
 */
 

@@ -35,7 +35,7 @@ var MedianFinder = function() {
  * @return {void}
  */
 MedianFinder.prototype.addNum = function(num) {
-  // num < the max of in the smaller
+  // num < the max one wich in the smaller heap
   if (this.smaller.isEmpty() || num <= this.smaller.peek())
   {
     this.smaller.push(num);

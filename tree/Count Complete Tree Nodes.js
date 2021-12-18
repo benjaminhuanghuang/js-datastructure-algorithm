@@ -51,10 +51,12 @@ Time = O(N) 每个node访问一次, Space = O(H) = O(LogN)
     let l = height(root.left);
     let r = height(root.right);
     if( l === r) {
+      // 左子树是完美二叉树，其高度为 2^l - 1, 结果为 2^l - 1 + countNodes(root.right) + 1
       return (1 << l) + countNodes(root.right)
     }
     else
     {
+      // 右子树是完美二叉树，其高度为 2^（l-1) - 1
       return (1 << (l-1)) + countNodes(root.left);
     }
 };
