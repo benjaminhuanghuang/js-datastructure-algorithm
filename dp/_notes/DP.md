@@ -9,6 +9,13 @@ https://www.youtube.com/watch?v=LG0adDNnnYg&ab_channel=HuaHua
 https://www.youtube.com/watch?v=3mIc_mKP4yM&ab_channel=HuaHua
 
 
+- 花花酱 LeetCode DP1 - 刷题找工作 SP8
+https://www.youtube.com/watch?v=3mY5W0yojtA&ab_channel=HuaHua
+
+- 花花酱 LeetCode DP2 - 刷题找工作 SP9
+https://www.youtube.com/watch?v=eLlZEYzZVyQ&ab_channel=HuaHua
+
+
 
 ## 思路
 把抽象出一个函数，找出子问题，原始问题会依靠子问题
