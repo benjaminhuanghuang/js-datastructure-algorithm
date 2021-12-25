@@ -32,14 +32,6 @@ var arr = Array.from(Array(R), () => Array(C).fill(val)); // BEST one
 // Sort
 let ordered = [...arr].sort((a, b) => a - b);
 
-/*
-  queue 
-*/
-
-const val = arr.shift();
-const newLength = arr.push(1);
-
-const newLength = arr.unshift(val);
 
 /*
   Stack 

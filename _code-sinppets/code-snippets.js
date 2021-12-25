@@ -1,10 +1,3 @@
-// Set
-let keyRows = [];
-keyRows.push(new Set(['q','w','e','r','t','y','u','i','o','p']));
-keyRows.size
-
-
-
 
 //
 // people[0] is height, people[1] is number

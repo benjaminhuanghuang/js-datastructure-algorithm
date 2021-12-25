@@ -19,7 +19,7 @@ const index = p.charCodeAt(i) %26;
 str = str.substring(0, i-1) + "9" + str.substring(i+1);
 str = str.substr(left, length);
 
-// char to string
+// char array to string
 new Array(5).fill("9").join("")
 
 
