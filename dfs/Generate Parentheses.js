@@ -23,6 +23,7 @@ var generateParenthesis = function (n) {
       dfs(ans, curr + ")", l, r - 1);
     }
   };
+
   if (n > 0) {
     dfs(ans, "", n, n);
   }

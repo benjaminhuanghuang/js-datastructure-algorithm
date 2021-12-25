@@ -1,29 +1,25 @@
+
 /*
-78 Subsets 
 
-array nums of unique elements,
+90. Subsets II
 
-https://leetcode.com/problems/subsets/
+https://leetcode.com/problems/subsets-ii/
+
+array nums that may contain duplicates,
 */
 
 /*
-https://zxi.mytechroad.com/blog/searching/leetcode-78-subsets/ [一定要看]
-
-Time complexity: O(2^n)
-Space complexity: O(n)
-
-第一层loop: length 0 to nums.length
-
-helper funciton(length, start pos): 终止条件
-
-对于javascipt， python 要注意copy，
+  基于Subset , sort the array
+  remove duplicated in the for loop
 */
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
- var subsets = function (nums) {
+ var subsetsWithDup = function(nums) {
+  nums.sort((a, b)=> a-b);
   const res = [];
+  
   const helper = (length, start, curr) => {
     if (curr.length == length) {
       res.push([...curr]);
@@ -31,6 +27,9 @@ helper funciton(length, start pos): 终止条件
     }
 
     for (let i = start; i < nums.length; i++) {
+      //  remove duplicated!
+      if(i > start && nums[i] == nums[i-1])
+        continue;
       curr.push(nums[i]);
       helper(length, i + 1, curr);  // NOT start + 1
       curr.pop();
@@ -43,4 +42,3 @@ helper funciton(length, start pos): 终止条件
   }
   return res;
 };
-

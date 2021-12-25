@@ -33,12 +33,6 @@ var arr = Array.from(Array(R), () => Array(C).fill(val)); // BEST one
 let ordered = [...arr].sort((a, b) => a - b);
 
 
-/*
-  Stack 
-*/
-
-const newLength = arr.push(1);
-const val = arr.pop();
 
 /*
     Merge array

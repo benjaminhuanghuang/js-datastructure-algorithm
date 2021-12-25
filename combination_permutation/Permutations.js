@@ -7,6 +7,13 @@ https://leetcode.com/problems/permutations/
 
 */
 
+/*
+https://zxi.mytechroad.com/blog/searching/leetcode-46-permutations/
+Solution: DFS
+Time complexity: O(n!)
+Space complexity: O(n)
+*/
+
 
 /**
  * @param {number[]} nums

@@ -2,6 +2,8 @@
 658. Find K Closest Elements
 
 https://leetcode.com/problems/find-k-closest-elements/
+
+sorted array, return the k closest integers to x in the array.
 */
 
 /**
