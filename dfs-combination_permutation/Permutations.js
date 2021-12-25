@@ -14,36 +14,31 @@ Time complexity: O(n!)
 Space complexity: O(n)
 */
 
-
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
- var permute = function(nums) {
-  const ans=[];
+var permute = function (nums) {
+  const ans = [];
   const used = new Array(nums.length).fill(0);
 
-  const dfs = (nums, used, curr, ans) =>
-  {
-    if (curr.length == nums.length)
-    {
+  const dfs = (curr, used) => {
+    if (curr.length == nums.length) {
       ans.push([...curr]);
       return;
     }
 
-    for (let i = 0; i < nums.length; i++)
-    {
-      if (used[i])
-        continue;
+    for (let i = 0; i < nums.length; i++) {
+      if (used[i]) continue;
 
       curr.push(nums[i]);
       used[i] = 1;
-      dfs(nums, used, curr, ans);
+      dfs(curr);
       curr.pop();
       used[i] = 0;
     }
-  }
-  dfs(nums, used, [], ans);
+  };
+  dfs([], used);
 
   return ans;
 };
