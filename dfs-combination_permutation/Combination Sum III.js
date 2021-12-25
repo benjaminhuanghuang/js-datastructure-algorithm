@@ -19,7 +19,7 @@ var combinationSum3 = function (k, n) {
 
     for (let i = start; i <= 9; i++) {
       curr.push(i);
-      dfs(garget- i, i + 1, curr);
+      dfs(target- i, i + 1, curr);
       curr.pop();
     }
   };
