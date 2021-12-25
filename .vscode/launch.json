@@ -7,7 +7,7 @@
     "name": "Launch",
     "type": "node",
     "request": "launch",
-    "program": "${workspaceRoot}/real-problems/Integer to English Words.js",
+    "program": "${workspaceRoot}/graph/Rabbit Hole.js",
     },
 ]
 }
