@@ -7,6 +7,17 @@ https://leetcode.com/problems/partition-equal-subset-sum/
 */
 
 /*
+0-1背包的恰好装满的问题
+选择若干物品,使得物品价值和  恰好等于sum(array)/2
+背包容量: sum(array)/2
+重量花费cost: array[i]
+物品价值: 0         本题: 也可以将"价值"设定为array[i]
+
+恰好装满: dp[0]=0, dp[1,...V]=INT_MIN
+*/
+
+
+/*
 https://www.youtube.com/watch?v=IsvocB5BJhw&ab_channel=NeetCode
 
 根据decision tree 得出 O( N* sum(nums)/2)

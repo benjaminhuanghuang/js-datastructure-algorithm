@@ -7,7 +7,7 @@ https://leetcode.com/problems/target-sum
 */
 
 /*
-
+  思路：用从pos开始的 数字构造 target
   DFS
   Time complexity: O(2^n)
   Space complexity: O(n)
@@ -21,15 +21,15 @@ https://leetcode.com/problems/target-sum
 var findTargetSumWays = function (nums, target) {
   let ans = 0;
 
-  const dfs = (nums, target, pos) => {
+  const dfs = (target, pos) => {
     if (pos == nums.length) {
       if (target == 0) ++ans;
       return;
     }
-    dfs(nums, target + nums[pos], pos + 1);
-    dfs(nums, target - nums[pos], pos + 1);
+    dfs(target + nums[pos], pos + 1);
+    dfs(target - nums[pos], pos + 1);
   };
 
-  dfs(nums, target, 0);
+  dfs(target, 0);
   return ans;
 };
