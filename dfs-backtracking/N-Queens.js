@@ -6,6 +6,10 @@
   https://leetcode.com/problems/n-queens/
 */
 
+/*
+ Time complexity: O(N!) 
+
+*/
 /**
  * @param {number} n
  * @return {string[][]}
@@ -17,14 +21,18 @@ var solveNQueens = function (n) {
 
   // the col index of queen on each of row
   const colsUsed = new Array(n).fill(false);
+  // 每个方向 有 n + n -1 个斜边
   const diagonal135Used = new Array(n + n - 1).fill(false);
   const diagonal45Used = new Array(n + n - 1).fill(false);
 
   // put queen on (row, col)
   const dfs = (row, col) => {
-    const indexOfDiagonal135 = row + n - col -1;
+    // (Na)
+    // row - col =  -(n-1), -(n-2) ....(n-1)
+    const indexOfDiagonal135 = row + n - col - 1;
+    // (Pie)
+    // row + col = 0, 1, 2, ...n-2
     const indexOfDiagonal45 = row + col;
-    
     if (colsUsed[col] || diagonal135Used[indexOfDiagonal135] || diagonal45Used[indexOfDiagonal45]) {
       return;
     }
@@ -37,12 +45,12 @@ var solveNQueens = function (n) {
 
     if (row == n - 1) {
       result.push(board.map((row) => row.join("")));
-      return;
+      //return; // Do not return!!!
+    } else {
+      for (let k = 0; k < n; k++) {
+        dfs(row + 1, k);
+      }
     }
-    for (let k = 0; k < n; k++) {
-      dfs(row + 1, k);
-    }
-
     // if possible put the queen
     board[row][col] = ".";
     colsUsed[col] = false;
