@@ -24,7 +24,7 @@ Space O(KN)
  */
 var combinationSum2 = function (candidates, target) {
   candidates.sort((a, b) => a-b);
-  const ans = [];
+  const ans = new Set();
 
   const dfs = (target, pos, curr)=>{
     if(target == 0)
