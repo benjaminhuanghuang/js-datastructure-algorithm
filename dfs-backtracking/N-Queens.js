@@ -26,7 +26,7 @@ var solveNQueens = function (n) {
   const diagonal45Used = new Array(n + n - 1).fill(false);
 
   // put queen on (row, col)
-  const dfs = (row, col) => {
+  const backtracking = (row, col) => {
     // (Na)
     // row - col =  -(n-1), -(n-2) ....(n-1)
     const indexOfDiagonal135 = row + n - col - 1;
@@ -59,7 +59,7 @@ var solveNQueens = function (n) {
   };
 
   for (let col = 0; col < n; col++) {
-    dfs(0, col);
+    backtracking(0, col);
   }
 
   return result;
