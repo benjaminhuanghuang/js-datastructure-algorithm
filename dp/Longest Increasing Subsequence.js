@@ -23,18 +23,20 @@ var lengthOfLIS = function (nums) {
   const mem = new Array(n).fill(0);
   let ans = 0;
 
-  // length of LIS ends with nums[r]
-  const LIS = (r) => {
-    if (r == 0) return 1;
-    if (mem[r] > 0) return mem[r];
+  // length of LIS ends with nums[i]
+  const LIS = (i) => {
+    if (i == 0) return 1;
+    if (mem[i] > 0) return mem[i];
+
     let ans = 1;
-    for (let i = 0; i < r; ++i) {
-      if (nums[r] > nums[i]) {
-        ans = Math.max(ans, LIS(i) + 1);
+    for (let i_sub = 0; i_sub < i; ++i_sub) {
+      // check the sub string before i
+      if (nums[i] > nums[i_sub]) {
+        ans = Math.max(ans, LIS(i_sub) + 1);
       }
     }
-    mem[r] = ans;
-    return mem[r];
+    mem[i] = ans;
+    return mem[i];
   };
 
   for (let i = 0; i < n; ++i) {
