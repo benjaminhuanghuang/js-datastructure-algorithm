@@ -16,12 +16,42 @@ Brute force : O(Coins^Amount)
 Memoization : O(Coins * Amount)
 */
 
+/*
+Solution:  up to bottom
+
+to case [1, 2, 5], 5 the recursion tree is
+                         5
+          use 1 /   ues 2|    use 5\ 
+           4            3           0
+      /    |    \
+     3     2     X              
+*/
+var coinChange_up_bottom = function (coins, amount) {
+  const mem = new Map();
+  // i is the index of the coins
+  // currAmount is the current amount
+  const makeChange = (i, currAmount) => {
+    if (currAmount == 0) return 1; // find a path
+    if (currAmount < 0) return 0;
+    if (i == coins.length) return 0; // no more coin
+    const memKey = i + " " + currAmount;
+    if (mem.has(memKey)) return mem.get(memKey);
+
+    // way = using coins[i] + don't use coins[i]
+    const way = makeChange(i, currAmount - coins[i]) + makeChange(i + 1, currAmount);
+    mem.set(memKey, way);
+    return way;
+  };
+
+  return makeChange(0, amount);
+};
+
 /**
  * @param {number[]} coins
  * @param {number} amount
  * @return {number}
  */
-var coinChange = function (coins, amount) {
+var coinChange_up_bottom = function (coins, amount) {
   // i is the index of the coins
   // amount is the current amount
   const dfs = (i, a) => {
@@ -29,7 +59,7 @@ var coinChange = function (coins, amount) {
     if (a > amount) return 0;
     if (i == coins.length) return 0;
 
-    const way = def(i, a + coins[i]) + dfs(i + 1, a);
+    const way = dfs(i, a + coins[i]) + dfs(i + 1, a);
   };
 
   return dfs(0, 0);
@@ -48,7 +78,6 @@ var coinChange = function (coins, amount) {
 
   return dp[amount][0];
 };
-
 
 /*
     Let us use dp[i] to denote the number of ways to sum up to amount i.
