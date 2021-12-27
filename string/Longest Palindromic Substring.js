@@ -7,6 +7,7 @@ https://leetcode.com/problems/longest-palindromic-substring/
 Given a string s, return the longest palindromic substring in s.
 
 # 647. Palindromic Substrings
+# 516. Longest Palindromic Subsequence
 
 */
 
@@ -125,7 +126,7 @@ var longestPalindrome_DP = function (s) {
 
 /*
   recursion and memorization
-  思路错误
+  思路错误, 此方法适用于 Longest Palindromic Subsequence
   aacabdkacaa
   "cbbd"
 */
@@ -147,10 +148,6 @@ var longestPalindrome_RM_Wrong = function (s) {
       const s2 = dfs(start, end - 1);
       if (s2[1].length > ans[1].length) {
         ans = s2;
-      }
-      const s3 = dfs(start + 1, end - 1);
-      if (s3[1].length > ans[1].length) {
-        ans = s3;
       }
       ans[0] = false;
       return ans;
