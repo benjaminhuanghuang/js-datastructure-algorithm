@@ -7,7 +7,7 @@
     "name": "Launch",
     "type": "node",
     "request": "launch",
-    "program": "${workspaceRoot}/dp/Coin Change.js",
+    "program": "${workspaceRoot}/dp/Longest Palindromic Substring.js",
     },
 ]
 }

@@ -32,8 +32,8 @@ f(i, j) 中 i, j 是 两个字符串的index（也可以是长度）
 f(i, j) 和 f(i-1, j), f(i, j-1), f(i-1, j-1) 有某种关系
 
 ## Palindromes
-- Longest Palindromic Substring
-- Palindromic Substrings
+- Longest Palindromic Substring ( try every position,odd length and even length )   
+- Palindromic Substrings ( try every position,odd length and even length )              
 - Longest Palindromic Subsequence
 
 

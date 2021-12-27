@@ -20,7 +20,7 @@ What is the sub-problem?
   bottom - up
 */
 
-function knapsack(capacity, W, V){
+function knapsack_DP(capacity, W, V){
   // row reprsent items, cols represent the weight of the knapsack
   const dp = Array.from(Array(W.length+1), ()=>Array(capacity+1).fill(0))
 
