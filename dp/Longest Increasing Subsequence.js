@@ -30,7 +30,7 @@ var lengthOfLIS = function (nums) {
 
     let ans = 1;
     for (let i_sub = 0; i_sub < i; ++i_sub) {
-      // check the sub string before i
+      // check the chars before i
       if (nums[i] > nums[i_sub]) {
         ans = Math.max(ans, LIS(i_sub) + 1);
       }

@@ -79,6 +79,7 @@ var coinChange = function (coins, amount) {
     mem.set(amount, minMakeUp);
     return minMakeUp;
   };
+  
   const ans = findFewest(amount);
   if (ans >= MAX) return -1;
   return ans;
