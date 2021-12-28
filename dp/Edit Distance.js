@@ -15,8 +15,8 @@ var minDistance = function (word1, word2) {
   const mem = Array.from(Array(l1 + 1), () => Array(l2 + 1).fill(-1));
 
   const helper = (l1, l2) => {
-    if (l1 == 0) return l2;
-    if (l2 == 0) return l1;
+    if (l1 == 0) return l2;   // delete all
+    if (l2 == 0) return l1;   // 
     if (mem[l1][l2] >= 0) return mem[l1][l2];
 
     let ans;

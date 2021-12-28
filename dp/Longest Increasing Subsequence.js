@@ -30,7 +30,7 @@ var lengthOfLIS = function (nums) {
 
     let ans = 1;
     for (let i_sub = 0; i_sub < i; ++i_sub) {
-      // check the chars before i
+      // check the chars before i, can append nums[i] to the LIS end nums[]
       if (nums[i] > nums[i_sub]) {
         ans = Math.max(ans, LIS(i_sub) + 1);
       }

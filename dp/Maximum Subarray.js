@@ -4,11 +4,26 @@
   Easy
 
   https://leetcode.com/problems/maximum-subarray/
+
+  Maximum Subarray
 */
 
 /**
   DP
 */
+var maxSubArray = function (nums) {
+  // solution[i] is the solution of sub array end with nums[i]
+  const solution = new Array(nums.length);
+
+  solution[0] = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    // use nums[i] or start a new sum
+    solution[i] = Math.max(solution[i - 1] + nums[i], nums[i]);
+  }
+  return Math.max(...solution);
+};
+
 var maxSubArray = function (nums) {
   // max subarry ends with pos i
   const dp = (i) => {
