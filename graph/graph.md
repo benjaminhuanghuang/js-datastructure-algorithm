@@ -31,12 +31,6 @@ Time O(N)
 use Set() to detect sycle
 
 
-## Dijkstra's algorithm (Short path)
-  Use a minHeap  (path, node)
-
-  Time complexity O(E * logV)
-  
-  Space complexity O(N +E)
 
 ## Undirected Graph
 The data structure is represented by an **adjacency matrix** (that is, a two-dimensional array) and an adjacency list. 

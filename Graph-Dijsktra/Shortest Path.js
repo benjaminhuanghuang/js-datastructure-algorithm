@@ -29,7 +29,7 @@ var shortestPath = function (a, b) {
       toVisit.push(node);
       partens.set(n, curr);
     }
-    if(!partens.has(b))
+    if(!partens.has(b)) // Find cycle
     {
       return null;
     }
