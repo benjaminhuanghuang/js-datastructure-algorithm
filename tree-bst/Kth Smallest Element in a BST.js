@@ -14,6 +14,7 @@ var kthSmallest = function (root, k) {
     if (!root) return -1;
     const x = inorder(root.left);
     if (k == 0) return x;
+    // 每经过一个node, k--
     k--;
     if (k == 0) return root.val;
     return inorder(root.right);
@@ -21,6 +22,8 @@ var kthSmallest = function (root, k) {
 
   return inorder(root);
 };
+
+
 /*
  Easer version
 */
