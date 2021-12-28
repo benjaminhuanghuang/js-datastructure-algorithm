@@ -1,7 +1,10 @@
 /*
 560. Subarray Sum Equals K
 
+Medium
+
 https://leetcode.com/problems/subarray-sum-equals-k/
+
 */
 
 /* 1.   Brute Force : Time Limit Exceeded
@@ -71,6 +74,7 @@ var subarraySum = function (nums, k) {
   for (let i = 0; i < nums.length; i++) {
     prefixSum += nums[i];
     if (sums.has(prefixSum - k)) {
+      // prefixSum[i] - prefixSum[j] = k
       count += sums.get(prefixSum - k);
     }
     if (sums.has(prefixSum)) {
@@ -113,3 +117,11 @@ var subarraySum = function (nums, k) {
   }
   return ans;
 };
+
+
+/*
+https://www.youtube.com/watch?v=fFVZt-6sgyo&ab_channel=NeetCode
+
+*/
+
+

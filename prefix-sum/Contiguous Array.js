@@ -11,13 +11,17 @@ equal number of 0 and 1
 /*
   https://www.youtube.com/watch?v=uAGt1QoAoMU&ab_channel=HuaHua
 
-  Solution 
-  Covert 0 to -1, -> sum of subarray == 0
-  use a map to track the first index of each prefix sum
-
-  when prefix i == prefix j, that means sum(i+1 , j) == 0
-  */
-
+  Brute Force:
+    Time complexity: O(N^3)
+    
+  Solution: HashTable + prefix sum
+  1. Covert 0 to -1, -> sum of subarray == 0
+  2.  use a map to track 每个 prefix sum (sum of element 0 to element i) 第一次出现的index
+   
+  when prefix i == prefix j, that means sum(i+1 , j) == 0, ans = max(ans, j-i)
+  
+   Time complexity: O(N)
+*/
 /**
  * @param {number[]} nums
  * @return {number}
@@ -25,19 +29,21 @@ equal number of 0 and 1
 var findMaxLength = function (nums) {
   if (nums.length === 0) return 0;
 
-  const pos = new Map();
-  let sum = 0;
-  let ans = 0;
+  const prefixPos = new Map(); // prefix->index
+  let prefixSum = 0;
+  let maxLen = 0;
   for (let i = 0; i < nums.length; ++i) {
     // prefix sum
-    sum += nums[i] === 1 ? 1 : -1;
-    if (sum == 0) {
-      ans = i + 1;
-    } else if (pos.has(sum)) {
-      ans = Math.max(ans, i - pos.get(sum));
+    prefixSum += nums[i] === 1 ? 1 : -1;
+    if (prefixSum == 0) {
+      maxLen = i + 1;
     } else {
-      pos.set(sum, i);
+      if (prefixPos.has(sum)) {
+        maxLen = Math.max(maxLen, i - prefixPos.get(prefixSum));
+      } else {
+        pos.set(prefixSum, i);
+      }
     }
   }
-  return ans;
+  return maxLen;
 };
