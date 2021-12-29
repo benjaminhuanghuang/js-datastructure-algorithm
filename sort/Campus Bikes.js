@@ -9,6 +9,8 @@ Medium
 https://leetcode.com/problems/campus-bikes/
 https://ttzztt.gitbooks.io/lc/content/sort/bucket-sort/campus-bikes.html
 
+choose the (worker, bike) pair with the shortest Manhattan distance between each other
+
 Resutl :[1,0]
 Explanation: 
 Worker 1 grabs Bike 0  and Worker 0 is assigned Bike 1. So the output is [1, 0].
