@@ -15,6 +15,8 @@ https://www.youtube.com/watch?v=3mY5W0yojtA&ab_channel=HuaHua
 - 花花酱 LeetCode DP2 - 刷题找工作 SP9
 https://www.youtube.com/watch?v=eLlZEYzZVyQ&ab_channel=HuaHua
 
+- 动态规划四步解题法—搞定绝大多数类型动态规划题
+https://www.youtube.com/watch?v=dHeBncN-dZo&list=WL&index=13
 
 
 ## 思路
