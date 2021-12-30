@@ -24,8 +24,8 @@ https://leetcode.com/problems/isomorphic-strings/
     }
     else
     {
-      s2t[s[i]] = t[i];
-      t2s[t[i]] = s[i];
+      s2t.set(s[i],t[i]);
+      t2s.set(t[i],s[i]);
     }
   }
   return true;
