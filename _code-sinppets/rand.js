@@ -4,3 +4,8 @@ Math.random();//  returns a random number between 0 (inclusive),  and 1 (exclusi
 function randomNumber(min, max) { 
   return Math.random() * (max - min) + min;
 } 
+
+
+
+// get random element from array
+const guess = wordlist[Math.floor(Math.random() * wordlist.length)];
