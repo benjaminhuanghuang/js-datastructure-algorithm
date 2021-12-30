@@ -41,7 +41,7 @@ var solveSudoku = function (board) {
     let nextY = nextX === 0 ? y + 1 : y;
 
     // already has number, DFS next element
-    if (board[y][x] !== ".") return dfs(board, nextX, nextY, rows, cols, boxes);
+    if (board[y][x] !== ".") return dfs(nextX, nextY);
 
     // fill number from 1 - 9
     for (let i = 1; i <= 9; i++) {
@@ -56,7 +56,7 @@ var solveSudoku = function (board) {
         boxes[box_index][i] = 1;
         board[y][x] = i.toString();
         // Try to fill next element, if success return true, or recover
-        if (dfs(board, nextX, nextY, rows, cols, boxes)) return true;
+        if (dfs(nextX, nextY)) return true;
         // recover data
         board[y][x] = ".";
         boxes[box_index][i] = 0;
