@@ -5,7 +5,7 @@ https://leetcode.com/problems/sort-list/
 */
 
 /*
-    Hua Hua
+Solution : Merge Sort
     https://www.youtube.com/watch?v=M1TwY0nsTZA
     Merge Sort(Top-Down): 
       1.Split list into two parts

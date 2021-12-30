@@ -39,7 +39,8 @@ var findOrder = function (numCourses, prerequisites) {
     }
 
     visit[cur] = 2; // deepest stack, no neighbour
-    order.push(cur);
+    // Construct the path
+    order.push(cur);  
     return false;
   };
 
