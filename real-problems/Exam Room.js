@@ -41,11 +41,12 @@ ExamRoom.prototype.seat = function () {
       const dist = Math.floor((curr-pre) /2);
       if(dist > maxDist) {
         maxDist = dist;
-        seat = pre + dist;
+        seat = pre + dist; // set at max dist
       }
     }
     pre = curr;
   }
+  // dist betweet last student to N -1 
   if(this.N -1 - this.seats[this.seats.length -1] > maxDist){
     seat = this.N -1;
   }
