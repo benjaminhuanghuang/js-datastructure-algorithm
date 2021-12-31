@@ -15,3 +15,11 @@ Handle the root node
 ## Template 2: two roots
 - Same tree, symmetric tree
 
+## Neet helper function 
+特征：This path may or may not pass through the root.
+
+124. Binary Tree Maximum Path Sum
+
+543. Diameter of Binary Tree
+
+687. Longest Univalue Path
