@@ -19,3 +19,7 @@ for (let value of map.values()){
 for (let [key, value] of  map.entries()) {
 	console.log(key + " = " + value)
 }
+
+// Sort the keys
+let keys = [... map.keys()]
+keys.sort()

@@ -7,6 +7,10 @@
   Space (N)     因为call stack 和 二叉树的高度为一样N
 
 
+## Recursion + string
+因为没有backtracking， 每个字符处理一次，因此TC 为 O(N)
+- 726. Number of Atoms
+
 ## Tree path
   Time O(N)   每个节点一次
   Space O(H)  树深度
