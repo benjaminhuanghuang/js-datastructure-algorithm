@@ -14,7 +14,7 @@ Array.from(new Set(loop(array)));
 // Generate a sequence of numbers
 // Since the array is initialized with `undefined` on each position,
 // the value of `v` below will be `undefined`
-Array.from({length: 5}, (v, i) => i);
+Array.from({ length: 5 }, (v, i) => i);
 // [0, 1, 2, 3, 4]
 
 //----------------------------------------------------------
@@ -34,8 +34,6 @@ const board = new Array(n).fill(0).map((_) => Array(n).fill("."));
 
 // Sort
 let ordered = [...arr].sort((a, b) => a - b);
-
-
 
 /*
     Merge array
@@ -72,3 +70,9 @@ console.log(maxValue);
 function arrayEquals(a, b) {
   return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((val, index) => val === b[index]);
 }
+
+// count the number
+const count = arr.reduce((acc, num) => {
+  acc[num] = (acc[num] || 0) + 1;
+  return acc;
+}, {});

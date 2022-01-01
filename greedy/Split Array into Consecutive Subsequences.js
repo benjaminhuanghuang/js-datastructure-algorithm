@@ -4,16 +4,20 @@
 Level: Medium
 
 https://leetcode.com/problems/split-array-into-consecutive-subsequences
+
+# 1296. Divide Array in Sets of K Consecutive Numbers
 */
 
 /*
-  Solution: 
+  Solution: Gready
+
   https://www.youtube.com/watch?v=5GZ2NCtloW0&ab_channel=HuifengGuan
 
   扑克牌算法，必须全部弄成“顺子”。一个“顺子”至少3张连续的牌。
   每一个数字都尽量向前加一个sequence
   记录ending number
-
+  
+  这个方法的缺点在于 如果要求组成K张连续的牌，就不能工作了，
 */
 
 /**
