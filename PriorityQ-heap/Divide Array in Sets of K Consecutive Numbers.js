@@ -12,6 +12,7 @@ https://leetcode.com/problems/split-array-into-consecutive-subsequences
 /*
   Solution: Gready
   注意，和# 659不同，#1296要求set中数字是连续的
+  sort,  check K numbers
 */
 
 /**
@@ -19,23 +20,27 @@ https://leetcode.com/problems/split-array-into-consecutive-subsequences
  * @param {number} k
  * @return {boolean}
  */
-var isPossibleDivide = function (nums, k) {
+ var isPossibleDivide = function (nums, k) {
   if (nums.length % k) return false;
+  // 1. sort
+  nums.sort((a,b) => a -b);
+  // 2. counts
   const counts = new Map(); // number => count
-  for (const num of nums) {
+  for (const n of nums) {
     if (counts.has(n)) {
-      counts.set(n, count.get(n) + 1);
+      counts.set(n, counts.get(n) + 1);
     } else {
       counts.set(n, 1);
     }
   }
+  //3. check numbers
   for (const [curr, count] of counts) {
     if (count > 0) {
       for (let i = 1; i < k; i++) {
         if (!counts.has(curr + 1)) {
           return false;
         }
-        counts.set(curr + 1, count.get(curr + i) - n);
+        counts.set(curr + i, counts.get(curr + i) - count);
         if (counts.get(curr + i) < 0) {
           return false;
         }
@@ -44,3 +49,4 @@ var isPossibleDivide = function (nums, k) {
   }
   return true;
 };
+
