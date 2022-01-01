@@ -1,6 +1,8 @@
 /*
 621. Task Scheduler
 
+Medium
+
 https://leetcode.com/problems/task-scheduler/
 */
 
@@ -8,10 +10,9 @@ https://leetcode.com/problems/task-scheduler/
 /*
 https://www.youtube.com/watch?v=YCD_iYxyXoo&ab_channel=HuaHua
 
+相同task之间必须有cooldown
 K-1 group
 每个group n+1 slot
-
-
 
 https://github.com/JSerZANP/leetCode_solutions/blob/main/621-task-scheduler.md
 */
