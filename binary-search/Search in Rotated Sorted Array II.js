@@ -39,6 +39,7 @@ var search = function (nums, target) {
       // target is less than mid
       else r = mid - 1;
     } else {
+      // nums[l] > nums[mid]
       l++;
     }
   }

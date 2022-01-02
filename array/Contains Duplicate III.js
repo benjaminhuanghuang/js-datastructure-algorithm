@@ -3,6 +3,7 @@
 
   https://leetcode.com/problems/contains-duplicate-iii/
 
+  same as 219. Contains Duplicate II
 */
 
 
