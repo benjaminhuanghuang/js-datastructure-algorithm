@@ -9,7 +9,7 @@ https://leetcode.com/problems/unique-binary-search-trees/
   Set the root to each of the number 
 
   左树节点数 0 到 n-1， 右树节点数 n-1 到 0  
-  f(n) = f(0) * f(n-1) + f(1) * f(n-2) + ... + f(n-1) + f(0) = 
+  f(n) = f(0) * f(n-1) + f(1) * f(n-2) + ... + f(n-1) * f(0) = 
 *
 /**
  * @param {number} n
