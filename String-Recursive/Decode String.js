@@ -44,13 +44,13 @@ var decodeString = function (s) {
       i++;
     } else if (ch == "]") {
       // 取出计算结果，和数字
-      let temp = ansStack.pop();
+      let prevAns = ansStack.pop();
       const repeatTimes = countStack.pop();
 
       for (let j = 0; j < repeatTimes; j++) {
-        temp += ans;
+        prevAns += ans;
       }
-      ans = temp;
+      ans = prevAns;
       i++;
     } else {
       // current char is letter
