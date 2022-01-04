@@ -24,17 +24,18 @@ var getOrder = function (tasks) {
   let res = [];
 
   while (tasks.length || pq.size()) {
-    while (tasks.length && curtime >= A[A.length - 1][0])
+    while (tasks.length && curtime >= tasks[A.length - 1][0]) {
       //get everything available inside the pq
       pq.enqueue(A.pop());
+    }
     if (pq.size()) {
       //make the selection
       let [e, p, idx] = pq.dequeue()["element"];
       curtime += Number(p);
       res.push(idx);
-    } else if (A.length)
+    } else if (tasks.length)
       //otherwise, increment time for the next element.
-      curtime = A[A.length - 1][0];
+      curtime = tasks[tasks.length - 1][0];
   }
   return res;
 };
