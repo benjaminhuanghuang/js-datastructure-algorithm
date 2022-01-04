@@ -32,13 +32,15 @@ var strStr = function (haystack, needle) {
       // if characters match, we can move to check next characters
       i += 1;
       j += 1;
-    } else if (j > 0) {
-      // when characters do not match, and we have a repeating
-      // suffix-prefix pair, we still need to check after the prefix
-      j = prefixTable[j - 1];
     } else {
-      // if characters do no match, and no repetition, we can move on
-      i += 1;
+      if (j > 0) {
+        // when characters do not match, and we have a repeating
+        // suffix-prefix pair, we still need to check after the prefix
+        j = prefixTable[j - 1];
+      } else {
+        // if characters do no match, and no repetition, we can move on
+        i += 1;
+      }
     }
   }
   return j === needle.length ? i - j : -1;
