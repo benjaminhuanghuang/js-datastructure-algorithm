@@ -20,6 +20,8 @@ https://leetcode.com/problems/reorganize-string/
  * @return {string}
  */
  var reorganizeString = function (s) {
+
+  // 1. count chars
   const counter = new Map();
 
   for (const c of s) {
@@ -29,7 +31,7 @@ https://leetcode.com/problems/reorganize-string/
       counter.set(c, 1);
     }
   }
-
+  // 2. put char->count into heap
   const maxHeap = new PriorityQueue((item1, item2)=>{
     return item1[1] > item2[1]
   });
@@ -38,6 +40,8 @@ https://leetcode.com/problems/reorganize-string/
   {
     maxHeap.push(kv);
   }
+
+  // 3. select the most-frequent element
   let prevMostFrequent;
   let res = ''
 
