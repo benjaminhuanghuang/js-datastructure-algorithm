@@ -1,4 +1,12 @@
-/* Trie Data Structure */
+/* 
+  Trie Data Structure 
+
+  add()
+
+  search()
+
+
+*/
 
 let TrieNode = function() {
 	this.keys = new Map();
