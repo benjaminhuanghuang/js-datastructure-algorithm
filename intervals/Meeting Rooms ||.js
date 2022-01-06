@@ -38,6 +38,7 @@ function minMeetingRooms(intervals) {
       s += 1;
       count += 1;
     } else {
+      // starts[s] >= ends[e] mines one meeting is finised 
       e++;
       count -= 1;
     }
