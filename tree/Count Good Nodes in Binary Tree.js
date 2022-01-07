@@ -18,5 +18,6 @@ var goodNodes = function (root) {
       (node.val >= maxVal ? 1 : 0)
     );
   };
+  
   return dfs(root, Number.MIN_SAFE_INTEGER);
 };

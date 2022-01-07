@@ -46,8 +46,12 @@ function palindrome(input) {
           right --;
        }
     }
-
-    for(let j = right; j < n-i-left; j--){
+    if(right == left) {
+      if(++count  >1){
+        return -1;
+      }
+    }
+    for(let j = right; j < n-i-left; j++){
       const tmp = input[right];
       input[right] = input[right-1];
       input[right-1] = tmp;
