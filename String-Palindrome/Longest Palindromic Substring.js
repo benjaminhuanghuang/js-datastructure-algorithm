@@ -54,6 +54,7 @@ var longestPalindrome_BF = function(s) {
   Space complexity: O(1)
 */
 var longestPalindrome = function (s) {
+  // helper
   const getLen = (s, l, r) => {
     while (l >= 0 && r < s.length && s.charAt(l) === s.charAt(r)) {
       l--;
@@ -61,6 +62,7 @@ var longestPalindrome = function (s) {
     }
     return r - l - 1;
   };
+  
   let maxLen = 0;
   let start = 0;
   for (let i = 0; i < s.length; ++i) {
