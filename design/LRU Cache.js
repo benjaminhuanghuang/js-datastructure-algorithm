@@ -10,6 +10,12 @@ The functions get and put must each run in O(1) average time complexity.
 /*
   hashtable + double linked list
   Least Recently Used node is the tail
+
+  public interface : get(), put()
+  helper funciton: remove(), insert/append()
+
+  时间复杂度get O(1), set O(1)
+  空间复杂度O(n) 
   
 */
 var ListNode = function (key, val) {
