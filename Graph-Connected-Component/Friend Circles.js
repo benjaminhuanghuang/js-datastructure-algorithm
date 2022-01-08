@@ -14,9 +14,15 @@ If M[i][j] = 1, then the ithand jth students are direct friends with each other,
 And you have to output the total number of friend circles among all the students.
 
 
-DFS 求连通分量
+DFS 无向图求连通分量的数量
 
+# 200. Number of Islands
 # 547. Number of Provinces
+*/
+
+/*
+  Time Complexity O(N^2)
+  Space Complexity O(N)
 */
 /**
  * @param {number[][]} M
@@ -31,7 +37,7 @@ var findCircleNum = function (M) {
   const visited = new Array(n).fill(0);
   let ans = 0;
 
-  // 砍掉所有与curr有关联的节点
+  // 砍掉所有与curr有关联的节点，visited
   const dfs = (curr) => {
     if (visited[curr]) return;
     visited[curr] = 1;
@@ -46,8 +52,8 @@ var findCircleNum = function (M) {
 
   for (let i = 0; i < n; i++) {
     if (visited[i]) return;
-    dfs(i);
-    ans++;
+    dfs(i);  
+    ans++;  // for 每个non-visited i
   }
 };
 
