@@ -47,7 +47,7 @@ https://leetcode.com/problems/accounts-merge/
     // account: [name, email1, email2....]
     const name = account[0];
     for(let i = 1;i < account.length; i++){
-      const email = account[i];  // first email
+      const email = account[i];  // every email
       emails.add(email);
       emailToName.set(email, name);
       if(!emailGraph.has(email)){
@@ -85,6 +85,78 @@ https://leetcode.com/problems/accounts-merge/
   }
   return res;
  }
+ /*
+
+  Union-Find
+
+https://www.youtube.com/watch?v=SaDPCgT-EbQ&ab_channel=HuifengGuan
+
+ */
+/**
+ * @param {string[][]} accounts
+ * @return {string[][]}
+ */
+ var accountsMerge = function(accounts) {
+  const parents = new Map(); // email to root email
+  const emailToName = new Map();  
+  
+  const findParent =(curr)=> {
+    if(parents.get(curr) != curr){
+      parents.set(curr, findParent(parents.get(curr)))
+    }
+    return parents.get(curr);
+  }
+
+  const union = (x, y) =>{
+     x = parents.get(x);
+     y = parents.get(y);
+
+    if(x < y){
+      parents.set(y, x);
+    }
+    else{
+      parents.set(x,y);
+    }
+  }
+  // union find
+  for(const account of accounts) {
+    // account: [name, email1, email2....]
+    const name = account[0];
+    const email0 = account[1];
+    if(!parents.has(email0)){
+      parents.set(email0, email0);
+    }
+    emailToName.set(email0, name);
+    // set parent of all email to email0
+    for(let i = 2;i < account.length; i++){
+      const email = account[i];  // every email
+      emailToName.set(email, name);
+      if(!parents.has(email)){
+        parents.set(email, email);
+      }
+      if(findParent(email0)!= findParent(email)){
+        union(email0, email);
+      }
+    }
+  }
+    // 2. Group the email
+  const group  = new Map();  
+  for(const [email, parent] of parents) {
+      const rootEmail = findParent(email);
+      if(!group.has(rootEmail)){
+        group.set(rootEmail, [])
+      }
+      group.get(rootEmail).push(email);
+  }
+
+  const ans= []; 
+  for(const [rootEmail, emails] of group ){
+    const accountEmails = [emailToName.get(rootEmail)].concat(emails.sort());
+      
+    ans.push(accountEmails);
+  }
+  return ans;
+ }
 
  /*
 
@@ -94,7 +166,6 @@ https://leetcode.com/problems/accounts-merge/
 
 
  */
-
 /**
  * @param {string[][]} accounts
  * @return {string[][]}
