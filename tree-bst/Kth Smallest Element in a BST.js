@@ -28,6 +28,7 @@ var kthSmallest = function (root, k) {
  Easer version
 */
 var kthSmallest = function (root, k) {
+  // return the smalles value
   const inorder = (root) => {
     if (!root) return -1;
     const x = inorder(root.left);
