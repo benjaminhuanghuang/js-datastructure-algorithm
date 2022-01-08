@@ -3,6 +3,47 @@
 210. Course Schedule II
 https://leetcode.com/problems/course-schedule-ii/
 */
+/*
+  BFS 
+
+*/
+
+var findOrder = function (numCourses, prerequisites) {
+  const graph = Array.from(Array(numCourses), () => []);
+  const indegree = Array(numCourses).fill(0);
+
+  // u depend on v, u need v first, graph is v to u
+  for (const [u, v] of prerequisites) {
+    //graph[pair[1]].push(pair[0]);
+    graph[v].push(u);
+    indegree[u]++;
+  }
+
+  const queue = [];
+  // push node with no dependceny( rank ==0 )
+  indegree.forEach((degree, i) => {
+    if (degree === 0) {
+      queue.push(i);
+    }
+  });
+  const order = [];  
+  // BFS
+  while (queue.length) {
+    const node = queue.shift();
+    order.push(node)
+    // reduce neighbour rank
+    graph[node].forEach((neigh) => {
+      indegree[neigh]--;
+      // push node with no dependceny( rank ==0 )
+      if (indegree[neigh] === 0) {
+        queue.push(neigh);
+      }
+    });
+  }
+  if(order.length != numCourses)
+    return []
+  return order;
+};
 
 /*
 
@@ -92,3 +133,6 @@ var findOrder = function (numCourses, prerequisites) {
   }
   return order;
 };
+
+
+
