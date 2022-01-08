@@ -1,14 +1,21 @@
 /*
 721. Accounts Merge
 
+Medium
+
 https://leetcode.com/problems/accounts-merge/
+
+[Facebook]
+
 */
 
 /*
   DFS
+
   https://www.youtube.com/watch?v=5v6vqoJlfE4
   要点： email的无向图
-  
+  拿到email可以知道 username
+
   Time O(M*N) (accounts size *  list size)  
   
 */
@@ -18,35 +25,43 @@ https://leetcode.com/problems/accounts-merge/
  * @return {string[][]}
  */
  var accountsMerge = function(accounts) {
-  const res = [];
-
   // corner case
   if(accounts == null || accounts.length == 0)
   {
-    return res;
+    return [];
   }
+
+  const res = [];
+
+  // email => username
   const emailToName = new Map();   
-  const emailToEmailSet = new Map();   // 无向图
+  // email graph, email => email Set
+  const emailGraph = new Map();
+  // set of email
   const emails = new Set();
+  // for DFS
   const visited = new Set();
 
+  // 1. build email graph
   for(const account of accounts) {
+    // account: [name, email1, email2....]
     const name = account[0];
     for(let i = 1;i < account.length; i++){
-      const email = account[i];
+      const email = account[i];  // first email
       emails.add(email);
       emailToName.set(email, name);
-      if(!emailToEmailSet.has(email)){
-        emailToEmailSet.set(email, new Set());
+      if(!emailGraph.has(email)){
+        emailGraph.set(email, new Set());
       }
       if(i > 1){
+        // connect every email with previous email
         emailToEmailSet.get(account[i-1]).add(email);
         emailToEmailSet.get(email).add(account[i-1]);
       }
     }
   }
   
-  // find all connected email
+  //2. find all connected email
   const dfs = (email, graph, visited, list) => {
       for(const nei of graph.get(email)){
         if(!visited.has(nei)){
@@ -56,15 +71,15 @@ https://leetcode.com/problems/accounts-merge/
         }
       }
   }
-
+  //------ main, check every email
   for(const email of emails){
     if(!visited.has(email)){
        visited.add(email);
-       const temp = [];
+       const temp = [];  // connected component
        temp.push(email);
-       dfs(email, emailToEmailSet, visited, temp); 
+       dfs(email, emailGraph, visited, temp); 
        temp.sort();
-       temp.unshift(emailToName.get(email))   // add username
+       temp.unshift(emailToName.get(email))   // add username to the email list
        res.push(temp);
     }
   }
