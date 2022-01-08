@@ -28,14 +28,15 @@ var findOrder = function (numCourses, prerequisites) {
   const visit = new Array(numCourses).fill(0);
   const order = [];
 
-  const dfs_check_cycle = (cur) => {
+  // return true if there is a cysle
+  const dfs = (cur) => {
     if (visit[cur] == 1) return true;
     if (visit[cur] == 2) return false;
 
     visit[cur] = 1; // 标记当前node 为 visiting
 
     for (const neighbour of graph[cur]) {
-      if (dfs_check_cycle(neighbour)) return true;
+      if (dfs(neighbour)) return true;
     }
 
     visit[cur] = 2; // deepest stack, no neighbour
@@ -45,7 +46,7 @@ var findOrder = function (numCourses, prerequisites) {
   };
 
   for (let i = 0; i < numCourses; ++i) {
-    if (dfs_check_cycle(i)) return [];
+    if (dfs(i)) return [];
   }
 
   return order.reverse();
