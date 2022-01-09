@@ -86,11 +86,11 @@ https://leetcode.com/problems/accounts-merge/
   return res;
  }
  /*
-
   Union-Find
+  https://www.youtube.com/watch?v=SaDPCgT-EbQ&ab_channel=HuifengGuan
 
-https://www.youtube.com/watch?v=SaDPCgT-EbQ&ab_channel=HuifengGuan
-
+  • 时间复杂度union O(1), find O(1)
+  • 空间复杂度O(n)
  */
 /**
  * @param {string[][]} accounts
@@ -166,50 +166,3 @@ https://www.youtube.com/watch?v=SaDPCgT-EbQ&ab_channel=HuifengGuan
 
 
  */
-/**
- * @param {string[][]} accounts
- * @return {string[][]}
- */
- var accountsMerge = function(accounts) {
-  const ids = new Map();   // email to id
-  const names = new Map(); // id to name
-  const p = new Array(10000).fill(0);
-  
-
-
-  const find = (x) => {
-    if (p[x] != x) p[x] = find(p[x]);
-    return p[x];
-  };
-  
-  const getIdByEmail = (email) => {
-    auto it = ids.find(email);
-    if (it == ids.end()) {
-      int id = ids.size();
-      return ids[email] = id;
-    }
-    return it->second;
-  };
-
-  for (const auto& account : accounts) {      
-    int u = find(getIdByEmail(account[1]));      
-    for (int i = 2; i < account.size(); ++i) 
-      p[find(u)] = find(getIdByEmail(account[i]));      
-    names[find(u)] = string_view(account[0]);
-  }
-
-  unordered_map<int, set<string>> mergered;
-  for (const auto& account : accounts)
-    for (int i = 1; i < account.size(); ++i) {
-      int id = find(getIdByEmail(account[i]));
-      mergered[id].insert(account[i]);
-    }    
-
-  vector<vector<string>> ans;
-  for (const auto& kv : mergered) {
-    ans.push_back({string(names[kv.first])});
-    ans.back().insert(ans.back().end(), kv.second.begin(), kv.second.end());
-  }
-
-  return ans;
-};
