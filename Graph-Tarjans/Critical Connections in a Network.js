@@ -1,7 +1,7 @@
 /*
   1192. Critical Connections in a Network
   
-  Hard
+  [Hard]
 
   A critical connection is a connection that, if removed, will make some servers unable to reach some 
   other server.
@@ -58,6 +58,7 @@ var criticalConnections = function (n, connections) {
         jump[curr] = Math.min(jump[curr], jump[child]);
       }
     }
+    // 说明有环
     if (jump[curr] == level + 1 && curr != 0) {
       result.push([parent, curr]);
     }
