@@ -1,28 +1,29 @@
 ## 常见算法
 
-## DFS (Depth first search) 
+### DFS (Depth first search) 
 Look for the neighboring edge node B from A and then find the neighboring node C from B and so on until all nodes are found
+
+Time O(N) N is the number of the nods in the graph
+
+Need Set() to detect sycle
 
 Use a Stack or recusrion
 
-Time O(N)
+###  BFS (Breadth first search)
 
-use Set() to detect sycle
-
-##  BFS (Breadth first search)
-
-Time O(N)
+Time O(N)  N is the number of the nods in the graph
 
 use Queue()
 
+Need Set() to detect sycle
 
-## Union-Find
+### Union-Find
 The number of the connected components of the graph
 
 Time O(NlogN)
 
 
-## Topologicsl Sort
+### Topologicsl Sort
 
 DFS
 
