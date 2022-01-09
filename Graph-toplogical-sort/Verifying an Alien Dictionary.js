@@ -23,7 +23,7 @@ var isAlienSorted = function (words, order) {
   const charIndex = new Map(); // char => index
 
   for (let i = 0; i < order.length; i++) {
-    charIndex.set(order[i], i);
+    charIndex.set(order.charAt(i), i);
   }
 
   for (let i = 0; i < words.length - 1; i++) {
@@ -37,7 +37,7 @@ var isAlienSorted = function (words, order) {
       }
 
       if (w1[j] != w2[j]) {
-        if (charIndex.get(w2[j] < charIndex.get(w1[j]))) {
+        if (charIndex.get(w2[j]) < charIndex.get(w1[j])) {
           return false;
         }
         break;

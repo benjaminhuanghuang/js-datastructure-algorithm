@@ -4,7 +4,8 @@
 */
 
 /*
-  
+  DFS or DP
+
     https://www.youtube.com/watch?v=KN22ZEpRTFY&ab_channel=%E5%82%85%E7%A0%81%E7%88%B7
 
     https://redquark.org/leetcode/0010-regular-expression-matching/
@@ -63,3 +64,43 @@ var isMatch = function (s, p) {
     }
     return dp[rows][columns];
 };
+
+/*
+  DFS
+*/
+
+var isMatch = function (s, p) {
+  const dfs = (s, p) =>{
+    if (p.length == 0)
+    return s.lengnt == 0;
+
+// normal case, e.g. 'a.b','aaa', 'a'
+if (p[1] != '*' || p[1] == '\0')
+{
+    // no char to match
+    if (*s == '\0')
+        return false;
+
+    if (*s == *p || *p == '.')
+        return isMatch(s + 1, p + 1);
+    else
+        return false;
+}
+else
+{
+    int i = -1;
+    while (i == -1 || s[i] == p[0] || p[0] == '.')
+    {
+        if (isMatch(s + i + 1, p + 2))
+            return true;
+        if (s[++i] == '\0')
+            break;
+    }
+    return false;
+}
+
+return false;
+  }
+
+  return dfs(s, p)
+}
