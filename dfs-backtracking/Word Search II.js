@@ -70,7 +70,7 @@ function search(board, word, pos, row, col) {
 
   Sapce Complexity: O(sum(l)) 所有单词长度
 
-  有相同前缀时有优势
+  共享前缀 有相同前缀时有优势
   
   https://www.youtube.com/watch?v=aEEJ3xHIF5o&ab_channel=HuaHua
 */
