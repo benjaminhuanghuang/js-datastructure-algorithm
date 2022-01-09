@@ -26,51 +26,45 @@
  * @param {number[][]} connections
  * @return {number[][]}
  */
- var criticalConnections = function(n, connections) {
-    
-const result = [];
+var criticalConnections = function (n, connections) {
+  const result = [];
 
   const graph = new Map();
   //1. build graph
-  for (let i = 0; i < connections.size(); i++) {
-      const [from, to] = connections[i]
-      if(!graph.has(from)){
-        graph.set(from,[])
-      }
-      graph.get(from).push(to);
-      if(!graph.has(to)){
-        graph.set(to,[])
-      }
-      graph.get(to).push(from);
+  for (let i = 0; i < connections.length; i++) {
+    const [from, to] = connections[i];
+    if (!graph.has(from)) {
+      graph.set(from, []);
+    }
+    graph.get(from).push(to);
+    if (!graph.has(to)) {
+      graph.set(to, []);
+    }
+    graph.get(to).push(from);
   }
   // 每个node见过的最小值
-  const jump = new Array(n).fill(-1); 
+  const jump = new Array(n).fill(-1);
   // start from curr node,retun the min steps
-  const dfs= (curr, parent, level) =>{
+  const dfs = (curr, parent, level) => {
     jump[curr] = level + 1;
-    for(const shild of graph.get(curr)){
-      if(child == parent){
-        continue
-      }
-      else if(jump[child] == -1){
+    for (const child of graph.get(curr)) {
+      if (child == parent) {
+        continue;
+      } else if (jump[child] == -1) {
         // child is not accessed
-        jump[curr] = Math.min(jump[curr], dfs(chilld, curr, level + 1));  
-      }
-      else{
+        jump[curr] = Math.min(jump[curr], dfs(child, curr, level + 1));
+      } else {
         // child is accessed.
-        jump[curr] = Math.min(jump[curr],jump[child]);
+        jump[curr] = Math.min(jump[curr], jump[child]);
       }
- 
     }
-    if(jump[curr] == level  +1 && crr!=-1){
+    if (jump[curr] == level + 1 && curr != 0) {
       result.push([parent, curr]);
     }
     return jump[curr];
-  }
+  };
 
   // main
-  dfs(0, -1,0);
+  dfs(0, -1, 0);
   return result;
 };
-
-
