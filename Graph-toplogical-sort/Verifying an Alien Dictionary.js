@@ -22,9 +22,9 @@ https://www.youtube.com/watch?v=OVgPAJIyX6o&ab_channel=NeetCode
 var isAlienSorted = function (words, order) {
   const charIndex = new Map(); // char => index
 
-  order.Each((c, i) => {
-    charIndex.set(c, i);
-  });
+  for (let i = 0; i < order.length; i++) {
+    charIndex.set(order[i], i);
+  }
 
   for (let i = 0; i < words.length - 1; i++) {
     const w1 = words[i];
