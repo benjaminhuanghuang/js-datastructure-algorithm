@@ -4,6 +4,9 @@
   [Hard]
 
   https://leetcode.com/problems/reverse-nodes-in-k-group/
+
+
+  # 206. Reverse Linked List
 */
 
 /**
@@ -51,7 +54,7 @@ var reverseKGroup = function (head, k) {
     let groupNext = kth.next;
 
     // revese the node in group from [groupPrev.next to kth], groupPrev is not a part of group
-    let prev = kth.next;
+    let prev = kth.next;   // 注意这里和 # 206不同，没有把prev设置成null， 因为本题需要保证list 不断开
     let curr = groupPrev.next;  // first node in the group
     while (curr != groupNext) {
       let tmp = curr.next;
@@ -59,8 +62,10 @@ var reverseKGroup = function (head, k) {
       prev = curr; 
       curr = tmp;
     }
-    let tmp = groupPrev.next;  // first of next group
+    // reverse 结束后，kth是group中的第一个node，把kth接到groupPrev上
+    let tmp = groupPrev.next;  // 现在的groupPrev.next已经是指向下一个group
     groupPrev.next = kth;  // make the kth to the first node in the group
+    // 移动 groupPrev
     groupPrev = tmp;
   }
 
