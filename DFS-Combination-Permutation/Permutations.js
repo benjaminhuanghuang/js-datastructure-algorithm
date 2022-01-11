@@ -8,7 +8,10 @@ https://leetcode.com/problems/permutations/
 */
 
 /*
+https://www.youtube.com/watch?v=s7AvT7cGdSo&ab_channel=NeetCode
+
 https://zxi.mytechroad.com/blog/searching/leetcode-46-permutations/
+
 Solution: DFS
 Time complexity: O(n!)
 Space complexity: O(n)
