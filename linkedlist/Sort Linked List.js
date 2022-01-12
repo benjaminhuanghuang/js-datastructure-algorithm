@@ -1,3 +1,6 @@
+/*
+
+*/
 function findMiddle(head) {
   let slow = head;
   let fast = head.next;

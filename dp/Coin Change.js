@@ -74,7 +74,9 @@ var coinChange = function (coins, amount) {
 
     let minMakeUp = MAX;
     for (let coin of coins) {
-      if (amount >= coin) minMakeUp = Math.min(minMakeUp, findFewest(amount - coin) + 1);
+      if (amount >= coin) {
+        minMakeUp = Math.min(minMakeUp, findFewest(amount - coin) + 1);
+      }
     }
     mem.set(amount, minMakeUp);
     return minMakeUp;
