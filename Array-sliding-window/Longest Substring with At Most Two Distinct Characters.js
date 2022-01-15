@@ -19,18 +19,18 @@ function lengthOfLongestSubstringTwoDistinct(s) {
   const n = s.length;
   const count = new Map();
   let longest = 0;
-  let firstIdx = 0;
+  let left = 0;
 
   for (let i = 0; i < n; i++) {
     count.set(s[i], count.get(s[i]) || 0 + 1);
     while (count.size() > 2) {
-      count.set(s[firstIdx], count.get(s[firstIdx]) - 1);
-      if (count.get(s[firstIdx]) == 0) {
-        count.remove(s[firstIdx]);
+      count.set(s[left], count.get(s[left]) - 1);
+      if (count.get(s[left]) == 0) {
+        count.remove(s[left]);
       }
-      firstIdx++;
+      left++;
     }
-    longest = Math.max(longest, i - firstIdx + 1);
+    longest = Math.max(longest, i - left + 1);
   }
   return longest;
 }
