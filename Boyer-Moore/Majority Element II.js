@@ -18,10 +18,11 @@ Space complexity: O(1)
  * @return {number[]}
  */
 var majorityElement = function (nums) {
+  // n1, n2 可以任意指定两个不相等的值
   let n1 = 0;
   let c1 = 0;
 
-  let n2 = 1;
+  let n2 = 1;   
   let c2 = 0;
 
   for (const num of nums) {
