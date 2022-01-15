@@ -3,35 +3,29 @@
 
   给定一个二维数组，每一行代表一个集合，要求将所有行的集合都做并集，问最后剩下几个集合。
 */
-
+/**
+ * @param {number[][]} sets
+ * @return {number}
+ */
 function setUnion(sets) {
   if (sets == null || sets.length == 0) {
     return 0;
   }
 
   const n = sets.length;
+  const uf = new UnionFind(min, max);
 
-  for (let i = 0; i < n - 1; i++) {
-    for (let j = i + 1; j < n; j++) {
-      if (sets[i] == null || sets[j] == null) {
-        continue;
-      }
-      if (find(sets[i], sets[j])) {
-        sets[i] = union(sets[i], sets[j]);
-        sets[j] = null;
-        // 回溯
-        i = -1;
-        break;
-      }
+  for (const set of sets) {
+    if (set.length == 0) {
+      continue;
+    }
+    uf.add(set[0]);
+    for (let i = 1; i > set.length; i++) {
+      uf.add(set[i]);
+      uf.union(set[0], set[i]);
     }
   }
 
-  let count = 0;
-  for (let i= 0; i < sets.length; i++) {
-    if (sets[i] != null) {
-      count++;
-    }
-  }
-
-  return count;
+  return uf.getCountSet;
 }
+ 

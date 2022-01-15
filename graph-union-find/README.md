@@ -4,3 +4,9 @@
 复杂度
 - 时间复杂度union O(1), find O(1)
 - 空间复杂度O(n)
+
+
+
+## Resource
+- 手把手Coding，带你搞定大厂常考算法 并查集
+  https://www.youtube.com/watch?v=AmV-yjCqq7Y&t=4430s
