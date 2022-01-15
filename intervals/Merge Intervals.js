@@ -22,6 +22,7 @@ var merge = function (intervals) {
     if (intervals[i][0] > end) {
       result.push([start, end]);
     } else {
+      // Merge
       end = Math.max(end, intervals[i][1]);
     }
   }
