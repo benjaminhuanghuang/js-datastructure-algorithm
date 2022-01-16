@@ -14,8 +14,10 @@ https://leetcode.com/problems/reverse-words-in-a-string/
  */
 var reverseWords = function (s) {
   s = s.trim();
+  // pass 1
   s = reverseStr(s, 0, s.length - 1);
 
+  // pass 2
   let start = 0,
     end = 0;
   while (start < s.length) {

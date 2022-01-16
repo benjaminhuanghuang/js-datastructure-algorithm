@@ -3,8 +3,13 @@
 
 https://leetcode.com/problems/reorder-data-in-log-files/
 
-*/
+[Google]
 
+*/
+/*
+  自定义 sort Comparator
+
+*/
 /**
  * @param {string[]} logs
  * @return {string[]}

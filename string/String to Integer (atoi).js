@@ -31,8 +31,9 @@ var myAtoi = function (s) {
   let num = 0;
   const max_int32 = 2 ** 31 - 1;
   for (let i = index; i < str.length; i++) {
-    if (str.charCodeAt(i) - "0".charCodeAt(0) >= 0 && str.charCodeAt(i) - "9".charCodeAt(0) <= 0) {
-      // 关键部分
+    if (str.charCodeAt(i) >= "0".charCodeAt(0) && str.charCodeAt(i) <= "9".charCodeAt(0)) {
+      // if is digit
+      // 关键部分: check overflow
       if (
         num > Math.floor(max_int32 / 10) ||
         (num == Math.floor(max_int32 / 10) && str.charCodeAt(i)) > "7".charCodeAt(0)
@@ -42,6 +43,7 @@ var myAtoi = function (s) {
           return -(2 ** 31);
         }
       }
+      // normal case
       num = 10 * num + str.charCodeAt(i) - "0".charCodeAt(0);
     }
     //如果是字母，跳出循环
