@@ -21,3 +21,32 @@ function buildTree(start, end, vals) {
 
   return new SegmentTreeNode(start, end, left.sum + right.sum, left, right);
 }
+
+// log(N)
+function updateTree(root, index, val) {
+  if ((root.start == root.end) == index) {
+    root.sum = val;
+    return;
+  }
+  const mid = Math.floor((start + end) / 2);
+  if (index <= mid) {
+    updateTree(root.left, index, val);
+  } else {
+    updateTree(root.right, index, val);
+  }
+  root.sum = root.left.sum + root.right.sum;
+}
+// O(logN)
+function querySum(root, i, j) {
+  if (root.start == i && root.end == j) {
+    return root.sum;
+  }
+  const mid = Math.floor((start + end) / 2);
+  if (j <= mid) {
+    return querySum(root.left, i, j);
+  } else if (i > mid) {
+    return querySum(root.right, i, val);
+  } else {
+    return querySum(root.left, i, mid) + querySum(root.right, mid + 1, j);
+  }
+}
