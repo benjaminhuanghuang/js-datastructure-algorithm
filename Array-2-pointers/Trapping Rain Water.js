@@ -12,7 +12,10 @@
 */
 
 /*
+  https://www.youtube.com/watch?v=ZI2z5pq0TqA&ab_channel=NeetCode
+
  当前单元能装多少水是取决于左右两边挡板最小值与当前值之差。
+ Min(Max(L), Max(R)) - H[i]
 
  Time O(N)
  Space O(1)
@@ -22,14 +25,15 @@
  * @return {number}
  */
 var trap = function (height) {
-  const left = 0;
-  const right = height.length - 1;
+  let left = 0;
+  let right = height.length - 1;
   let res = 0;
 
   let leftMax = 0;
   let rightMax = 0;
 
   while (left < right) {
+    // 在 height[left] 与 height[right] 中取较小值
     if (height[left] < height[right]) {
       leftMax = Math.max(height[left], leftMax);
       res += leftMax - height[left];
@@ -40,5 +44,5 @@ var trap = function (height) {
       right--;
     }
   }
-  return res;
+  return res;  
 };
