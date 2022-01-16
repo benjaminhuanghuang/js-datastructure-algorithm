@@ -59,6 +59,18 @@ console.log(sum);
 const sum2 = nums.reduce((acc, i) => acc + i, 0);
 console.log(sum2);
 
+/*
+如果没有提供initialValue，reduce 会从索引1的地方开始执行 callback 方法，跳过第一个索引。如果提供initialValue，从索引0开始。
+*/
+
+var  arr = [1, 2, 3, 4];
+var sum = arr.reduce(function(prev, cur, index, arr) {
+    console.log(prev, cur, index);
+    return prev + cur;
+}, 0) // set init value
+console.log(arr, sum);
+
+
 // Copy array
 let newArray = [...nums];
 
