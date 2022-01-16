@@ -9,7 +9,7 @@ class SegmentTreeNode {
     this.right = right === undefined ? null : right;
   }
 }
-
+// O(N)
 function buildTree(start, end, vals) {
   if (start == end) {
     return new SegmentTreeNode(start, end, vals[start]);
@@ -24,11 +24,11 @@ function buildTree(start, end, vals) {
 
 // log(N)
 function updateTree(root, index, val) {
-  if ((root.start == root.end) == index) {
+  if (root.start ==index && root.end == index) {
     root.sum = val;
     return;
   }
-  const mid = Math.floor((start + end) / 2);
+  const mid = Math.floor((root.start + root.end) / 2);
   if (index <= mid) {
     updateTree(root.left, index, val);
   } else {
@@ -41,7 +41,7 @@ function querySum(root, i, j) {
   if (root.start == i && root.end == j) {
     return root.sum;
   }
-  const mid = Math.floor((start + end) / 2);
+  const mid = Math.floor((root.start + root.end) / 2);
   if (j <= mid) {
     return querySum(root.left, i, j);
   } else if (i > mid) {

@@ -4,7 +4,10 @@
 https://leetcode.com/problems/range-sum-query-mutable/
 
 */
+/*
+https://www.youtube.com/watch?v=rYBtViWXYeI&ab_channel=HuaHua
 
+*/
 /**
  * @param {number[]} nums
  */
