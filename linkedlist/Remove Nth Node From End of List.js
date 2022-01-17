@@ -9,16 +9,16 @@ https://leetcode.com/problems/remove-nth-node-from-end-of-list/
   因此要保证start.next不能为null
 */
 var removeNthFromEnd = function (head, n) {
-  const dumy = new ListNode(-1, head);
+  const dummy = new ListNode(-1, head);
 
-  let fast = dumy;
+  let fast = dummy;
 
   while (n >= 0 && fast) {
     fast = fast.next;
     n--;
   }
 
-  let slow = dumy;
+  let slow = dummy;
 
   while (fast) {
     slow = slow.next;
@@ -27,5 +27,5 @@ var removeNthFromEnd = function (head, n) {
 
   slow.next = slow.next.next;
 
-  return dumy.next;
+  return dummy.next;
 };

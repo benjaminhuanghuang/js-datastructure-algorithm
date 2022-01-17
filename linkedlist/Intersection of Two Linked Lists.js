@@ -1,5 +1,11 @@
 /*
 160. Intersection of Two Linked Lists
+
+Easy
+
+https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+Could you write a solution that runs in O(m + n) time and use only O(1) memory?
 */
 
 /**

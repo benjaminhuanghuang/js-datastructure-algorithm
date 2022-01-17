@@ -1,17 +1,25 @@
 /*
-    725. Split Linked List in Parts
+725. Split Linked List in Parts
 
-    https://leetcode.com/problems/split-linked-list-in-parts/
+Medium
+
+https://leetcode.com/problems/split-linked-list-in-parts/
 
 
-    Split linked list to K groups
+Split linked list to K groups
 
 */
 
 /*
     https://www.youtube.com/watch?v=fk8JTWhM-4U&ab_channel=HuaHua
 */
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode[]}
+ */
 var splitListToParts = function (head, k) {
+  // 1. get length of the linked list
   let len = 0;
   for (let p = head; p != null; p = p.next) {
     len++;
