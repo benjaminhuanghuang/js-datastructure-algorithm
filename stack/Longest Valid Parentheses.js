@@ -31,14 +31,14 @@ Space complexity: O(n)
     {
       if (stack.length === 0)
       {
-        leftMost = i + 1;
+        leftMost = i + 1;  // start a new match
       }
       else
       {
-        const index = stack.pop(); // 前一个（ 的index
-        // pop 后 如果 !stack.empty, len = i - stack[stack.length-1] , stack[stack.length-1]是当前合法括弧的前一个（
+        const index = stack.pop(); // pop出前一个（ 的index
+        // pop 后 如果 stack is not empty, 当前合法括弧的长度从stack.top算起， len = i - stack[stack.length-1]
         // 比如 (()() ,长度为4
-        // 如果stack is empty, 当前合法括弧的长度为 i - leftMost + 1
+        // 如果stack is empty, 说明完全匹配，当前合法括弧的长度从leftMost算起， i - leftMost + 1
         const len =  stack.length === 0 ? i - leftMost + 1 : i - stack[stack.length-1];
         maxLen = Math.max(maxLen, len);
       }
