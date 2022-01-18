@@ -3,6 +3,8 @@
 
 Level: Hard
 
+Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.
+
 https://leetcode.com/problems/maximum-frequency-stack
 
 # 460. LFU Cache
@@ -16,7 +18,7 @@ https://leetcode.com/problems/maximum-frequency-stack
 */
 
 var FreqStack = function () {
-  this.stacks = []; // array of statcks, index is freq
+  this.stacks = []; // [stack1, stack2...] array of statcks, index is the freq of the value
   //
   this.freq = new Map(); // value -> freq
 };
@@ -48,7 +50,7 @@ FreqStack.prototype.push = function (val) {
  *  freq(x)--;
  */
 FreqStack.prototype.pop = function () {
-  // pop the item with highest freq
+  // pop the item with highest freq, it is the last one in this.stacks
   const val = this.stacks[this.stacks.length - 1].pop();
   if (this.stacks[this.stacks.length - 1].length == 0) {
     // remove the empty stack

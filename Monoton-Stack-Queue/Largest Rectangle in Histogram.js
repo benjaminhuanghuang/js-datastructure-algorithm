@@ -13,7 +13,7 @@
 
 /*
   https://www.youtube.com/watch?v=TH9UaZ6JGcA
-  单调栈存储index， 可以用index推算 index之间的距离
+  Monotone Stack 存储index， 可以用index推算 index之间的距离
   单调栈的维护是 O(n) 级的时间复杂度，因为所有元素只会进入栈一次，并且出栈后再也不会进栈了。
   if heights[i] < stack.top  说明遇到了一个较小的值
     pop，
