@@ -6,7 +6,8 @@ Level: Medium
 https://leetcode.com/problems/encode-and-decode-tinyurl
 */
 
-let codeDB = new Map(), urlDB = new Map()
+let codeDB = new Map() // code -> long url
+let urlDB = new Map(); // long url -> code
 const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 const getCode = () => {

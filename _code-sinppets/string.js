@@ -37,7 +37,11 @@ const isdigit = (str) => {
 
 // list to string
 const str = ["h", "e", "l", "l", "o"].join(""); // hello
-const str = ["h", "e", "l", "l", "o"].join(""); // h,e,l,l,o
+const str = ["h", "e", "l", "l", "o"].join(); // h,e,l,l,o
+
+// string <-> char array
+const charArr = [...s];
+const s = new String(charArr);
 
 // Remove a char at index
 const curr = s.slice(0, i) + s.slice(i + 1);
