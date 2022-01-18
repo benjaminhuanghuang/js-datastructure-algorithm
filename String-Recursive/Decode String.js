@@ -35,7 +35,7 @@ var decodeString = function (s) {
         i++;
       }
     } else if (ch == "[") {
-      // backup ans ans count and work on []
+      // backup ans and count and work on []
       ansStack.push(ans);
       ans = ""; // reset ans
       // 此push可以放在上面的while循环中
