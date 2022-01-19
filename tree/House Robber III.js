@@ -22,6 +22,9 @@ Space complexity: O(n)
  *     this.right = (right===undefined ? null : right)
  * }
  */
+/*
+  max(rob left和right， 不rob left 和 right)
+*/
 /**
  * @param {TreeNode} root
  * @return {number}
