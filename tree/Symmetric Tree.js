@@ -1,5 +1,6 @@
 /*
   101. Symmetric Tree
+
   https://leetcode.com/problems/symmetric-tree/
  */
 
@@ -11,6 +12,10 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
+
+/*
+  Symmetric 
+*/
 /**
  * @param {TreeNode} root
  * @return {boolean}
@@ -26,5 +31,6 @@ var isSymmetric = function (root) {
 
     return node1.val == node2.val && isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left);
   };
+
   return isMirror(root.left, root.right);
 };

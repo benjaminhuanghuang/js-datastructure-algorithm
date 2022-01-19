@@ -21,6 +21,11 @@ This path may or may not pass through the root.
  *     this.right = (right===undefined ? null : right)
  * }
  */
+/*
+  diameter = maxDepth(left) + 1 + maxDepth(right)
+
+  maxDepth = max(maxDepth(left), maxDepth(right)) + 1
+*/
 /**
  * @param {TreeNode} root
  * @return {number}
