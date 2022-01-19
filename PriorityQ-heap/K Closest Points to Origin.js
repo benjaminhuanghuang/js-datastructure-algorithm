@@ -1,25 +1,46 @@
 /*
-complete tree
+973. K Closest Points to Origin
 
+Medium
 
-left child: index of parent * 2 +1
-right child: index of parent * 2 + 2
-parent index : (index of child - 1) / 2
-
-push():  加到heap的最尾， 再 heapifyUp(-1)    O(logN) 因为complete tree最多 只有logN层
-pop(): swap(-1, 0), return heap[-1], heapifyDown(0)
-
-
-heapifyUp(): 
-  递归与parent比较，交换
-heapifyDown():
-
-min-heap is a binary tree that the data contained in each node is less than (or equal to) the data in that node's children
+https://leetcode.com/problems/k-closest-points-to-origin/
 
 */
 
+/*
+  O(NLogN)
+*/
+/**
+ * @param {number[][]} points
+ * @param {number} k
+ * @return {number[][]}
+ */
+var kClosest = function (points, k) {
+  points.sort((p1, p2) => {
+    return p1[0] * p1[0] + p1[1] * p1[1] - p2[0] * p2[0] - p2[1] * p2[1];
+  });
+
+  return points.slice(0, k);
+};
+
+/*
+  MaxHeap O(NLogK)
+*/
+
+var kClosest = function (points, k) {
+  const maxHeap = new PriorityQueue((p1, p2) => p1[0] * p1[0] + p1[1] * p1[1] > p2[0] * p2[0] + p2[1] * p2[1]);
+
+  for (const p of points) {
+    maxHeap.push(p);
+    if (maxHeap.size() > k) {
+      maxHeap.pop(); // pop the max one
+    }
+  }
+  return maxHeap.heap;
+};
+
 class PriorityQueue {
-  // Min heap by default 
+  // Min heap by default
   constructor(comparator = (item1, item2) => item1 < item2) {
     this.heap = [];
     this.comparator = comparator;
@@ -78,17 +99,4 @@ class PriorityQueue {
 
     this.heapifyDown(targetIndex);
   }
-}
-
-// Default comparison semantics
-const queue = new PriorityQueue();
-queue.push(1);
-queue.push(3);
-queue.push(5);
-queue.push(2);
-console.log("Top:", queue.peek()); //=> 50
-console.log("Size:", queue.size()); //=> 5
-console.log("Contents:");
-while (!queue.isEmpty()) {
-  console.log(queue.pop()); //=> 40, 30, 20, 10
 }
