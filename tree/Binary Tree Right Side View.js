@@ -26,6 +26,7 @@
     while(q.length > 0)
     {
         let size = q.length;
+        // collect the right most element 
         res.push(q[q.length-1].val);
         while(size > 0){
            const node = q.shift();
