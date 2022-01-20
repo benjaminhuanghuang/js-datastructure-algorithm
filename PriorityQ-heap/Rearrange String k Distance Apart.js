@@ -1,69 +1,62 @@
 /*
-767. Reorganize String
+358. Rearrange String k Distance Apart
+使同样的字符至少距离K
 
-Medium
+Hard
 
-https://leetcode.com/problems/reorganize-string/
+https://leetcode.com/problems/rearrange-string-k-distance-apart/
 
-[Tesla]
-#767是 #358的特例
+#767. Reorganize String 是 #358的特例 k = 2
 */
 
 /*
-  https://www.youtube.com/watch?v=2g_b1aYTHeg&list=WL&index=6&t=4s&ab_channel=NeetCode
-  Start from  the most frequent character
-  
-  如果大于S长度的一半，返回空字符串，
-  每次从maxheap中pop出most frequent character ， 但是不能马上把这个character 再push回去， 
-  而是要pop 出另一个most frequent character
+  每次取K个，这K个字符不能重复，
+  优先取frequency最高的，因为希望剩下的字符种类越多越好
 
-  O(26* N)
 */
-/**
- * @param {string} s
- * @return {string}
- */
- var reorganizeString = function (s) {
+function rearrangeString(s, k) {
+  if (k == 0 || s.length < k) return s;
 
   // 1. count chars
   const counter = new Map();
-
   for (const c of s) {
-    if (counter.has(c)) {
-      counter.set(c, counter.get(c) + 1);
-    } else {
-      counter.set(c, 1);
-    }
+    counter.set(c, (counter.get(c) || 0) + 1);
   }
-  // 2. put char->count into heap
-  const maxHeap = new PriorityQueue((item1, item2)=>{
-    return item1[1] > item2[1]
+
+  // 2. put char->count into max heap
+  const maxHeap = new PriorityQueue((item1, item2) => {
+    if (item1[1] == item2[1]) return item1[0].localeCompare(item2[0]);
+    return item1[1] > item2[1];
   });
 
-  for(const charFreq of counter)
-  {
+  for (const charFreq of counter) {
     maxHeap.push(charFreq);
   }
 
-  // 3. select the most-frequent element
-  let prevMostFrequent;
+  // 3. select the K most-frequent element
   let res = ''
-
   while(!maxHeap.isEmpty()){
-    let [char, count] = maxHeap.pop();
-
-    res += char;
-    count --;
-    
-    if(prevMostFrequent && prevMostFrequent[1] > 0 && prevMostFrequent[0] != char) {
-      maxHeap.push(prevMostFrequent);
+    // 会出现重复
+    if(maxHeap.size() < k && maxHeap.peek()[1] > 1){
+      return ''
     }
-    
-    prevMostFrequent = [char, count];
+    const count = Math.min(k, maxHeap.size())
+    const tmp = [];
 
+    for(let i =0; i< count; i++){
+      let charFreq = maxHeap.pop();
+
+      tmp.push(charFreq);
+      res += char;
+    }
+    for(const [char, freq] of tmp){
+      if(freq > 1) {
+        maxHeap.push([char, freq-1]); 
+      }
+    }
   }
-  return s.length == res.length? res : '';
-};
+  return res;
+}
 
 class PriorityQueue {
   // Min heap by default

@@ -45,3 +45,6 @@ const s = new String(charArr);
 
 // Remove a char at index
 const curr = s.slice(0, i) + s.slice(i + 1);
+
+// 
+a.localeCompare(b)

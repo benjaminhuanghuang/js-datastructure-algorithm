@@ -1,68 +1,63 @@
 /*
-767. Reorganize String
+407. Trapping Rain Water II
 
-Medium
-
-https://leetcode.com/problems/reorganize-string/
-
-[Tesla]
-#767是 #358的特例
+Hard
+https://leetcode.com/problems/trapping-rain-water-ii/
 */
-
 /*
-  https://www.youtube.com/watch?v=2g_b1aYTHeg&list=WL&index=6&t=4s&ab_channel=NeetCode
-  Start from  the most frequent character
-  
-  如果大于S长度的一半，返回空字符串，
-  每次从maxheap中pop出most frequent character ， 但是不能马上把这个character 再push回去， 
-  而是要pop 出另一个most frequent character
+  https://www.youtube.com/watch?v=uupOnJJxPbI&ab_channel=HuifengGuan
 
-  O(26* N)
+  BFS + Priority Queue
+  海水会从4边围成的围墙的最低点涌入。
 */
 /**
- * @param {string} s
- * @return {string}
+ * @param {number[][]} heightMap
+ * @return {number}
  */
- var reorganizeString = function (s) {
+var trapRainWater = function (heightMap) {
+  const rows = heightMap.length;
+  const cols = heightMap[0].length;
+  const visited = Array.from(Array(rows), ()=> Array(cols).fill(false));
 
-  // 1. count chars
-  const counter = new Map();
-
-  for (const c of s) {
-    if (counter.has(c)) {
-      counter.set(c, counter.get(c) + 1);
-    } else {
-      counter.set(c, 1);
-    }
-  }
-  // 2. put char->count into heap
-  const maxHeap = new PriorityQueue((item1, item2)=>{
-    return item1[1] > item2[1]
+  // [height, row, col]
+  const minHeap = new PriorityQueue((a, b) => {
+    a[0] - b[0];
   });
-
-  for(const charFreq of counter)
-  {
-    maxHeap.push(charFreq);
+  // push the border
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (row == 0 || row == rows - 1 || col == 0 || col == cols - 1) {
+        minHeap.push([heightMap[row][col], row, col]);
+      }
+    }  
   }
+  // 当前海平面高度
+  let curr = -1;
+  let res = 0;
+  while (minHeap.size() > 0) {
+    // lowest
+    const [heigh, row, col] = minHeap.pop();
 
-  // 3. select the most-frequent element
-  let prevMostFrequent;
-  let res = ''
+    if(visited[row][col]) continue;
+    visited[row][col] = true;
 
-  while(!maxHeap.isEmpty()){
-    let [char, count] = maxHeap.pop();
-
-    res += char;
-    count --;
-    
-    if(prevMostFrequent && prevMostFrequent[1] > 0 && prevMostFrequent[0] != char) {
-      maxHeap.push(prevMostFrequent);
+    if (heigh > curr) {
+      curr = heigh;
     }
-    
-    prevMostFrequent = [char, count];
-
+    ret += curr -heigh; // 海平面比当前heigh高，注水
+    for(const dir of [[0,-1],[0,1],[-1,0],[1,0]]){
+      // row, col of the neighobur
+      const nRow = row + dir[0];
+      const nCol = col + dir[1];
+      if(nRow<0 || nRow>=rows || nCol < 0 || nCol >= cols || visited[nRow][nCol]){
+        continue;
+      }
+      minHeap.push([heightMap[nRow][nCol], nRow, nCol])
+    }
   }
-  return s.length == res.length? res : '';
+
+  return res;
+
 };
 
 class PriorityQueue {
