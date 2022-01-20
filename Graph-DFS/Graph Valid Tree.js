@@ -10,7 +10,7 @@ https://www.lintcode.com/problem/178/
 /*
   https://www.youtube.com/watch?v=bXsUuownnoQ&ab_channel=NeetCode
   1. all nodes connected to the root, visited = n
-  2. no loop
+  2. No loop
 */
 /**
  * validTree
@@ -22,6 +22,7 @@ https://www.lintcode.com/problem/178/
 function validTree(n, edges) {
   if (n <= 0) return true;
 
+  //1. build tree
   const graph = new Map();
   for (const [n1, n2] of edges) {
     if (graph.has(n1)) {
@@ -34,24 +35,25 @@ function validTree(n, edges) {
     graph.get(n2).push(n1);
   }
   const visited = new Array(n).fill(0);
-  const dfs = (i, prev) => {
-    if (visited[i] === 1) {
+
+  const dfs = (node, prev) => {
+    if (visited[node] === 1) {
       // find loop
       return false;
     }
-    visited[i] == 1;
-    if (graph.has(i)) {
-      for (const j of graph.get(i)) {
-        if (j == prev) {
+    visited[node] == 1;
+    if (graph.has(node)) {
+      for (const neighbour of graph.get(node)) {
+        if (neighbour == prev) {
           continue;
         }
-        if (!dfs(j, i)) {
+        if (!dfs(neighbour, node)) {
           return false;
         }
       }
     }
     return true;
   };
-
-  return dfs(0, -1) && visited.fill((i) => i === 1).length === n;
+  // No loop +  all node is visited
+  return dfs(0, -1) && visited.filter((i) => i === 1).length === n;
 }
