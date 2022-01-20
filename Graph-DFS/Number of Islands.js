@@ -35,7 +35,7 @@ var numIslands = function (grid) {
       }
     }
   }
-
+  // 把所有和起始陆地挨着的陆地都标记成海洋/visited
   const dfs = (row, col) => {
     if (row < 0 || col < 0 || row >= rows || col >= cols || grid[row][col] === "0") return;
     grid[row][col] = "0"; // visited
