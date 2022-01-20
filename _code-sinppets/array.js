@@ -11,6 +11,16 @@ let evens = Array.from(numbers, (x) => x % 2 == 0);
 // from set
 Array.from(new Set(loop(array)));
 
+//----------------------------------------------------------
+// build Graph
+//----------------------------------------------------------
+const edges_r =  Array(n).fill(0).map((a)=>new Set());
+//不能使用下面的代码，下面的代码生成的array 每个元素都指向同一个引用
+const WRONG =  Array(n).fill(new Set())
+//不能使用下面的代码，下面的代码生成的array元素为undefined
+const WRONG =  Array(n).map((a)=>new Set());
+
+
 // Generate a sequence of numbers
 // Since the array is initialized with `undefined` on each position,
 // the value of `v` below will be `undefined`
