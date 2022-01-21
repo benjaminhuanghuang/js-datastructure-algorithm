@@ -10,8 +10,44 @@ https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-
  * @param {number} target
  * @return {number[]}
  */
+/*
+  HuaHua Template
+*/
 var searchRange = function (nums, target) {
-  if (nums.length < 1) return [];
+  if (nums.length < 1) return [-1, -1];
+
+  let l = 0;
+  let r = nums.length;
+  const result = [-1, -1];
+  while (l < r) {
+    let m = l + Math.floor((r - l) / 2);
+    if (nums[m] > target) {
+      r = m;
+    } else if (nums[m] < target) {
+      l = m + 1;
+    }
+    // mid == target, expand the range
+    else {
+      result[0] = m;
+      result[1] = m;
+      let i = m - 1;
+      while (i >= 0 && nums[i] == target) {
+        result[0] = i;
+        i--;
+      }
+      i = m + 1;
+      while (i < nums.length && nums[i] == target) {
+        result[1] = i;
+        i++;
+      }
+      break; // DO NOT Forget
+    }
+  }
+  return result;
+};
+
+var searchRange = function (nums, target) {
+  if (nums.length < 1) return [-1, -1];
 
   let left = 0;
   let right = nums.length - 1;
