@@ -27,7 +27,7 @@ var findLadders = function (beginWord, endWord, wordList) {
     wordList.unshift(beginWord);
   }
 
-  // 1. Construct a graph
+  
   const getNeighbors = (map, word) => {
     let neighbors = [];
     for (let i = 0; i < word.length; i++) {
@@ -46,6 +46,7 @@ var findLadders = function (beginWord, endWord, wordList) {
     return neighbors;
   };
 
+  // 1. Construct a graph
   const graph = new Map();
   for (const word of wordList) {
     if (!graph.has(word)) {
