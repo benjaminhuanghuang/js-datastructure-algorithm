@@ -1,7 +1,10 @@
 /*
-    74. Search a 2D Matrix
-*/
+74. Search a 2D Matrix
 
+Medium
+
+https://leetcode.com/problems/search-a-2d-matrix/
+*/
 
 /*
   Solution: cover the 2d array to 1d array
@@ -10,21 +13,21 @@ var searchMatrix = function (matrix, target) {
   const rows = matrix.length;
   const cols = matrix[0].length;
 
-  var low = 0;
-  var high = rows * cols - 1;
+  var l = 0;
+  var r = rows * cols;
 
-  while (low <= high) {
-    var mid = Math.floor((high - low) / 2) + low;
+  while (l < r) {
+    var m = Math.floor((r - l) / 2) + l;
     // Key point: conver the mid to col, row
-    var col = mid % cols;
-    var row = Math.floor(mid / cols);
+    var col = m % cols;
+    var row = Math.floor(m / cols);
 
     if (matrix[row][col] == target) {
       return true;
     } else if (matrix[row][col] > target) {
-      high = mid - 1;
+      r = m;
     } else {
-      low = mid + 1;
+      l = m + 1;
     }
   }
 
