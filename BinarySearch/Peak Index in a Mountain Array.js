@@ -1,7 +1,10 @@
 /*
 852. Peak Index in a Mountain Array
 
+Easy 
 https://leetcode.com/problems/peak-index-in-a-mountain-array/
+
+#162. Find Peak Element
 */
 
 /*------------------------------------------------------------
@@ -23,10 +26,12 @@ var peakIndexInMountainArray = function (arr) {
 
 /*------------------------------------------------------------
 Solution 2: Binary Search
+
+Mountain Array means sorted in a range
+
 Find the smallest l such that A[l] > A[l + 1].
 
 Time complexity: O(logn)
-
 Space complexity: O(1)
 ------------------------------------------------------------*/
 /**
