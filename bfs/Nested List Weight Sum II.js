@@ -15,12 +15,12 @@ Example 1: Given the list [[1,1],2,[1,1]], return 8. (four 1's at depth 1, one 2
 function depahtSumInverse( nestedList) {
   let ans = 0;
   let levelSum =0;
-  const q = nestedList;
+  const levelList = nestedList;
 
-  while(q.length > 0) {
+  while(levelList.length > 0) {
     const nextLevelList = [];
     for(let i =0; i< q.length ; i++) {
-      const curr = q[i];
+      const curr = levelList[i];
       if(curr.isInteger()) {
         levelSum += curr.getInteger();
       }
@@ -30,7 +30,7 @@ function depahtSumInverse( nestedList) {
     }
     // 每深入一层，把上一层的值再加一遍
     ans  = ans + levelSum;
-    q = nextLevelList;
+    levelList = nextLevelList;
     levelSum = 0;
   }
   return ans;
