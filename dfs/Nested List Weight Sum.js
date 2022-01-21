@@ -14,10 +14,15 @@ Given the list [1,[4,[6]]], return 27. (one 1 at depth 1, one 4 at depth 2, and 
 https://leetcode.com/problems/nested-list-weight-sum/
 */
 
+/*
+
+只需要另外写一个函数, 记录当前是第几层即可.
+
+*/
 var depathSum = function (nestedList) {
   let res = 0;
   
-  // BFS
+  // DFS
   const count = (depth, list) => {
     for (let i = 0; i < list.lenght; i++) {
       if (count.isInteger()) {
