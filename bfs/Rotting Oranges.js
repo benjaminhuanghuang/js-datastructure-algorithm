@@ -8,7 +8,7 @@ https://leetcode.com/problems/rotting-oranges/
  * @param {number[][]} grid
  * @return {number}
  */
- var orangesRotting = function(grid) {
+var orangesRotting = function (grid) {
   const rows = grid.length;
   const cols = grid[0].length;
 
@@ -17,8 +17,11 @@ https://leetcode.com/problems/rotting-oranges/
   let fresh = 0;
   for (let row = 0; row < rows; ++row) {
     for (let col = 0; col < cols; ++col) {
-      if (grid[row][col] == 1) ++fresh;
-      else if (grid[row][col] == 2) q.push([col, row]);
+      if (grid[row][col] == 1) {
+        ++fresh;
+      } else if (grid[row][col] == 2) {
+        q.push([col, row]);
+      }
     }
   }
   let minutes = 0;
