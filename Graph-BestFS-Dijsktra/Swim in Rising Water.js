@@ -1,43 +1,57 @@
 /*
-871. Minimum Number of Refueling Stops
+778. Swim in Rising Water
+
+n x n integer matrix grid where each value grid[i][j] represents the elevation 
+at that point (i, j).
+每个cell是可以通过的时间， 找一条路径，使路径上的最大值最小
 
 Hard
 
-https://leetcode.com/problems/minimum-number-of-refueling-stops/
+https://leetcode.com/problems/swim-in-rising-water
+*/
+
+/*
+https://www.youtube.com/watch?v=amvrKlMLuGY&ab_channel=NeetCode
+*/
+
+/*
+https://zxi.mytechroad.com/blog/heap/leetcode-778-swim-in-rising-water/
+
+BFS + Priority Queue
+
+Time O(n^2log(n^2)) = O(n^2logn)
 */
 
 /**
- * @param {number} target
- * @param {number} startFuel
- * @param {number[][]} stations
+ * @param {number[][]} grid
  * @return {number}
  */
-/*
-BFS
+ var swimInWater = function(grid) {
+  const  n = grid.length;
+  // 选出最小值
+  const minHeap = new PriorityQueue((a, b) => a[0] < b[0]); // {time, row, col}
+  
+  minHeap.push([grid[0][0], 0 , 0]);
+  const visited = Array.from(Array(n), ()=>Array(n).fill(0));
 
-https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-871-minimum-number-of-refueling-stops/
+  visited[0][0] = 1;
+  while (!minHeap.isEmpty()) {
+    const [time, row, col] = minHeap.pop()
+    if (row == n - 1 && col == n - 1) return time;
 
-Time complexity: O(nlogn)
-
-Space complexity: O(n)
-*/
-var minRefuelStops = function (target, startFuel, stations) {
-  let cur = startFuel;
-  let stops = 0;
-  let i = 0;
-  const maxHeap = new PriorityQueue((a, b) => a > b); // gas (high to low) of reachable stations.
-  while (true) {
-    if (cur >= target) return stops;
-    while (i < stations.length && stations[i][0] <= cur) {
-      // 当前位置经过了几个加油站
-      maxHeap.push(stations[i++][1]);
+    for (const dir of [[1, 0], [-1,0], [0,1], [0,-1]]) {
+      const nRow = row + dir[0];
+      const nCol = col + dir[1];
+      if (nRow < 0 || nCol < 0 || nRow >= n || nCol >= n) continue;
+      if (visited[nRow][nCol]) continue;
+      visited[nRow][nCol] = 1;
+      // push 路径上的最大值
+      minHeap.push([Math.max(time, grid[nRow][nCol]),nRow, nCol ]);
     }
-    if (maxHeap.isEmpty()) break;
-    cur += maxHeap.pop();
-    ++stops;
   }
   return -1;
-};
+}; 
+
 
 class PriorityQueue {
   // Min heap by default
@@ -100,11 +114,3 @@ class PriorityQueue {
     this.heapifyDown(targetIndex);
   }
 }
-
-/*
-DP
-
-https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-871-minimum-number-of-refueling-stops/
-
-
-*/
