@@ -39,6 +39,11 @@ var arr = Array.from({ length: 3 }, () => Array.from({ length: 4 }, () => val));
 
 var arr = Array.from(Array(R), () => Array(C).fill(val)); // BEST one
 
+// 这样写会导致错误，fill()会使用同一个reference，导致所有的节点相同
+//const graph = new Array(n).fill([]);
+// 要写成
+const graph = new Array(n).fill(0).map((i)=>[]);
+
 // use map
 const board = new Array(n).fill(0).map((_) => Array(n).fill("."));
 
