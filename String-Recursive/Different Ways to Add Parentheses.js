@@ -11,7 +11,7 @@ https://leetcode.com/problems/different-ways-to-add-parentheses
 /*
   https://www.youtube.com/watch?v=gxYV8eZY0eQ&ab_channel=HuaHua
   记忆化 递归求解
-
+  扫描expression， 发现operater,就对左右两边分别求解
 */
 /**
  * @param {string} expression

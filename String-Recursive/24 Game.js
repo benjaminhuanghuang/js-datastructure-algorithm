@@ -1,6 +1,8 @@
 /*
 679. 24 Game
 
+  using the operators ['+', '-', '*', '/'] and the parentheses '(' and ')' to get the value 24.
+
  Hard
 
 https://leetcode.com/problems/24-game
@@ -10,7 +12,10 @@ https://leetcode.com/problems/24-game
 */
 
 /*
+  DFS
+
   https://www.youtube.com/watch?v=7zlzniZ5xWs&ab_channel=HuifengGuan
+
   最终状态是 两个部分运算
   4个数字要排列组合
   对于C++ ， java要把numbers 转化成double
@@ -19,38 +24,37 @@ https://leetcode.com/problems/24-game
  * @param {number[]} cards
  * @return {boolean}
  */
- var judgePoint24 = function(cards) {
+var judgePoint24 = function (cards) {
+  const compute = (x, y) => {
+    const result = [x + y, x - y, y - x, x * y];
+    if (x != 0) result.push(y / x);
+    if (y != 0) result.push(x / y);
+    return result;
+  };
 
-  void helper(nums, eps, res)
-  {
-    if (nums.length == 1)
-    {
-      return (Math.abs(nums[0] - 24) < eps)
-    }
-    for (let i = 0; i < nums.length; ++i)
-    {
-      for (let j = i+1; j <nums.length; ++j)
-      { 
-        const p = nums[i], q = nums[j];
-        const t = [p + q, p - q, q - p, p * q];
-        if (p > eps)
-          t.push_back(q / p);
-        if (q > eps)
-          t.push_back(p / q);
-        nums.erase(nums.begin() + i);
-        nums.erase(nums.begin() + j);
-        for (double d : t)
-        {
-          nums.push_back(d);
-          helper(nums, eps, res);
-          nums.pop_back();
+  const helper = (nums) => {
+    if (nums.length == 1) return Math.abs(nums[0] - 24) < 0.0001;
+
+    for (let i = 0; i < nums.length; i++) {
+      for (let j = i + 1; j < nums.length; j++) {
+        // 对任意两个数做运算，把结果和剩下的两个数字放进 newNums
+        const newNums = new Array();
+        // 把剩下的两个数字放进newNums
+        for (let k = 0; k < nums.length; k++) {
+          if (k != i && k != j) {
+            newNums.push(nums[k]);
+          }
         }
-        nums.insert(nums.begin() + j, q);
-        nums.insert(nums.begin() + i, p);
+        // 对 nums[i], nums[j] 运算
+        for (const result of compute(nums[i], nums[j])) {
+          console.log([...newNums, result]);
+          if (helper([...newNums, result])) return true;
+        }
       }
     }
-  }
-  let res = false;
-  helper(arr, eps, res);
-  return res;  
+
+    return false;
+  };
+
+  return helper(cards);
 };
