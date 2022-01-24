@@ -2,6 +2,14 @@
 695. Max Area of Island
 
 https://leetcode.com/problems/max-area-of-island/
+
+# 200. Number of Islands
+*/
+
+/*
+  https://www.youtube.com/watch?v=iJGr1OtmH0c&ab_channel=NeetCode
+
+  Time O(M*N)
 */
 
 /**
@@ -14,6 +22,7 @@ var maxAreaOfIsland = function (grid) {
 
   let maxArea = 0;
 
+  // dfs 返回未被访问过的，包含 row, col 的岛屿的大小
   const dfs = (row, col) => {
     if (row < 0 || row >= rows || col < 0 || col >= cols || grid[row][col] == 0) {
       return 0;
