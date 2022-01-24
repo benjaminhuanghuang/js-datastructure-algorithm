@@ -24,22 +24,23 @@ helper funciton(length, start pos): 终止条件
  */
  var subsets = function (nums) {
   const res = [];
-  const helper = (length, start, curr) => {
+  const dfs = (length, start, curr) => {
     if (curr.length == length) {
+      // 注意copy
       res.push([...curr]);
       return;
     }
 
     for (let i = start; i < nums.length; i++) {
       curr.push(nums[i]);
-      helper(length, i + 1, curr);  // NOT start + 1
+      dfs(length, i + 1, curr);  // NOT start + 1
       curr.pop();
     }
   };
 
   // 根据长度取 subset
   for (let len = 0; len <= nums.length; len++) {
-    helper(len, 0, []);
+    dfs(len, 0, []);
   }
   return res;
 };

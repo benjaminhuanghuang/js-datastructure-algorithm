@@ -31,12 +31,14 @@ var permute = function (nums) {
       return;
     }
 
+    // 注意每次都是从 i =0 开始取
     for (let i = 0; i < nums.length; i++) {
       if (used[i]) continue;
 
       curr.push(nums[i]);
       used[i] = 1;
       dfs(curr);
+      // backtracking
       curr.pop();
       used[i] = 0;
     }

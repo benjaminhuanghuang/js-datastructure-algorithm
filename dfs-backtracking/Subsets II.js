@@ -1,4 +1,3 @@
-
 /*
 
 90. Subsets II
@@ -16,11 +15,12 @@ array nums that may contain duplicates,
  * @param {number[]} nums
  * @return {number[][]}
  */
- var subsetsWithDup = function(nums) {
-  nums.sort((a, b)=> a-b);
+var subsetsWithDup = function (nums) {
+  //为了去重
+  nums.sort((a, b) => a - b);
   const res = [];
-  
-  const helper = (length, start, curr) => {
+
+  const dfs = (length, start, curr) => {
     if (curr.length == length) {
       res.push([...curr]);
       return;
@@ -28,10 +28,9 @@ array nums that may contain duplicates,
 
     for (let i = start; i < nums.length; i++) {
       //  remove duplicated!
-      if(i > start && nums[i] == nums[i-1])
-        continue;
+      if (i > start && nums[i] == nums[i - 1]) continue;
       curr.push(nums[i]);
-      helper(length, i + 1, curr);  // NOT start + 1
+      dfs(length, i + 1, curr); // NOT start + 1
       curr.pop();
     }
   };
