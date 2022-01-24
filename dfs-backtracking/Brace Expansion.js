@@ -11,6 +11,7 @@ https://www.programmerall.com/article/60331215894/
 
 /*
   把括号里面的字符选一个和外边的组合
+  括号里没有嵌套
 */
 
 function expand(s) {
