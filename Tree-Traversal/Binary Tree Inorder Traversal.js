@@ -10,13 +10,13 @@ https://leetcode.com/problems/binary-tree-inorder-traversal/
 var inorderTraversal = function (root) {
   const ans = [];
 
-  const helper = (ans, root) => {
+  const inOrder = (ans, root) => {
     if (root == null) return;
-    helper(ans, root.left, ans);
+    inOrder(ans, root.left, ans);
     ans.push(root.val);
-    helper(ans, root.right);
+    inOrder(ans, root.right);
   };
 
-  helper(ans, root);
+  inOrder(ans, root);
   return ans;
 };

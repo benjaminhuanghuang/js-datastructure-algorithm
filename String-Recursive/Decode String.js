@@ -11,6 +11,9 @@ Input: s = "3[a2[c]]"
 Output: "accaccacc"
 */
 
+/*
+    the sub problem: n[abc]
+*/
 /**
  * @param {string} s
  * @return {string}
@@ -46,7 +49,7 @@ var decodeString = function (s) {
       // 取出计算结果，和数字
       let prevAns = ansStack.pop();
       const repeatTimes = countStack.pop();
-
+      // 展开 n[xxx]，加到 prevAns中  
       for (let j = 0; j < repeatTimes; j++) {
         prevAns += ans;
       }

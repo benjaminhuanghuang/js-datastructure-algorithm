@@ -35,6 +35,7 @@ var preorderTraversal_stack = function (root) {
 
   if (!root) return ans;
 
+  // pusth root to stack
   const s = [root];
 
   while (!s.empty()) {
