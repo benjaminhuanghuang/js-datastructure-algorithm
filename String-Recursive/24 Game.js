@@ -47,7 +47,6 @@ var judgePoint24 = function (cards) {
         }
         // 对 nums[i], nums[j] 运算
         for (const result of compute(nums[i], nums[j])) {
-          console.log([...newNums, result]);
           if (helper([...newNums, result])) return true;
         }
       }

@@ -3,6 +3,9 @@
 
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
 
+The median is the middle number in a sorted, ascending or descending
+
+
 https://leetcode.com/problems/median-of-two-sorted-arrays/
 */
 
@@ -20,7 +23,9 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/
 
   Space complexity: O(1)
 
+  https://www.youtube.com/watch?v=q6IEA26hvXc&ab_channel=NeetCode
 
+  
 */
 
 /**
