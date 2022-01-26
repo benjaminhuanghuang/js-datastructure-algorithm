@@ -34,8 +34,10 @@ var longestCommonSubsequence = function (text1, text2) {
     if (mem.has(memKey)) return mem.get(memKey);
     let lcs = 0;
     if (text1.charAt(i) == text2.charAt(j)) {
+      // text1 和 text2的最后一个字符一样
       lcs = 1 + lcs(i - 1, j - 1);
     } else {
+      // text1 和 text2的最后一个字符不同， 分别砍掉一个试试
       lcs = Math.max(lcs(i - 1, j), lcs(i, j - 1));
     }
     mem.set(memKey, lcs);
