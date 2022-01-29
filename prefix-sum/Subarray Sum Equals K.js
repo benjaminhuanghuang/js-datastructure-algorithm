@@ -104,7 +104,7 @@ Space complexity: O(n)
  * @return {number}
  */
 var subarraySum = function (nums, k) {
-  if (nums.empty()) return 0;
+  if (nums.length==0) return 0;
   //// 记录prefixSum出现的value和个数
   const counts = new Map();
   counts.set(0,1);
@@ -122,6 +122,23 @@ var subarraySum = function (nums, k) {
 /*
 https://www.youtube.com/watch?v=fFVZt-6sgyo&ab_channel=NeetCode
 
+
 */
+var subarraySum = function (nums, k) {
+  if (nums.length==0) return 0;
+  // prefixSum -> count
+  const counts = new Map();
+  counts.set(0,1);
 
-
+  let curSum = 0;
+  let ans = 0;
+  for (const num of nums) {
+    curSum += num;
+    // curSum - the prefixSum = K
+    if(counts.has(curSum - k)){
+      ans += counts.get(curSum - k);
+    }
+    counts.set(curSum, (counts.get(curSum)||0) + 1)
+  }
+  return ans;
+}

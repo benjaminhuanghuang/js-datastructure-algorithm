@@ -1,7 +1,11 @@
 /*
 238. Product of Array Except Self
 
+Medium
+
 https://leetcode.com/problems/product-of-array-except-self/
+
+You must write an algorithm that runs in O(n) time and without using the division operation.
 */
 
 /*
@@ -41,12 +45,16 @@ var productExceptSelf = function (nums) {
 
   return ans;
 };
-
+/*
+https://www.youtube.com/watch?v=bNvIQI2wAjk&ab_channel=NeetCode
+利用 ans array 保存 prefix produce
+*/
 var productExceptSelf = function (nums) {
   const n = nums.length;
 
   const ans = new Array(n).fill(1);
 
+  // prefix product
   for (let i = 1; i < n; ++i) {
     ans[i] = nums[i - 1] * ans[i - 1];
   }
