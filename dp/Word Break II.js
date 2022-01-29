@@ -3,6 +3,9 @@
 140. Word Break II
 
 https://leetcode.com/problems/word-break-ii/
+
+add space to string
+
 */
 
 /*
@@ -30,6 +33,7 @@ var wordBreak = function (s, wordDict) {
     }
     return results;
   };
+
   const findAnswer = (s) => {
     if (mem.has(s)) return mem.get(s);
 

@@ -36,7 +36,7 @@ https://github.com/JSerZANP/leetCode_solutions/blob/main/621-task-scheduler.md
     let maxCount = 0
     const codeForA = 'A'.charCodeAt(0)
     
-    //
+    // count of each task
     for (let task of tasks) {
       const index = task.charCodeAt(0) - codeForA
       countOfTask[index] += 1
