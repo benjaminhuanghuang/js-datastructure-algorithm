@@ -31,12 +31,12 @@ var findTargetSumWays = function (nums, target) {
 */
 var findTargetSumWays = function (nums, target) {
   const dfs = (pos, target) => {
-    if (pos == nums.size()) {
+    if (pos == nums.length) {
       if (target == 0) ++ans;
       return;
     }
-    dfs(pos + 1, target - nums[d]);
-    dfs(pos + 1, target + nums[d]);
+    dfs(pos + 1, target - nums[pos]);
+    dfs(pos + 1, target + nums[pos]);
   };
 
   const sum = nums.reduce((s, i) => s + i);
