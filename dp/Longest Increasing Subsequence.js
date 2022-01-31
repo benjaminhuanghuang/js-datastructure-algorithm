@@ -6,6 +6,7 @@ Medium
 
 https://leetcode.com/problems/longest-increasing-subsequence
 
+# 354. Russian Doll Envelopes
 */
 
 /*
@@ -45,25 +46,63 @@ var lengthOfLIS = function (nums) {
   return ans;
 };
 
-
 /*
 https://www.youtube.com/watch?v=7DKFpWnaxLI&ab_channel=HuaHua
 
     DP
     O(N^2)
   */
-    var lengthOfLIS = function (nums) 
-    {
-      if (nums.length === 0)
-        return 0;
-      let n = nums.length;
-      const dp =  new Array(n).fill(1);
-      for (let i = 1; i < n; ++i) // sub array 长度
-        for (let j = 0; j < i; ++j) // 以j结尾
-          if (nums[i] > nums[j])
-            dp[i] = Math.max(dp[i], dp[j] + 1);
+var lengthOfLIS = function (nums) {
+  if (nums.length === 0) return 0;
+  let n = nums.length;
+  const dp = new Array(n).fill(1);
+  for (
+    let i = 1;
+    i < n;
+    ++i // sub array 长度
+  )
+    for (
+      let j = 0;
+      j < i;
+      ++j // 以j结尾
+    )
+      if (nums[i] > nums[j]) dp[i] = Math.max(dp[i], dp[j] + 1);
 
-      let max = 0;
+  let max = 0;
 
-      return Math.max(...dp);  
+  return Math.max(...dp);
+};
+/*
+https://www.youtube.com/watch?v=Q6KyDl_xiIg&ab_channel=HuifengGuan
+
+https://www.youtube.com/watch?v=l2rCz7skAlk&t=7s&ab_channel=HuaHua
+
+
+ Binary Search
+
+Time complexity: O(nlogn)
+Space complexity: O(n)
+
+*/
+
+var lengthOfLIS = function (nums) {
+  // q 的含义为 长度为i的LIS的结尾元素是q[i]
+  const q = [];
+  for (let i = 0; i < nums.length; ++i) {
+    let left = 0,
+      right = q.length,
+      target = nums[i];
+    while (left < right) {
+      let mid = left + Math.floor((right - left) / 2);
+      if (q[mid] >= target) right = mid;
+      else left = mid + 1;
     }
+    if (left >= q.length) {
+      // 没有找到
+      q.push(target);
+    } else {
+      q[left] = target;
+    }
+  }
+  return q.length;
+};

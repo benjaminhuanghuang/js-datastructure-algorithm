@@ -55,19 +55,20 @@ var maxEnvelopes = function (envelopes) {
     if (a[0] == b[0]) return b[1] - a[1];
     return a[0] - b[0];
   });
+  // q 的含义为 长度为i的LIS的结尾元素是q[i]
   const q = [];
   for (let i = 0; i < envelopes.length; ++i) {
     if (q.length == 0 || envelopes[i][1] > q[q.length - 1]) {
       // envelopes[i] 比 q中的最后一个envelope 大
       q.push(envelopes[i][1]);
     } else {
-      // 否则找出q中第一个 大于 envelopes[i]的envelop,用envelopes[i]替换
+      // 否则找出q中第一个 >= envelopes[i]的envelop,用envelopes[i]替换
       let left = 0,
         right = dp.length,
         target = q[i][1];
       while (left < right) {
         const mid = left + Math.floor((right - left) / 2);
-        if (q[mid] > target) right = mid;
+        if (q[mid] >= target) right = mid;
         else left = mid + 1;
       }
       q[left] = target;
@@ -87,19 +88,20 @@ var maxEnvelopes = function (envelopes) {
   });
   const q = [];
   for (let i = 0; i < envelopes.length; ++i) {
-    let left = 0, right = q.length, target = envelopes[i][1];
-      while (left < right)
-      {
-        let mid = left + Math.floor((right - left) / 2);
-        if (q[mid]  >= target)
-          right = mid;
-        else
-          left = mid+1;
-      }
-      if (left >= q.length)
-        q.push(target);
-      else
-        q[left] = target;
+    let left = 0,
+      right = q.length,
+      target = envelopes[i][1];
+    while (left < right) {
+      let mid = left + Math.floor((right - left) / 2);
+      if (q[mid] >= target) right = mid;
+      else left = mid + 1;
+    }
+    if (left >= q.length) {
+      // 没有找到
+      q.push(target);
+    } else {
+      q[left] = target;
+    }
   }
   return q.length;
 };
