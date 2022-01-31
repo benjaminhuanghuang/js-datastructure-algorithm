@@ -36,7 +36,7 @@ var combinationSum = function (candidates, target) {
       if (candidates[i] > target) break;
       curr.push(candidates[i]);
       // 因为可以使用重复元素，所以继续从i开始， normal combination use i + 1
-      dfs(ans, candidates, target - candidates[i], i, curr);
+      dfs(target - candidates[i], i, curr);
       curr.pop();
     }
   };
