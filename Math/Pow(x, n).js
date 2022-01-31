@@ -37,7 +37,7 @@ function PowerHelper(x, n) {
   }
   return res;
 }
-// 使用更少的空间
+// 不使用stack
 function PowerHelper(x, n) {
   let res = 1.0;
   let currProduct = x;

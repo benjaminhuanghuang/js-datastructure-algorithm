@@ -2,7 +2,7 @@
 
 300. Longest Increasing Subsequence
 
-Level: Medium
+Medium
 
 https://leetcode.com/problems/longest-increasing-subsequence
 
@@ -61,7 +61,7 @@ https://www.youtube.com/watch?v=7DKFpWnaxLI&ab_channel=HuaHua
       for (let i = 1; i < n; ++i) // sub array 长度
         for (let j = 0; j < i; ++j) // 以j结尾
           if (nums[i] > nums[j])
-            dp[i] = max(dp[i], dp[j] + 1);
+            dp[i] = Math.max(dp[i], dp[j] + 1);
 
       let max = 0;
 
