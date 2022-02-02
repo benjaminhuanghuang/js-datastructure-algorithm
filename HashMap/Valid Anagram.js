@@ -1,11 +1,22 @@
+/*
+  242. Valid Anagram
+
+  Easy
+  
+  https://leetcode.com/problems/valid-anagram/
+*/
+
 var isAnagram = function(s, t) {
   if(s==null && t==null)
     return true;
+
   if(s==null || t==null)
     return false;
-  if(s.length != t.length)
+  
+    if(s.length != t.length)
     return false;
 
+  // Count
   let dict = {};
   for (c of s)
   {
