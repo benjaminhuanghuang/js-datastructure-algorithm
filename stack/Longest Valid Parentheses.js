@@ -36,7 +36,7 @@ Space complexity: O(n)
       else
       {
         const index = stack.pop(); // pop出前一个（ 的index
-        // pop 后 如果 stack is not empty, 当前合法括弧的长度从stack.top算起， len = i - stack[stack.length-1]
+        // pop 后 如果 stack is not empty, 当前合法括弧的长度从pop 后的stack.top算起， len = i - stack[stack.length-1]
         // 比如 (()() ,长度为4
         // 如果stack is empty, 说明完全匹配，当前合法括弧的长度从leftMost算起， i - leftMost + 1
         const len =  stack.length === 0 ? i - leftMost + 1 : i - stack[stack.length-1];
