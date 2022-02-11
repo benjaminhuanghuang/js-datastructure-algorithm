@@ -14,7 +14,7 @@ https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards
 
 
   sliding window: O(K)
-  use a 长度为 len-k 的 sliding window
+  use a 长度为 len-k 的 sliding window, sum of the nums out of sliding window
 
 */
 
