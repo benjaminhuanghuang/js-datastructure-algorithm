@@ -1,5 +1,9 @@
 /*
 146. LRU Cache
+
+Medium
+
+
 https://leetcode.com/problems/lru-cache/
 
 Least Recently Used (LRU) cache

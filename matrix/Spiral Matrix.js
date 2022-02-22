@@ -16,6 +16,8 @@ You should return [1,2,3,6,9,8,7,4,5].
 Medium
 
 https://leetcode.com/problems/spiral-matrix/
+
+[MS]
 */
 /**
  * @param {number[][]} matrix
@@ -43,11 +45,13 @@ var spiralOrder = function (matrix) {
     }
 
     // right to left
+    // if rowStart == rowEnd, 只用left to right 
     if (rowStart + 1 <= rowEnd) {
       for (let k = colEnd - 1; k >= colStart; k--) {
         res.push(matrix[rowEnd][k]);
       }
     }
+    // bottom to up
     if (colStart + 1 <= colEnd) {
       for (let k = rowEnd - 1; k > rowStart; k--) {
         res.push(matrix[k][colStart]);

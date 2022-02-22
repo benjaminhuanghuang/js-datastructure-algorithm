@@ -1,6 +1,8 @@
 /*
   460. LFU Cache
 
+  Hard
+  
   https://leetcode.com/problems/lfu-cache/
 
   invalidate the least frequently used item before inserting a new item

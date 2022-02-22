@@ -5,7 +5,7 @@ Hard
 
 https://leetcode.com/problems/text-justification/
 
-[Airebnb, LinkedIn]
+[Airebnb, LinkedIn, MS]
 
 单词排成行, 尽量均匀插入空格，最后用空格填充
 */
