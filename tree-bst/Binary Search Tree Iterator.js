@@ -2,6 +2,8 @@
 
 173. Binary Search Tree Iterator
 
+Medium
+
 https://leetcode.com/problems/binary-search-tree-iterator/
 
 You may assume that next() calls will always be valid. 

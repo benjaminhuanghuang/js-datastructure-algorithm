@@ -1,6 +1,8 @@
 /*
   141. Linked List Cycle
 
+  Medium
+
   https://leetcode.com/problems/linked-list-cycle/
 */
 
