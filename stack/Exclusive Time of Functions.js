@@ -15,6 +15,7 @@ Log format {function_id}:{"start" | "end"}:{timestamp}
  * @return {number[]}
  */
 var exclusiveTime = function (n, logs) {
+  // exe time for functions
   const ans = new Array(n).fill(0);
   const s = [];
   let prev=0;

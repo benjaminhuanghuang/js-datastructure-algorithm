@@ -5,13 +5,26 @@
 */
 /*
   Solution 1:
-    对所有节点两两调用 areSameSubTree(r1, r2)
+    对所有节点 两两 调用 areSameSubTree(r1, r2)
+    
     areSameSubTree(r1, r2)的Time Complexity is O(N)
+
     总Time Complexity is： O(N^2) * O(N)
 
     Space complexity is O(N) 因为有N层
 
-*/
+*/  
+function areSameTree(r1, r2){
+  if(r1 == null && r2 == null){return true}
+  if(r1 == null || r2 == null) {
+    return false;
+  }
+  if(r1.val != v2.val) {
+    return false;
+  }
+
+  return areSameTree(r1.left, r2.left) && areSameTree(r1.right, r2.right)
+}
 
 /*
 https://www.youtube.com/watch?v=JLK92dbTt8k&ab_channel=HuaHua
@@ -33,6 +46,14 @@ https://www.youtube.com/watch?v=JLK92dbTt8k&ab_channel=HuaHua
  * @param {TreeNode} root
  * @return {TreeNode[]}
  */
+
+/*
+  Solution: serialization
+  1. if n is null , ""
+  2. "n.val, left sub tree, riht sub tree"
+
+  用 map 计数
+*/
 var findDuplicateSubtrees = function (root) {
   const ans = [];
   const counts = {}; // string-> int, 子树出现的次数

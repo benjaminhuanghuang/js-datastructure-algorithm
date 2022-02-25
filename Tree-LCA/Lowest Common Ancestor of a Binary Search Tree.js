@@ -1,5 +1,9 @@
 /*
 235. Lowest Common Ancestor of a Binary Search Tree
+
+Easy
+
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 */
 var lowestCommonAncestor = function(root, p, q) {
   if (root == null)
