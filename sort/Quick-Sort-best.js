@@ -1,5 +1,5 @@
 /*
-  
+  https://www.youtube.com/watch?v=a-VZFIOIsZs&list=PLsbVibQXuLjruAH_gqwpOz-RTa0R4lvtF&index=4
 */
 // quick sort
 /**
@@ -19,12 +19,13 @@ function quickSort(A, start, end) {
   // key point 2: every time you compare left & right, it should be
   // left <= right not left < right
   while (left <= right) {
+    // 注意是<=, 如果是< 会栈溢出
     while (left <= right && A[left] < pivot) {
       left++;
     }
     while (left <= right && A[right] > pivot) {
       right--;
-    }
+    } 
     if (left <= right) {
       const temp = A[left];
       A[left] = A[right];

@@ -16,7 +16,7 @@ class MergeSort {
       this.mergeSort(array, temp, left, center); // Left merge sort
       this.mergeSort(array, temp, center + 1, right); // Right merge sort
 
-      this.merge(array, temp, left, center + 1, right); // Merge two ordered arrays
+      this.merge(array, temp, left, right); // Merge two ordered arrays
     }
   }
 
@@ -24,35 +24,35 @@ class MergeSort {
     Combine two ordered list into an ordered list
     
     temp : Temporary array
-    
-    left :    Start the subscript on the left
-    
-    right :  Start the subscript on the right
-         
-    rightEndIndex : End subscript on the right
   */
-  merge(array, temp, left, right, rightEndIndex) {
-    var leftEndIndex = right - 1; // End subscript on the left
+  merge(array, temp, start, end) {
+    let middle = left +Number.floor((right - left )/2);
+    
+    let leftIndex = start;
+    let rightIndex = middle+1;
+      
     var tempIndex = left; // Starting from the left count
-    var elementNumber = rightEndIndex - left + 1;
-
-    while (left <= leftEndIndex && right <= rightEndIndex) {
-      if (array[left] <= array[right]) temp[tempIndex++] = array[left++];
-      else temp[tempIndex++] = array[right++];
+  
+    while (leftIndex <= middle && rightIndex <= end) {
+      if (array[leftIndex] <= array[rightIndex]) {
+        temp[tempIndex++] = array[left++];
+      }
+      else {
+        temp[tempIndex++] = array[right++];
+      }
     }
-    while (left <= leftEndIndex) {
+    while (leftIndex <= middle) {
       // If there is element on the left
-      temp[tempIndex++] = array[left++];
+      temp[tempIndex++] = array[leftIndex++];
     }
-    while (right <= rightEndIndex) {
+    while (rightIndex <= end) {
       // If there is element on the right
-      temp[tempIndex++] = array[right++];
+      temp[tempIndex++] = array[rightIndex++];
     } 
     
     // Copy temp to array
-    for (var i = 0; i < elementNumber; i++) {
-      array[rightEndIndex] = temp[rightEndIndex];
-      rightEndIndex--;
+    for (var i = start; i <= end; i++) {
+      array[i] = temp[i];
     }
   }
 }

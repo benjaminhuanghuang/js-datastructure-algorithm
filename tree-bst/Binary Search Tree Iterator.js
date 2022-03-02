@@ -44,7 +44,7 @@ BSTIterator.prototype.next = function() {
       node = node.right;
       while(node)
       {
-          this.push(node);
+          this.stack.push(node);
           node = node.left;
       }
   }
