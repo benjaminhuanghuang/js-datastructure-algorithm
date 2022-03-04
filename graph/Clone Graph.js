@@ -38,12 +38,12 @@ var cloneGraph = function (node) {
       return oldToNew.get(node);
     }
 
-    const copy = new Node(node.val);
-    oldToNew.set(node, copy);
+    const newNode = new Node(node.val);
+    oldToNew.set(node, newNode);
     for (const nei of node.neighbors) {
-      copy.neighbors.push(dfs_clone(nei));
+      newNode.neighbors.push(dfs_clone(nei));
     }
-    return copy;
+    return newNode;
   };
 
   return dfs_clone(node);
