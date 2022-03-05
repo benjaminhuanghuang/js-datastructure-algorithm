@@ -1,16 +1,25 @@
 /*
 64. Minimum Path Sum
 
+Medium
+
 https://leetcode.com/problems/minimum-path-sum/
+
+只能向右向，向下
 */
 
+
 /*
+https://www.youtube.com/watch?v=pGMsrvt0fpk&ab_channel=NeetCode
+
+
 https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-64-minimum-path-sum/
 
- Recursion with memoization
- Time complexity: O(mn)
+  Recursion with memoization
+ 
+  Time complexity: O(mn)
 
-Space complexity: O(mn)
+  Space complexity: O(mn)
 */
 
 /**
