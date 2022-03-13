@@ -17,34 +17,31 @@ https://leetcode.com/problems/search-in-rotated-sorted-array/
  * @return {number}
  */
 var search = function (nums, target) {
+  if (nums.length == 0) return -1;
 
-    if (nums.length == 0)
-      return -1;
+  let l = 0;
+  let r = nums.length - 1;
 
-    let l = 0;
-    let r = nums.length - 1;
-
-    while (l <= r)
-    {
-      let mid = l + (r - l) / 2;
-      if (nums[mid] == target)
-      {
-        return mid;
-      }
-      if (nums[l] <= nums[mid]) // mid located in left part, which is increasing
-      {
-        if (nums[l] <= target && target < nums[mid]) //  target located between left and mid
-          r = mid - 1;
-        else //  target is bigger than mid
-          l = mid + 1;
-      }
-      else // nums[l] > nums[mid] , mid located in right part, which is increasing
-      {
-        if (nums[mid] < target && target <= nums[r]) //target located between mid and right
-          l = mid + 1;
-        else // target is less than mid
-          r = mid - 1;
-      }
+  while (l <= r) {
+    let mid = l + Math.floor((r - l) / 2);
+    if (nums[mid] == target) {
+      return mid;
     }
-    return -1;
+    if (nums[l] <= nums[mid]) {
+      // mid located in left part, which is increasing
+      if (nums[l] <= target && target < nums[mid])
+        //  target located between left and mid
+        r = mid - 1;
+      //  target is bigger than mid
+      else l = mid + 1;
+    } // nums[l] > nums[mid] , mid located in right part, which is increasing
+    else {
+      if (nums[mid] < target && target <= nums[r])
+        //target located between mid and right
+        l = mid + 1;
+      // target is less than mid
+      else r = mid - 1;
+    }
+  }
+  return -1;
 };

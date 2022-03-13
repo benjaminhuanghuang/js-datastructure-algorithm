@@ -1,12 +1,14 @@
 /*
   25. Reverse Nodes in k-Group
   
-  [Hard]
+  Hard
 
   https://leetcode.com/problems/reverse-nodes-in-k-group/
 
 
   # 206. Reverse Linked List
+
+  [MS]
 */
 
 /**
@@ -93,8 +95,11 @@ var reverseKGroup = function (head, k) {
   const dummy = new ListNode(-1, head);
 
   // get length
-  let len = 1; // not 0
-  while ((head = head.next)) len++;
+  let len = 0; 
+  while(head){
+    len++;
+    head = head.next;
+}
 
   // reverse
   let pre = dummy;

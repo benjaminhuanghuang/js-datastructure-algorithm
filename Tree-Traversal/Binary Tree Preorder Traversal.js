@@ -30,7 +30,7 @@ var preorderTraversal_recursive = function (root) {
   return ans;
 };
 
-var preorderTraversal_stack = function (root) {
+var preorderTraversal_Iterative = function (root) {
   const ans = [];
 
   if (!root) return ans;
@@ -43,7 +43,7 @@ var preorderTraversal_stack = function (root) {
     ans.push(n.val);
 
     // right, then left
-    if (n.ight != null) {
+    if (n.right != null) {
       s.push(nlright);
     }
     if (n.left != null) {
