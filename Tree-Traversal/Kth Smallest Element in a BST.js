@@ -68,3 +68,27 @@ var kthSmallest = function (root, k) {
   }
   return node.val;
 };
+
+
+var kthSmallest_refactor = function (root, k) {
+  const stack = [];
+  let node = root;
+
+  const pushLeftPath = (curr) =>{
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+  }
+
+  pushLeftPath(node);
+
+  let x = 1;
+  while (stack.length > 0 && x <= k) {
+    node = stack.pop();
+    x++;
+    let right = node.right;
+    pushLeftPath(right);
+  }
+  return node.val;
+};

@@ -1,7 +1,11 @@
 /*
 658. Find K Closest Elements
 
+Medium
+
 https://leetcode.com/problems/find-k-closest-elements/
+
+return the k closest integers to x in the array.
 */
 
 /*

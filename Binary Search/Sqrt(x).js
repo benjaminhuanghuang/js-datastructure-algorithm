@@ -13,7 +13,7 @@ https://leetcode.com/problems/sqrtx/
  */
 
 /*
- Better solution , use HuaHua tempalte [l, r)
+ Better solution , use HuaHua template [l, r)
 */
 var mySqrt = function (x) {
   let l = 1;
