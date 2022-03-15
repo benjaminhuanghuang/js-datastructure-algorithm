@@ -1,6 +1,9 @@
 /*
 52. N-Queens II
 
+Hard
+
+
 https://leetcode.com/problems/n-queens-ii/
 */
 /*

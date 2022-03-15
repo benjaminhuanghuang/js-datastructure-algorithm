@@ -27,12 +27,13 @@ var solveNQueens = function (n) {
 
   // put queen on (row, col)
   const backtracking = (row, col) => {
-    // (Na)
+    // "\" 方向
     // row - col =  -(n-1), -(n-2) ....(n-1)
     const indexOfDiagonal135 = row + n - col - 1;
-    // (Pie)
+    // "/" 方向
     // row + col = 0, 1, 2, ...n-2
     const indexOfDiagonal45 = row + col;
+
     if (colsUsed[col] || diagonal135Used[indexOfDiagonal135] || diagonal45Used[indexOfDiagonal45]) {
       return;
     }
