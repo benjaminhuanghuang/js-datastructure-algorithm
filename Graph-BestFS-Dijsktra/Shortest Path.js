@@ -17,16 +17,16 @@ class Node {
  * @return {number}
  */
 var shortestPath = function (a, b) {
-  const toVisit = [a];
+  const queue = [a];
   const partens = new Map();
   parents.set(a, null);  // node->parents
 
-  while (toVisit.length > 0) {
-    const curr = toVisit.shift();
+  while (queue.length > 0) {
+    const curr = queue.shift();
     if (curr == b) break;
 
     for (const node of curr.neighbors) {
-      toVisit.push(node);
+      queue.push(node);
       partens.set(n, curr);
     }
     if(!partens.has(b)) // Find cycle
@@ -35,7 +35,7 @@ var shortestPath = function (a, b) {
     }
 
     const path = [];
-    let curr = b;
+    curr = b;
     while( curr ){
       path.unshift(a);
       curr = partens.get(curr);

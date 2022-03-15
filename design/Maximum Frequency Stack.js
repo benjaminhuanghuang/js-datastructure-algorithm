@@ -3,7 +3,8 @@
 
 Level: Hard
 
-Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.
+Design a stack-like data structure to push elements to the stack and pop the most 
+frequent element from the stack.
 
 https://leetcode.com/problems/maximum-frequency-stack
 
