@@ -18,6 +18,9 @@ What is the sub-problem?
 
 /*
   bottom - up
+  
+  Time complexity O(M*N)
+  Space complexity O(M*N)
 */
 
 function knapsack_DP(capacity, W, V){

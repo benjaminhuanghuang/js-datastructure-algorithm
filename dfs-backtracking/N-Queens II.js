@@ -54,6 +54,8 @@ var totalNQueens = function (n) {
       }
     }
   };
+
+  // start from first row
   backtracking(0);
 
   return ans;

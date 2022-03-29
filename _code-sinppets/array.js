@@ -15,6 +15,7 @@ Array.from(new Set(loop(array)));
 // build Graph
 //----------------------------------------------------------
 const edges_r =  Array(n).fill(0).map((a)=>new Set());
+
 //不能使用下面的代码，下面的代码生成的array 每个元素都指向同一个引用
 const WRONG =  Array(n).fill(new Set())
 //不能使用下面的代码，下面的代码生成的array元素为undefined
@@ -40,7 +41,7 @@ var arr = Array.from({ length: 3 }, () => Array.from({ length: 4 }, () => val));
 var arr = Array.from(Array(R), () => Array(C).fill(val)); // BEST one
 
 // 这样写会导致错误，fill()会使用同一个reference，导致所有的节点相同
-//const graph = new Array(n).fill([]);
+const graph_WRONG = new Array(n).fill([]);
 // 要写成
 const graph = new Array(n).fill(0).map((i)=>[]);
 
