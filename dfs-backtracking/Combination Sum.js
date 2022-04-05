@@ -44,3 +44,5 @@ var combinationSum = function (candidates, target) {
   dfs(target, 0, []);
   return ans;
 };
+
+exports.combinationSum = combinationSum;
