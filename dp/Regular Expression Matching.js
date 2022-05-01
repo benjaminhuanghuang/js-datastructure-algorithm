@@ -19,50 +19,48 @@
 
 */
 
+var isMatch = function(s, p) {
+  const rows = s.length;
+  const cols = p.length;
 
-var isMatch = function (s, p) {
-    const rows = s.length;
-    const columns = p.length;
+  /// Base conditions
+  if (rows == 0 && cols == 0) {
+    return true;
+  }
+  if (cols == 0) {
+    return false;
+  }
 
-    /// Base conditions
-    if (rows == 0 && columns == 0) {
-        return true;
+  // DP array
+  const dp = Array.from(Array(rows+1), () => Array(cols+1).fill(false));
+  // Empty string and empty pattern are a match
+  dp[0][0] = true;
+
+  // Deals with patterns with *
+  for (let i = 1; i < cols + 1; i++) {
+    if (p[i - 1] === "*") {
+      dp[0][i] = dp[0][i - 2];
+    } else {
+      dp[0][i] = false;
     }
-    if (columns == 0) {
-        return false;
-    }
-    
-    // DP array
-    const dp = Array.from({ length: s.length + 1 }, () => [false]);
-    // Empty string and empty pattern are a match
-    dp[0][0] = true;
-
-    // Deals with patterns with *
-    for (let i = 1; i < columns + 1; i++) {
-        if (p[i - 1] === '*') {
-            dp[0][i] = dp[0][i - 2];
+  }
+  // For remaining characters
+  for (let i = 1; i < rows + 1; i++) {
+    for (let j = 1; j < cols + 1; j++) {
+      if (p[j - 1] === "*") {
+        if (p[j - 2] === s[i - 1] || p[j - 2] === ".") {
+          dp[i][j] = dp[i][j - 2] || dp[i - 1][j];
+        } else {
+          dp[i][j] = dp[i][j - 2];
         }
-        else {
-            dp[0][i] = false;
-        };
+      } else if (p[j - 1] === s[i - 1] || p[j - 1] === ".") {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = false;
+      }
     }
-    // For remaining characters
-    for (let i = 1; i < rows + 1; i++) {
-        for (let j = 1; j < columns + 1; j++) {
-            if (p[j - 1] === '*') {
-                if (p[j - 2] === s[i - 1] || p[j - 2] === '.') {
-                    dp[i][j] = dp[i][j - 2] || dp[i - 1][j];
-                } else {
-                    dp[i][j] = dp[i][j - 2];
-                }
-            } else if (p[j - 1] === s[i - 1] || p[j - 1] === '.') {
-                dp[i][j] = dp[i - 1][j - 1];
-            } else {
-                dp[i][j] = false;
-            }
-        }
-    }
-    return dp[rows][columns];
+  }
+  return dp[rows][cols];
 };
 
 /*
@@ -70,37 +68,36 @@ var isMatch = function (s, p) {
 */
 
 var isMatch = function (s, p) {
-  const dfs = (s, p) =>{
-    if (p.length == 0)
-    return s.lengnt == 0;
+  const dfs = (s, p) => {
+    if (p.length == 0) return s.lengnt == 0;
 
-// // normal case, e.g. 'a.b','aaa', 'a'
-// if (p[1] != '*' || p[1] == '\0')
-// {
-//     // no char to match
-//     if (*s == '\0')
-//         return false;
+    // // normal case, e.g. 'a.b','aaa', 'a'
+    // if (p[1] != '*' || p[1] == '\0')
+    // {
+    //     // no char to match
+    //     if (*s == '\0')
+    //         return false;
 
-//     if (*s == *p || *p == '.')
-//         return isMatch(s + 1, p + 1);
-//     else
-//         return false;
-// }
-// else
-// {
-//     int i = -1;
-//     while (i == -1 || s[i] == p[0] || p[0] == '.')
-//     {
-//         if (isMatch(s + i + 1, p + 2))
-//             return true;
-//         if (s[++i] == '\0')
-//             break;
-//     }
-//     return false;
-// }
+    //     if (*s == *p || *p == '.')
+    //         return isMatch(s + 1, p + 1);
+    //     else
+    //         return false;
+    // }
+    // else
+    // {
+    //     int i = -1;
+    //     while (i == -1 || s[i] == p[0] || p[0] == '.')
+    //     {
+    //         if (isMatch(s + i + 1, p + 2))
+    //             return true;
+    //         if (s[++i] == '\0')
+    //             break;
+    //     }
+    //     return false;
+    // }
 
-// return false;
-  }
+    // return false;
+  };
 
-  return dfs(s, p)
-}
+  return dfs(s, p);
+};
