@@ -11,7 +11,8 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/
 */
 
 /*
-  Easy solution is Merging two arrays and calculate the median numbers
+  Easy solution: 
+  is Merging two arrays then find median, the time complexity of merge two arrays is O(M+N)
   The time complexity will be O(N+M)
 
 
@@ -71,10 +72,12 @@ var findMedianSortedArrays = function (nums1, nums2) {
   https://www.youtube.com/watch?v=q6IEA26hvXc&ab_channel=NeetCode
 
   odd case / 
-  1. total length  = len1 + len2,   so can get the half = 
-  2. 问题转化为：从一个nums array中找出正确的 left partition， 那么根据step 1中求出的half，可以求出另一个array中left partition
-  3. 先指定一array大min，用它来划分left partition， right partition， 那么在另一array中，right partition要比这个值大
-     如果不对，就调整 l,r 边界
+  根据元素总个数，可以知道最终left half, right half各有多少元素
+  1. 对一个array 二分，根据二分后left part 的长度和最终 left half的长度，可求出另一array中left part 的最后一个元素和right part的第一个元素
+     如果 每组的last of left < first of right，就找到了答案
+  3. 先指定一个array, l=0, r=length, 用 (l+r)/2 来划分left partition， right partition， 那么在另一array中，right partition要比这个值大
+     如果不对，就调整这个array的l,r 边界
+
   4. max(两个左partition) + min(两个右partition)
 
 
@@ -93,14 +96,15 @@ var findMedianSortedArrays = function (nums1, nums2) {
     B = nums1;
   }
 
-  // step 2. run binary search on A
+  // step 2. run binary search on the shorter array
   let l = 0;
   let r = A.length - 1;
 
   while (true) {
     let mid = Math.floor((r - l) / 2) + l; // for A
-    let midB = half - mid - 2; // the mind index for B
+    let midB = half - mid - 2; // the middle index for B
 
+    // check out of bounds
     const leftA = mid >= 0 ? A[mid] : Number.MIN_SAFE_INTEGER;
     const rightA = mid + 1 < A.length ? A[mid + 1] : Number.MAX_SAFE_INTEGER;
 

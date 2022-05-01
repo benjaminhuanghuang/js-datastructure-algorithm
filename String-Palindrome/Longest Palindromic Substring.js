@@ -60,7 +60,7 @@ var longestPalindrome = function (s) {
       l--;
       r++;
     }
-    return r - l - 1;
+    return r - l - 1;  // -1!
   };
   
   let maxLen = 0;
