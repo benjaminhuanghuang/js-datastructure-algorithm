@@ -4,6 +4,19 @@
 https://leetcode.com/problems/number-of-1-bits/submissions/
 */
 
+var hammingWeight_WRONG = function(n) {
+  let count =0;
+  // note! when n = 11111111111111111111111111111101
+  while(n > 0) {
+      if(n & 1) {
+          count++;
+      }
+      n = n >> 1;   // ! Use >>> 
+  }
+  return count;
+};
+
+
 var hammingWeight = function(n) {
   let count = 0;
   for (let i = 0; i < 32; i++) {

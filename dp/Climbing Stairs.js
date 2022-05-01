@@ -10,6 +10,12 @@ https://leetcode.com/problems/climbing-stairs/
  * @param {number} n
  * @return {number}
  */
+
+/*
+For recursion, the time complexity would be O(2^(n)) 
+since every node will split into two subbranches (for accuracy, we could see it is O(2^(n-2)) 
+since we have provided two base cases, but it would be really unnecessary to distinguish at this level).
+*/
 var climbStairs = function (n) {
   if (n == 0) return 1; // 不爬
   if (n == 1) return 1; // 只能爬一层

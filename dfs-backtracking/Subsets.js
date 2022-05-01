@@ -33,7 +33,7 @@ helper funciton(length, start pos): 终止条件
 
     for (let i = start; i < nums.length; i++) {
       curr.push(nums[i]);
-      dfs(length, i + 1, curr);  // NOT start + 1
+      dfs(length, i + 1, curr);  // NOT start + 1, solution set must not contain duplicate
       curr.pop();
     }
   };
