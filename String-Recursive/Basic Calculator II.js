@@ -28,13 +28,14 @@ var calculate = function (s) {
   const stack = [];
   for (let i = 0; i < n; ++i) {
     // collect number
-    if (s.charCodeAt(i) >= "0".charCodeAt(0) && s.charCodeAt(i) <= "9".charCodeAt(0)) {
-      num = num * 10 + parseInt(s.charAt(i));
+    const c = s[i];
+    if (isNumber(c)) {
+      num = num * 10 + parseInt(c);
     }
 
     // if find operator or reach end, calculate last operation with current nubmer
     // 这里不能使用 else， 因为最后一个数字，同时满足数字，最后一个元素 两个条件
-    if ("+-*/".includes(s.charAt(i)) || i == n - 1) {
+    if ("+-*/".includes(c) || i == n - 1) {
       if (op == "+") stack.push(num);
       if (op == "-") stack.push(-num);
       if (op == "*" || op == "/") {
@@ -43,7 +44,7 @@ var calculate = function (s) {
         const tmp = op == "*" ? leftOperand * num : Math.trunc(leftOperand / num);
         stack.push(tmp);
       }
-      op = s[i];
+      op = c;
       num = 0;
     }
   }
@@ -53,3 +54,7 @@ var calculate = function (s) {
   }
   return res;
 };
+
+function isNumber(char) {
+  return char >= "0" && char <= "9";
+}

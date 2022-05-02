@@ -17,7 +17,8 @@ https://leetcode.com/problems/merge-k-sorted-lists/
  */
 var mergeKLists = function (lists) {
   if (lists.length === 0) return null;
-  const pq = new MinHeap();
+  const pq = new PriorityQueue((comparator = (item1, item2) => item1.val < item2.val));
+
   for (const node of lists) {
     if (node) {
       pq.push(node);
@@ -38,9 +39,11 @@ var mergeKLists = function (lists) {
   return dummy.next;
 };
 
-class MinHeap {
-  constructor() {
+class PriorityQueue {
+  // Min heap by default
+  constructor(comparator = (item1, item2) => item1 < item2) {
     this.heap = [];
+    this.comparator = comparator;
   }
   size() {
     return this.heap.length;
@@ -51,16 +54,17 @@ class MinHeap {
   peek() {
     return this.heap[0];
   }
-  push(item) {
-    this.heap.push(item);
+  push(val) {
+    this.heap.push(val);
     this.heapifyUp(this.heap.length - 1); //
     return this.heap.length;
   }
   pop() {
     this.swap(this.heap.length - 1, 0);
-    const element = this.heap.pop();
-    if (this.heap.length > 1) this.heapifyDown(0);
-    return element;
+    const val = this.heap[this.heap.length - 1];
+    this.heap.pop();
+    this.heapifyDown(0);
+    return val;
   }
 
   swap(i, j) {
@@ -69,25 +73,26 @@ class MinHeap {
 
   heapifyUp(index) {
     if (index === 0) return;
-    const parentIndex = Math.floor((index - 1) / 2);
-    if (this.heap[index].val > this.heap[parentIndex].val) return;
+    const parentIndex = Math.floor(index / 2);
+    if (this.comparator(this.heap[parentIndex], this.heap[index])) {
+      return;
+    }
     this.swap(index, parentIndex);
     this.heapifyUp(parentIndex);
   }
 
   heapifyDown(index) {
     let targetIndex = index;
-    let targetVal = this.heap[targetIndex].val;
-    const leftChildIndex = targetIndex * 2 + 1;
-    const rightChildIndex = targetIndex * 2 + 2;
-    if (rightChildIndex < this.heap.length && this.heap[rightChildIndex].val < targetVal) {
+    const leftChildIndex = targetIndex * 2;
+    const rightChildIndex = targetIndex * 2 + 1;
+
+    if (rightChildIndex < this.heap.length && this.comparator(this.heap[rightChildIndex], this.heap[index])) {
       targetIndex = rightChildIndex;
-      targetVal = this.heap[targetIndex].val;
-    }
-    if (leftChildIndex < this.heap.length && this.heap[leftChildIndex].val < targetVal) {
-      targetIndex = leftChildIndex;
     }
 
+    if (leftChildIndex < this.heap.length && this.comparator(this.heap[leftChildIndex], this.heap[targetIndex])) {
+      targetIndex = leftChildIndex;
+    }
     if (targetIndex === index) return;
 
     this.swap(targetIndex, index);

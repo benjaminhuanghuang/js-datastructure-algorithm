@@ -9,9 +9,10 @@ var plusOne = function(digits) {
           digits[i]++;  
           return digits; // Early return
       }
+      // >=9
       digits[i] = 0;
   }
-
+  // all digits >=9 
   var res = [1,...digits]
   return res;  
 };
