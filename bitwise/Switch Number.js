@@ -1,6 +1,4 @@
-
-
-void exchange(int &a, int &b)
+void function exchange(a, b)
 {
   if (a == b)
     return; //防止&a，&b指向同一个地址；那样结果会错误。

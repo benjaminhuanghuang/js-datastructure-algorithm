@@ -25,6 +25,7 @@ var reverseBits = function(n) {
     let bit = ( n >> i ) &1;
     res = (res <<1) + bit;
   }
+  // JavaScript need this line!
   res = res >>> 0;   // // 有符号变无符号
   return res;
 };
